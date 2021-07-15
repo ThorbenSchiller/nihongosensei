@@ -1,0 +1,13 @@
+.transEntry {
+    @apply inline;
+}
+
+.transEntry::after {
+  @apply text-gray-700 dark:text-gray-300;
+
+  content: "; "
+}
+
+.transEntry:last-of-type::after {
+   content: ""
+ }

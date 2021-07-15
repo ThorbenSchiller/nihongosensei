@@ -1,0 +1,17 @@
+.senseEntry {
+    @apply inline;
+}
+
+.senseEntry::before {
+    @apply text-gray-700 dark:text-gray-300;
+
+    content: " || "
+}
+
+.senseEntry:first-child::before {
+    content: ""
+}
+
+.senseEntry::after {
+    content: "."
+}
