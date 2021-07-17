@@ -1,17 +1,17 @@
 .senseEntry {
-    @apply inline;
+  @apply inline;
 }
 
 .senseEntry::before {
-    @apply text-gray-700 dark:text-gray-300;
+  @apply text-gray-700 dark:text-gray-300;
 
-    content: " || "
+  content: " || ";
 }
 
 .senseEntry:first-child::before {
-    content: ""
+  content: "";
 }
 
-.senseEntry::after {
-    content: "."
+.senseEntryWithDot::after {
+  content: ".";
 }

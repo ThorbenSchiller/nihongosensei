@@ -8,7 +8,7 @@ export function SenseGroup({ senses }: { senses: SenseModel[] }): JSX.Element {
     <li className={styles.senseGroupEntry}>
       <ul className="inline">
         {senses.map((sense, index) => (
-          <SenseEntry key={index} sense={sense} />
+          <SenseEntry key={index} senseEntry={sense} />
         ))}
       </ul>
     </li>

@@ -1,0 +1,19 @@
+.def {
+  @apply not-italic;
+}
+
+span ~ .def {
+  /*@apply ml-1;*/
+}
+
+.def:not(:only-child) {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.def:not(:only-child)::before {
+  content: "(";
+}
+
+.def:not(:only-child)::after {
+  content: ")";
+}

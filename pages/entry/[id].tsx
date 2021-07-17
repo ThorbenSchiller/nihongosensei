@@ -1,18 +1,27 @@
 import React from "react";
 import { GetServerSideProps } from "next";
-import { findById, EntryModel } from "../../services/VocabularyService";
-import { EntryCard } from "../../components/Entry";
+import {
+  findById,
+  EntryModel,
+  findByIds,
+} from "../../services/VocabularyService";
+import { EntryCard, RelatedEntries } from "../../components/Entry";
+import { OtherReadings } from "../../components/Entry/OtherReadings";
 
 type EntryDetailPageProps = {
   entry: EntryModel;
+  relatedEntries: EntryModel[];
 };
 
 export default function EntryDetailPage({
   entry,
+  relatedEntries,
 }: EntryDetailPageProps): JSX.Element {
   return (
     <div>
       <EntryCard entry={entry} />
+      <OtherReadings orth={entry.form.orth} />
+      <RelatedEntries entries={relatedEntries} />
     </div>
   );
 }
@@ -30,9 +39,19 @@ export const getServerSideProps: GetServerSideProps<EntryDetailPageProps> =
       };
     }
 
+    // resolve relations
+    const relationIds = entry.ruigos?.ruigo
+      .map((related) => related.id)
+      .filter((id) => id !== entry.id);
+    let relatedEntries: EntryModel[] = [];
+    if (relationIds?.length) {
+      relatedEntries = await findByIds(relationIds);
+    }
+
     return {
       props: {
         entry,
+        relatedEntries,
       },
     };
   };

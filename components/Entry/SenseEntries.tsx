@@ -1,9 +1,12 @@
 import { SenseModel } from "../../services/VocabularyService";
 import React from "react";
 import { SenseGroup } from "./SenseGroup";
+import styles from "./SenseEntries.module.css";
 
 type SenseEntriesProps = {
   sense: SenseModel[];
+  className?: string;
+  listType?: "decimal" | "alphabetic";
 };
 
 /**
@@ -30,11 +33,19 @@ function groupByRelated(senseEntries: ReadonlyArray<SenseModel>) {
   return groupedByRelated;
 }
 
-export function SenseEntries({ sense }: SenseEntriesProps): JSX.Element {
+export function SenseEntries({
+  sense,
+  className = "",
+  listType = "decimal",
+}: SenseEntriesProps): JSX.Element {
   const groupedByRelated = groupByRelated(sense);
+  const hasMultipleSenses = sense.some((entry) => entry.sense);
+  if (hasMultipleSenses) {
+    listType = "alphabetic";
+  }
 
   return (
-    <ol className="list-inside list-decimal">
+    <ol className={`list-inside ${styles[listType]} ${className}`}>
       {groupedByRelated.map((senseGroup, index) => (
         <SenseGroup key={index} senses={senseGroup} />
       ))}

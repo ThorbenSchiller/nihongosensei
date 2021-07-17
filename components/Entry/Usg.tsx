@@ -3,6 +3,7 @@ import React from "react";
 
 const USG_MAP: Record<string, string> = {
   coll: "usg.",
+  lit: "schriftspr.",
 };
 
 export function Usg(usg: UsgModel): JSX.Element | null {

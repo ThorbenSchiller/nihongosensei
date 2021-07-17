@@ -1,13 +1,17 @@
 .transEntry {
-    @apply inline;
+  @apply inline;
 }
 
 .transEntry::after {
   @apply text-gray-700 dark:text-gray-300;
 
-  content: "; "
+  content: "; ";
+}
+
+.transEntry:last-of-type + dfn {
+  @apply ml-1;
 }
 
 .transEntry:last-of-type::after {
-   content: ""
- }
+  content: "";
+}

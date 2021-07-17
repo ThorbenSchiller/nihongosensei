@@ -1,13 +1,15 @@
 export type EntryWrapperModel = {
   id: number;
-  entry_json: string;
+  entry_json: EntryModel;
   lastchange: Date;
 };
 
-type OrthModel = {
+export type OrthTypes = "IRREG" | "READ" | "LONG" | "MISTAKE";
+
+export type OrthModel = {
   value: string;
   midashigo?: boolean;
-  type?: "irreg" | "read" | "long" | "mistake";
+  type?: OrthTypes;
 };
 
 type ReadingModel = {
@@ -19,8 +21,32 @@ type ReadingModel = {
 export type SenseModel = {
   ref?: RefModel[];
   related?: boolean;
-  transAndBracketAndDef: (TransModel | DefModel)[];
+  transAndBracketAndDef?: (TransModel | DefModel | BracketModel)[];
   usg?: UsgModel[];
+  sense?: SenseModel[];
+  descr?: DescrModel;
+  etym?: EtymModel[];
+};
+
+export type EtymModel = {
+  textAndRefAndLiteral?: (Text | string)[];
+  abbrev?: AbbrevModel;
+};
+
+export type ForeignModel = {
+  textAndEmph: (TextModel | EmphModel)[];
+};
+
+export type AbbrevModel = {
+  ref?: RefModel;
+};
+
+export type DescrModel = {
+  textAndJapAndTranscr: (TextModel | ForeignModel | string)[];
+};
+
+export type BracketModel = {
+  defAndExplAndBirthdeath: (DefModel | ExplModel)[];
 };
 
 export type DefModel = {
@@ -62,10 +88,34 @@ export type TransModel = {
 
 export type GenusType = "M" | "F" | "N" | "MN" | "MF" | "NF" | "MNF";
 
+export type TokenTypeEnum =
+  | "N"
+  | "V"
+  | "ADJ"
+  | "ADN"
+  | "ADV"
+  | "BSP_SATZ"
+  | "HILFSV"
+  | "INTERJ"
+  | "KANJI"
+  | "KONJ"
+  | "PART"
+  | "PRAEEF"
+  | "PRON"
+  | "SUFF"
+  | "ZUS"
+  | "REDENSART"
+  | "WORTKOMP"
+  | "SONDERZEICHEN"
+  | "THEMENPART"
+  | "SONDERFORM"
+  | "UNDEF";
+
 export type TokenModel = {
   genus?: GenusType;
-  type?: string;
+  type?: TokenTypeEnum;
   content: string;
+  article?: boolean;
 };
 
 export type TextModel = {
@@ -74,12 +124,16 @@ export type TextModel = {
   hasFollowingSpace?: boolean;
 };
 
+export type EmphModel = {
+  value: string;
+};
+
 export type TrModel = {
-  textAndTokenAndDef: (TokenModel | TextModel)[];
+  textAndTokenAndDef: (TokenModel | TextModel | DefModel)[];
 };
 
 export type RuigosModel = {
-  ruigos: RuigoModel[];
+  ruigo: RuigoModel[];
 };
 
 export type RuigoModel = {
@@ -90,13 +144,21 @@ export type ExplModel = {
   textAndLiteralAndTransl: (TextModel | TransModel)[];
 };
 
+export type RefTypeEnum =
+  | "MAIN"
+  | "SYN"
+  | "ANTO"
+  | "ALTREAD"
+  | "ALTTRANSCR"
+  | "OTHER";
+
 export type RefModel = {
   id: number;
   jap: string;
   transcr: {
     content: string[];
   };
-  type: string;
+  type: RefTypeEnum;
 };
 
 export type EntryModel = {
@@ -110,5 +172,6 @@ export type EntryModel = {
   };
   sense: SenseModel[];
   steinhaus?: string[];
-  ruigos?: RuigosModel[];
+  ruigos?: RuigosModel;
+  ref?: RefModel[];
 };

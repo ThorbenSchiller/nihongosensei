@@ -1,0 +1,13 @@
+.otherReading {
+  @apply inline font-serif;
+}
+
+.otherReading::after {
+  @apply text-gray-700 dark:text-gray-300;
+
+  content: "・";
+}
+
+.otherReading:last-child::after {
+  content: "";
+}

@@ -7,10 +7,10 @@ export function Text({
   value,
 }: TextModel): JSX.Element {
   return (
-    <>
+    <span>
       {hasPrecedingSpace && " "}
       {value}
       {hasFollowingSpace && " "}
-    </>
+    </span>
   );
 }

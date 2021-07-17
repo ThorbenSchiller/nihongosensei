@@ -1,5 +1,8 @@
 import {
+  BracketModel,
   DefModel,
+  ForeignModel,
+  RefModel,
   TextModel,
   TokenModel,
   TransModel,
@@ -12,6 +15,15 @@ export function isToken(input: unknown): input is TokenModel {
 
 export function isText(input: unknown): input is TextModel {
   return typeof input === "object" && input != null && "value" in input;
+}
+
+export function isRef(input: unknown): input is RefModel {
+  return (
+    typeof input === "object" &&
+    input != null &&
+    "id" in input &&
+    "type" in input
+  );
 }
 
 export function isTrans(input: unknown): input is TransModel {
@@ -32,6 +44,18 @@ export function isTr(input: unknown): input is TrModel {
   return (
     typeof input === "object" && input != null && "textAndTokenAndDef" in input
   );
+}
+
+export function isBracket(input: unknown): input is BracketModel {
+  return (
+    typeof input === "object" &&
+    input != null &&
+    "defAndExplAndBirthdeath" in input
+  );
+}
+
+export function isForeign(input: unknown): input is ForeignModel {
+  return typeof input === "object" && input != null && "textAndEmph" in input;
 }
 
 export function isDefined<T>(input: T): input is NonNullable<T> {

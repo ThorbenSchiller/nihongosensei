@@ -1,16 +1,34 @@
 import RouterLink from "next/link";
-import { RefModel } from "../../services/VocabularyService";
+import { RefModel, RefTypeEnum } from "../../services/VocabularyService";
 import React from "react";
 import { Link } from "../Link";
 
-export function Ref({ id, jap, transcr }: RefModel): JSX.Element {
+const TYPE_MAP: Record<RefTypeEnum, string> = {
+  ALTREAD: "→",
+  ANTO: "⇔",
+  ALTTRANSCR: "☞",
+  SYN: "⇒",
+  MAIN: "",
+  OTHER: "",
+};
+
+type RefProps = RefModel & {
+  className?: string;
+};
+
+export function Ref({
+  id,
+  jap,
+  transcr,
+  type,
+  className = "",
+}: RefProps): JSX.Element {
   return (
-    <>
-      <RouterLink href={`/entry/${id}`} passHref={true}>
-        <Link>
-          ⇒ <i>{transcr.content.join(", ")}</i> {jap}
-        </Link>
-      </RouterLink>
-    </>
+    <RouterLink href={`/entry/${id}`} passHref={true}>
+      <Link className={className}>
+        <span className="font-serif">{TYPE_MAP[type]}</span>{" "}
+        {transcr && <i>{transcr.content.join(", ")}</i>} {jap}
+      </Link>
+    </RouterLink>
   );
 }

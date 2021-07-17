@@ -3,6 +3,11 @@ import { SenseEntries } from "./SenseEntries";
 import React, { memo } from "react";
 import { MinorText } from "./MinorText";
 import { mapElement } from "./mapElement";
+import RouterLink from "next/link";
+import { Link } from "../Link";
+import { Reading } from "./Reading";
+import { Refs } from "./Refs";
+import { EntryText } from "./EntryText";
 
 type EntryCardProps = {
   entry: EntryModel;
@@ -16,35 +21,28 @@ export const EntryCard = memo(function EntryCard({
   const {
     form: { orth },
     sense,
+    ref,
   } = entry;
 
-  const preferredReadings = orth.filter((orth) => orth.midashigo);
-
   return (
-    <div className={`border dark:border-gray-700 rounded p-4 ${className}`}>
+    <div
+      className={`border dark:border-gray-700 rounded p-4 font-serif ${className}`}
+    >
       <div className="text-4xl mb-2">
-        {preferredReadings.length > 0
-          ? preferredReadings[0].value
-          : orth[0].value}
+        <RouterLink href={`/entry/${entry.id}`} passHref={true}>
+          <Link lang="ja" color="text">
+            <EntryText orth={orth} />
+          </Link>
+        </RouterLink>
       </div>
-      <div className="text-xl text-gray-700 dark:text-gray-300 mb-2">
-        {entry.form.reading.hatsuon}
+      <div lang="ja" className="text-xl text-gray-700 dark:text-gray-300 mb-2">
+        <Reading reading={entry.form.reading.hatsuon} />
       </div>
       <SenseEntries sense={sense} />
       {entry.expl && entry.expl.length > 0 && (
         <MinorText className="mt-2">{entry.expl.map(mapElement)}</MinorText>
       )}
-
-      {orth.length > 1 && (
-        <div className="mt-2">
-          Andere Lesungen:
-          <ul>
-            {orth.map((orth, index) => (
-              <li key={index}>{orth.value}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <Refs className="mt-2" refs={ref ?? []} />
     </div>
   );
 });
