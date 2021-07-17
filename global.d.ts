@@ -1,4 +1,4 @@
-import { Connection } from "mysql";
+import { Connection } from "mysql2";
 
 declare global {
   interface Window {

@@ -1,4 +1,4 @@
-import mysql, { format } from "mysql";
+import mysql from "mysql2";
 
 let connection = global.database;
 if (!connection) {
@@ -18,14 +18,14 @@ export function execute<T>(
 ): Promise<T[]> {
   return new Promise<T[]>((resolve, reject) =>
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    connection!.query(format(query, binds), (error, results) => {
+    connection!.query(query, binds, (error, results) => {
       if (error) {
         reject(error);
 
         return;
       }
 
-      resolve(results);
+      resolve(results as T[]);
     })
   );
 }

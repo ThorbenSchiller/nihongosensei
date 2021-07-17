@@ -3,12 +3,12 @@ import { EntryModel, EntryWrapperModel } from "./Model";
 
 export async function findByText(text: string): Promise<EntryModel | null> {
   const results = await execute<EntryWrapperModel>(
-    `SELECT * FROM entry WHERE text_clean = ? OR hiragana_clean = ?`,
+    `SELECT * FROM entry WHERE text_plain = ? OR hiragana_plain = ?`,
     [text, text]
   );
 
   if (results.length) {
-    return JSON.parse(results[0].entry_json);
+    return results[0].entry_json;
   }
 
   return null;

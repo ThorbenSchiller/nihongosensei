@@ -8,7 +8,7 @@ export async function findById(id: number): Promise<EntryModel | null> {
   );
 
   if (results.length) {
-    return JSON.parse(results[0].entry_json);
+    return results[0].entry_json;
   }
 
   return null;

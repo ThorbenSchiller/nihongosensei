@@ -10,5 +10,5 @@ export async function list(options: FindOptions = {}): Promise<EntryModel[]> {
     [offset, Math.max(limit, MAX_LIMIT)]
   );
 
-  return results.map((result) => JSON.parse(result.entry_json));
+  return results.map((result) => result.entry_json);
 }
