@@ -74,7 +74,8 @@ export type UsgTypeEnum =
   | "SCIENTIFIC"
   | "SEASONWORD"
   | "FAMILYNAME"
-  | "ABREV";
+  | "ABREV"
+  | "UNKNOWN"; // own type
 
 export type UsgModel = {
   type?: UsgTypeEnum;
