@@ -1,10 +1,19 @@
 import { execute } from "./connection";
 import { EntryModel, EntryWrapperModel } from "./Model";
 
+/**
+ * Finds EntryModels by the given ids.
+ * If no element with the given id exists, it is left
+ * in the result list.
+ *
+ * @param ids The ids to look for.
+ * @param executor The executor to use.
+ */
 export async function findByIds(
-  ids: ReadonlyArray<number>
+  ids: ReadonlyArray<number>,
+  executor = execute
 ): Promise<EntryModel[]> {
-  const results = await execute<EntryWrapperModel>(
+  const results = await executor<EntryWrapperModel>(
     `SELECT * FROM entry WHERE id IN (${new Array(ids.length)
       .fill("?")
       .join(",")})`,
