@@ -1,5 +1,6 @@
 import React from "react";
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 import {
   findById,
   EntryModel,
@@ -8,6 +9,7 @@ import {
 import { EntryCard, RelatedEntries } from "../../components/Entry";
 import { OtherReadings } from "../../components/Entry/OtherReadings";
 import { ContentWrapper } from "../../components/ContentWrapper";
+import { SITE_NAME } from "../_app";
 
 type EntryDetailPageProps = {
   entry: EntryModel;
@@ -19,11 +21,18 @@ export default function EntryDetailPage({
   relatedEntries,
 }: EntryDetailPageProps): JSX.Element {
   return (
-    <ContentWrapper>
-      <EntryCard entry={entry} />
-      <OtherReadings orth={entry.form.orth} />
-      <RelatedEntries entries={relatedEntries} />
-    </ContentWrapper>
+    <>
+      <Head>
+        <title>
+          {entry.form.orth[0]?.value} - {SITE_NAME}
+        </title>
+      </Head>
+      <ContentWrapper>
+        <EntryCard entry={entry} />
+        <OtherReadings orth={entry.form.orth} />
+        <RelatedEntries entries={relatedEntries} />
+      </ContentWrapper>
+    </>
   );
 }
 

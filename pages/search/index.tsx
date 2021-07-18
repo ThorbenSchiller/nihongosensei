@@ -1,5 +1,6 @@
 import React from "react";
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 import {
   EntryModel,
   findByQuery,
@@ -9,6 +10,7 @@ import { EntryCard } from "../../components/Entry";
 import { SimplePagination } from "../../components/Pagination";
 import { DEFAULT_LIMIT } from "../../services/constants";
 import { ContentWrapper } from "../../components/ContentWrapper";
+import { SITE_NAME } from "../_app";
 
 type SearchPageProps = {
   query: string;
@@ -18,19 +20,27 @@ type SearchPageProps = {
 
 export default function SearchPage({
   results,
+  query,
   options = {},
 }: SearchPageProps): JSX.Element {
   const { offset = 0, limit = DEFAULT_LIMIT } = options;
 
   return (
-    <ContentWrapper>
-      <div>
-        {results.map((entry) => (
-          <EntryCard key={entry.id} entry={entry} className="mb-4" />
-        ))}
-      </div>
-      <SimplePagination offset={offset} limit={limit} />
-    </ContentWrapper>
+    <>
+      <Head>
+        <title>
+          Suche {query} - {SITE_NAME}
+        </title>
+      </Head>
+      <ContentWrapper>
+        <div>
+          {results.map((entry) => (
+            <EntryCard key={entry.id} entry={entry} className="mb-4" />
+          ))}
+        </div>
+        <SimplePagination offset={offset} limit={limit} />
+      </ContentWrapper>
+    </>
   );
 }
 
