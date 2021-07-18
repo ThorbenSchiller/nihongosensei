@@ -8,6 +8,7 @@ import {
 import { EntryCard } from "../../components/Entry";
 import { SimplePagination } from "../../components/Pagination";
 import { DEFAULT_LIMIT } from "../../services/constants";
+import { ContentWrapper } from "../../components/ContentWrapper";
 
 type SearchPageProps = {
   query: string;
@@ -22,14 +23,14 @@ export default function SearchPage({
   const { offset = 0, limit = DEFAULT_LIMIT } = options;
 
   return (
-    <>
+    <ContentWrapper>
       <div>
         {results.map((entry) => (
           <EntryCard key={entry.id} entry={entry} className="mb-4" />
         ))}
       </div>
       <SimplePagination offset={offset} limit={limit} />
-    </>
+    </ContentWrapper>
   );
 }
 

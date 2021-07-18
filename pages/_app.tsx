@@ -4,7 +4,6 @@ import { AppProps } from "next/app";
 import { AbsoluteLoadingProgress } from "../components/LoadingProgress";
 import "./scrollbar.css";
 import "tailwindcss/tailwind.css";
-import { Search } from "../components/Search";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -17,10 +16,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         />
       </Head>
       <AbsoluteLoadingProgress />
-      <main style={{ maxWidth: 400 }} className="mx-auto p-3">
-        <Search />
-        <Component {...pageProps} />
-      </main>
+      <Component {...pageProps} />
     </>
   );
 }

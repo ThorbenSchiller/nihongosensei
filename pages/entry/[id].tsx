@@ -7,6 +7,7 @@ import {
 } from "../../services/VocabularyService";
 import { EntryCard, RelatedEntries } from "../../components/Entry";
 import { OtherReadings } from "../../components/Entry/OtherReadings";
+import { ContentWrapper } from "../../components/ContentWrapper";
 
 type EntryDetailPageProps = {
   entry: EntryModel;
@@ -18,11 +19,11 @@ export default function EntryDetailPage({
   relatedEntries,
 }: EntryDetailPageProps): JSX.Element {
   return (
-    <div>
+    <ContentWrapper>
       <EntryCard entry={entry} />
       <OtherReadings orth={entry.form.orth} />
       <RelatedEntries entries={relatedEntries} />
-    </div>
+    </ContentWrapper>
   );
 }
 

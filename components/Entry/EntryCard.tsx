@@ -8,6 +8,7 @@ import { Link } from "../Link";
 import { Reading } from "./Reading";
 import { Refs } from "./Refs";
 import { EntryText } from "./EntryText";
+import { useRouter } from "next/router";
 
 type EntryCardProps = {
   entry: EntryModel;
@@ -23,13 +24,22 @@ export const EntryCard = memo(function EntryCard({
     sense,
     ref,
   } = entry;
+  const { query } = useRouter();
 
   return (
     <div
       className={`border dark:border-gray-700 rounded p-4 font-serif ${className}`}
     >
       <div className="text-4xl mb-2">
-        <RouterLink href={`/entry/${entry.id}`} passHref={true}>
+        <RouterLink
+          href={{
+            pathname: `/entry/${entry.id}`,
+            query: {
+              q: query.q,
+            },
+          }}
+          passHref={true}
+        >
           <Link lang="ja" color="text">
             <EntryText orth={orth} />
           </Link>

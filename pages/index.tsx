@@ -1,37 +1,26 @@
 import React from "react";
 import { GetServerSideProps } from "next";
-import { EntryModel, FindOptions, list } from "../services/VocabularyService";
-import { EntryCard } from "../components/Entry";
-import { DEFAULT_LIMIT } from "../services/constants";
+import { Search } from "../components/Search";
+import { Logo } from "../components/Logo";
+import { Footer } from "../components/Footer";
 
-type HomeProps = {
-  results: EntryModel[];
-  options: FindOptions;
-};
-
-export default function Home({ results }: HomeProps): JSX.Element {
+export default function Home(): JSX.Element | null {
   return (
-    <div>
-      {results.map((entry) => (
-        <EntryCard key={entry.id} entry={entry} className="mb-4" />
-      ))}
+    <div
+      className="h-screen flex flex-col mx-auto text-center p-3"
+      style={{ maxWidth: 400 }}
+    >
+      <div className="w-full flex flex-col flex-grow justify-center items-center">
+        <Logo className="mb-8" size="big" />
+        <Search className="w-full mb-8" />
+      </div>
+      <Footer />
     </div>
   );
 }
 
-export const getServerSideProps: GetServerSideProps<HomeProps> = async (
-  context
-) => {
-  const { offset: offsetString = "1" } = context.query;
-  const offset = Number(offsetString) || 0;
-
-  const options = { offset, limit: DEFAULT_LIMIT };
-  const results = await list(options);
-
+export const getServerSideProps: GetServerSideProps = async () => {
   return {
-    props: {
-      results,
-      options,
-    },
+    props: {},
   };
 };
