@@ -11,7 +11,7 @@ export function Footer({ className = "" }: FooterProps): JSX.Element {
     <MinorText component="p" className={`text-sm ${className}`}>
       Diese Seite bietet eine Aufbereitung des{" "}
       <Link
-        href="https://www.wadoku.de/downloads/xml-export/https://www.wadoku.de/downloads/xml-export/"
+        href="https://www.wadoku.de/downloads/xml-export/"
         target="_blank"
         rel="noreferrer"
       >
