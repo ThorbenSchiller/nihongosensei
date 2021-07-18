@@ -2,6 +2,8 @@
 
 This project provides a next.js based wadoku dict frontend.
 
+Deployment available under [dict.nihongosensei.app](https://dict.nihongosensei.app)
+
 ## Wadoku XML Exports
 
 See https://www.wadoku.de/downloads/xml-export/https://www.wadoku.de/downloads/xml-export/
