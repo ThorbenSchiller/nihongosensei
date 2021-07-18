@@ -1,13 +1,12 @@
 import { execute } from "./connection";
 import { EntryModel, EntryWrapperModel, FindOptions } from "./Model";
-
-const MAX_LIMIT = 15;
+import { DEFAULT_LIMIT, MAX_LIMIT } from "../constants";
 
 export async function list(options: FindOptions = {}): Promise<EntryModel[]> {
-  const { limit = 15, offset = 0 } = options;
+  const { limit = DEFAULT_LIMIT, offset = 0 } = options;
   const results = await execute<EntryWrapperModel>(
     `SELECT * FROM entry LIMIT ?, ?`,
-    [offset, Math.max(limit, MAX_LIMIT)]
+    [offset.toString(), Math.min(limit, MAX_LIMIT).toString()]
   );
 
   return results.map((result) => result.entry_json);

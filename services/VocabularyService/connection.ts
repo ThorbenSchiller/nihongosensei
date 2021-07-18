@@ -32,7 +32,7 @@ export function execute<T>(
   binds: ReadonlyArray<string | number>
 ): Promise<T[]> {
   return new Promise<T[]>((resolve, reject) =>
-    getConnection().query(query, binds, (error, results) => {
+    getConnection().execute(query, binds, (error, results) => {
       if (error) {
         reject(error);
 

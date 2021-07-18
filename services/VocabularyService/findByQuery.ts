@@ -12,7 +12,8 @@ export async function findByQuery(
     WHERE
         MATCH(text_plain, hiragana_plain, orths_plain, senses_plain)
         AGAINST (? IN BOOLEAN MODE) LIMIT ?, ?`,
-    [`${query}*`, offset, Math.min(limit, MAX_LIMIT)]
+    // parameters seem to be strings, @see https://github.com/sidorares/node-mysql2/issues/1239
+    [query, offset.toString(), Math.min(limit, MAX_LIMIT).toString()]
   );
 
   return results.map((result) => result.entry_json);
