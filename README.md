@@ -1,8 +1,34 @@
 # Wadoku Dict
 
-This project provides a next.js based wadoku dict frontend.
+This project provides a simple dictionary search based on [wadoku.de](https://wadoku.de)
+xml data.
 
 Deployment available under [dict.nihongosensei.app](https://dict.nihongosensei.app)
+
+## Schema
+
+The dictionary uses a single table for now which holds the converted xml entry in json
+and additional fields ot enable text search.
+
+```sql
+CREATE TABLE `entry`
+(
+    `id`             int unsigned                 NOT NULL,
+    `entry_json`     json                                  DEFAULT NULL,
+    `lastchange`     timestamp                    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `text_plain`     varchar(255) CHARSET utf8mb4 NULL,
+    `hiragana_plain` varchar(255) CHARSET utf8mb4 NULL,
+    `orths_plain`    varchar(255) CHARSET utf8mb4 NULL,
+    `senses_plain`   text CHARSET utf8mb4         NULL,
+    PRIMARY KEY (`id`),
+    FULLTEXT KEY `entry_text` (`text_plain`, `hiragana_plain`, `orths_plain`, `senses_plain`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+```
+
+## Import Data
+
+See https://github.com/nihongosensei/wadoku-export-reader
 
 ## Wadoku XML Exports
 
