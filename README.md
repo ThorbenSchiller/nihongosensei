@@ -63,3 +63,9 @@ With etym which has a ref: [8545](https://dict.nihongosensei.app/entry/8545)
 With etym which has a foreign word: [490814](https://dict.nihongosensei.app/entry/490814)
 
 With multiple etyms: [2516676](https://dict.nihongosensei.app/entry/2516676)
+
+Usg with type HINT: [3778315](https://dict.nihongosensei.app/entry/3778315)
+
+Usg with type TIME: [8444455](https://dict.nihongosensei.app/entry/8444455)
+
+Def followed by text: [8444455](https://dict.nihongosensei.app/entry/8444455)
