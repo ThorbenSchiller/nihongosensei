@@ -3,7 +3,7 @@ import { EntryModel, EntryWrapperModel } from "./Model";
 
 export async function findByText(text: string): Promise<EntryModel | null> {
   const results = await execute<EntryWrapperModel>(
-    `SELECT * FROM entry WHERE text_plain = ? OR hiragana_plain = ?`,
+    `SELECT * FROM entry WHERE text_plain = ? OR hiragana_plain = ? LIMIT 1`,
     [text, text]
   );
 
