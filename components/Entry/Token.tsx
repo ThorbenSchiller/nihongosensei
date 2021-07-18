@@ -10,7 +10,7 @@ export function Token({
   article,
 }: TokenModel): JSX.Element {
   return (
-    <>
+    <span>
       {content}
       {!genus && type && (
         <MinorText>
@@ -25,6 +25,6 @@ export function Token({
           <Genus genus={genus} />
         </>
       )}
-    </>
+    </span>
   );
 }
