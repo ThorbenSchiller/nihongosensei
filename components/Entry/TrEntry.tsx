@@ -1,12 +1,7 @@
 import { TrModel } from "../../services/VocabularyService";
 import React from "react";
-import { mapElement } from "./mapElement";
-import styles from "./TrEntry.module.css";
+import { createElements } from "./createElements";
 
 export function TrEntry({ textAndTokenAndDef }: TrModel): JSX.Element {
-  return (
-    <span className={styles.transEntry}>
-      {textAndTokenAndDef.map(mapElement)}
-    </span>
-  );
+  return <>{createElements(textAndTokenAndDef)}</>;
 }

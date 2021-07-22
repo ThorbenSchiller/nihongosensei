@@ -2,7 +2,6 @@ import { EntryModel } from "../../services/VocabularyService";
 import { SenseEntries } from "./SenseEntries";
 import React, { memo } from "react";
 import { MinorText } from "./MinorText";
-import { mapElement } from "./mapElement";
 import RouterLink from "next/link";
 import { Link } from "../Link";
 import { Reading } from "./Reading";
@@ -10,6 +9,7 @@ import { Refs } from "./Refs";
 import { EntryText } from "./EntryText";
 import { useRouter } from "next/router";
 import { useEntryContext } from "./EntryContext";
+import { createElements } from "./createElements";
 
 type EntryCardProps = {
   entry: EntryModel;
@@ -52,7 +52,7 @@ export const EntryCard = memo(function EntryCard({
       </div>
       <SenseEntries sense={sense} />
       {entry.expl && entry.expl.length > 0 && (
-        <MinorText className="mt-2">{entry.expl.map(mapElement)}</MinorText>
+        <MinorText className="mt-2">{createElements(entry.expl)}</MinorText>
       )}
       <Refs className="mt-2" refs={ref ?? []} />
     </div>

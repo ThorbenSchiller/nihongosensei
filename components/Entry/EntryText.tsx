@@ -8,7 +8,7 @@ type EntryCardProps = {
   className?: string;
 };
 
-export const EntryText = function EntryCard({
+export function EntryText({
   orth,
   className = "",
 }: EntryCardProps): JSX.Element {
@@ -30,4 +30,4 @@ export const EntryText = function EntryCard({
       ))}
     </>
   );
-};
+}

@@ -21,36 +21,43 @@ type ReadingModel = {
 export type SenseModel = {
   ref?: RefModel[];
   related?: boolean;
-  transAndBracketAndDef?: (TransModel | DefModel | BracketModel)[];
+  transAndBracketAndDef?: (TransModel | BracketModel | DefModel | ExplModel)[];
   usg?: UsgModel[];
   sense?: SenseModel[];
   descr?: DescrModel;
   etym?: EtymModel[];
+  _element: "SenseType";
 };
 
 export type EtymModel = {
   textAndRefAndLiteral?: (Text | string)[];
   abbrev?: AbbrevModel;
+  _element: "EtymType";
 };
 
 export type ForeignModel = {
   textAndEmph: (TextModel | EmphModel)[];
+  _element: "ForeignType";
 };
 
 export type AbbrevModel = {
   ref?: RefModel;
+  _element: "AbbrevType";
 };
 
 export type DescrModel = {
   textAndJapAndTranscr: (TextModel | ForeignModel | string)[];
+  _element: "DescrType";
 };
 
 export type BracketModel = {
   defAndExplAndBirthdeath: (DefModel | ExplModel)[];
+  _element: "BracketType";
 };
 
 export type DefModel = {
   textAndLiteralAndTransl: TextModel[];
+  _element: "DefType";
 };
 
 export type UsgTypeEnum =
@@ -81,10 +88,16 @@ export type UsgModel = {
   type?: UsgTypeEnum;
   reg?: string;
   content: string;
+  _element: "UsgType";
+};
+
+export type ElementProvider = {
+  _element: string;
 };
 
 export type TransModel = {
   usgAndTrAndDef: (TrModel | UsgModel | DefModel)[];
+  _element: "TransType";
 };
 
 export type GenusType = "M" | "F" | "N" | "MN" | "MF" | "NF" | "MNF";
@@ -117,20 +130,37 @@ export type TokenModel = {
   type?: TokenTypeEnum;
   content: string;
   article?: boolean;
+  _element: "TokenType";
+};
+
+export type FamnModel = {
+  value: string;
+  _element: "FamnType";
+};
+
+export type TitleModel = {
+  textAndTokenAndEmph: (TextModel | TokenModel | EmphModel)[];
+  orig?: boolean;
+  lang?: string;
+  abbrev?: boolean;
+  _element: "TitleType";
 };
 
 export type TextModel = {
   value: string;
   hasPrecedingSpace?: boolean;
   hasFollowingSpace?: boolean;
+  _element: "TextType";
 };
 
 export type EmphModel = {
   value: string;
+  _element: "EmphType";
 };
 
 export type TrModel = {
   textAndTokenAndDef: (TokenModel | TextModel | DefModel)[];
+  _element: "TrComplexType";
 };
 
 export type RuigosModel = {
@@ -143,6 +173,22 @@ export type RuigoModel = {
 
 export type ExplModel = {
   textAndLiteralAndTransl: (TextModel | TransModel)[];
+  _element: "ExplType";
+};
+
+export type IronModel = {
+  textAndToken: (TextModel | TokenModel)[];
+  _element: "IronType";
+};
+
+export type SpeccharModel = {
+  value: string;
+  _element: "SpeccharType";
+};
+
+export type TopicModel = {
+  value: string;
+  _element: "TopicType";
 };
 
 export type RefTypeEnum =
@@ -160,6 +206,12 @@ export type RefModel = {
     content: string[];
   };
   type: RefTypeEnum;
+  _element: "RefType";
+};
+
+export type TranscrModel = {
+  content: string[];
+  _element: "TranscrType";
 };
 
 export type EntryModel = {

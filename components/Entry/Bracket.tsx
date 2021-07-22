@@ -1,12 +1,10 @@
 import React from "react";
 import { BracketModel } from "../../services/VocabularyService";
-import { mapElement } from "./mapElement";
-import { isDefined } from "./guards";
+import { createElements } from "./createElements";
 
 export function Bracket({
   defAndExplAndBirthdeath,
 }: BracketModel): JSX.Element {
-  return (
-    <>{defAndExplAndBirthdeath.map(mapElement).flat().filter(isDefined)}</>
-  );
+  // Bracket only contains expl for now, search for example with non expl elements?
+  return <>{createElements(defAndExplAndBirthdeath)}</>;
 }

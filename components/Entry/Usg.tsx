@@ -24,7 +24,7 @@ export function Usg({
 }: UsgModel): JSX.Element | null {
   if (reg) {
     return (
-      <span className="text-blue-700 dark:text-blue-300 mr-1 italic">
+      <span className="text-blue-700 dark:text-blue-300 italic">
         {USG_MAP[reg] ?? [reg]}
       </span>
     );
@@ -33,7 +33,7 @@ export function Usg({
   if (content) {
     return (
       <span
-        className={`${COLOR_MAP[type] ?? DEFAULT_COLOR} mr-1 italic`}
+        className={`${COLOR_MAP[type] ?? DEFAULT_COLOR} italic`}
         style={STYLE_MAP[type] ?? DEFAULT_STYLE}
       >
         {content}

@@ -1,12 +1,13 @@
 import React from "react";
 import { SenseModel } from "../../services/VocabularyService";
 import { Usg } from "./Usg";
-import { mapElement } from "./mapElement";
 import styles from "./SenseEntry.module.css";
 import { SenseEntries } from "./SenseEntries";
 import { Descr } from "./Descr";
 import { Refs } from "./Refs";
 import { Etym } from "./Etym";
+import { joinBy } from "./helper";
+import { createElements } from "./createElements";
 
 type SenseEntryProps = {
   senseEntry: SenseModel;
@@ -17,11 +18,10 @@ export function SenseEntry({ senseEntry }: SenseEntryProps): JSX.Element {
     sense,
     etym,
     descr,
-    transAndBracketAndDef,
+    transAndBracketAndDef = [],
     ref,
     usg = [],
   } = senseEntry;
-
   return (
     <li
       className={`${styles.senseEntry} ${!sense && styles.senseEntryWithDot}`}
@@ -32,9 +32,15 @@ export function SenseEntry({ senseEntry }: SenseEntryProps): JSX.Element {
         ))}
       {descr && <Descr {...descr} />}
       {sense && <SenseEntries className="ml-4" sense={sense} />}
-      {usg.length > 0 && usg.map((usg, index) => <Usg key={index} {...usg} />)}
+      {usg.length > 0 && (
+        <>
+          {usg
+            .map((usg, index) => <Usg key={index} {...usg} />)
+            .reduce(joinBy(" "), [])}{" "}
+        </>
+      )}
       {transAndBracketAndDef && (
-        <span>{transAndBracketAndDef.map(mapElement)}</span>
+        <span>{createElements(transAndBracketAndDef)}</span>
       )}
       <Refs className="ml-1" component="span" refs={ref ?? []} />
     </li>

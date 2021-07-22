@@ -1,7 +1,7 @@
 import React, { HTMLProps } from "react";
 
 type MinorTextProps = HTMLProps<HTMLSpanElement> & {
-  component?: "div" | "span" | "p";
+  component?: "div" | "span" | "p" | "i";
 };
 
 export function MinorText({

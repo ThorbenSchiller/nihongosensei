@@ -1,0 +1,11 @@
+.title {
+  quotes: "„" "“" "‚" "‘";
+}
+
+.title::before {
+  content: open-quote;
+}
+
+.title::after {
+  content: close-quote;
+}

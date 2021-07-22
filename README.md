@@ -69,3 +69,11 @@ Usg with type HINT: [3778315](https://dict.nihongosensei.app/entry/3778315)
 Usg with type TIME: [8444455](https://dict.nihongosensei.app/entry/8444455)
 
 Def followed by text: [8444455](https://dict.nihongosensei.app/entry/8444455)
+
+Usg on entry level: [5075870](https://dict.nihongosensei.app/entry/5075870)
+
+Famn and title: [226081](https://dict.nihongosensei.app/entry/226081)
+
+Season word: [10000528](https://dict.nihongosensei.app/entry/10000528)
+
+Many senses: [5260527](https://dict.nihongosensei.app/entry/5260527)
