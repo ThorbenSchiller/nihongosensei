@@ -7,6 +7,7 @@ import { Refs } from "./Refs";
 import { EntryText } from "./EntryText";
 import { createElements } from "./createElements";
 import { GramGrp } from "./GramGrp";
+import { UsgEntries } from "./UsgEntries";
 
 type EntryFullProps = {
   entry: EntryModel;
@@ -21,6 +22,7 @@ export const EntryFull = memo(function EntryFull({
     form: { orth, reading },
     sense,
     ref,
+    usg,
     gramGrp,
   } = entry;
   const firstReading = orth[0].value;
@@ -40,6 +42,7 @@ export const EntryFull = memo(function EntryFull({
           (<GramGrp {...gramGrp} />)
         </MinorText>
       )}
+      {usg && <UsgEntries usg={usg} />}
       <SenseEntries sense={sense} />
       {entry.expl && entry.expl.length > 0 && (
         <MinorText className="mt-2">{createElements(entry.expl)}</MinorText>

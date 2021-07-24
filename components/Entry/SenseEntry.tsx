@@ -1,13 +1,12 @@
 import React from "react";
 import { SenseModel } from "../../services/VocabularyService";
-import { Usg } from "./Usg";
 import styles from "./SenseEntry.module.css";
 import { SenseEntries } from "./SenseEntries";
 import { Descr } from "./Descr";
 import { Refs } from "./Refs";
 import { Etym } from "./Etym";
-import { joinBy } from "./helper";
 import { createElements } from "./createElements";
+import { UsgEntries } from "./UsgEntries";
 
 type SenseEntryProps = {
   senseEntry: SenseModel;
@@ -32,13 +31,7 @@ export function SenseEntry({ senseEntry }: SenseEntryProps): JSX.Element {
         ))}
       {descr && <Descr {...descr} />}
       {sense && <SenseEntries className="ml-4" sense={sense} />}
-      {usg.length > 0 && (
-        <>
-          {usg
-            .map((usg, index) => <Usg key={index} {...usg} />)
-            .reduce(joinBy(" "), [])}{" "}
-        </>
-      )}
+      {usg && <UsgEntries usg={usg} />}
       {transAndBracketAndDef && (
         <span>{createElements(transAndBracketAndDef)}</span>
       )}

@@ -382,6 +382,7 @@ export type EntryModel = {
     orth: OrthModel[];
     reading: ReadingModel;
   };
+  usg?: UsgModel[];
   gramGrp?: GramGrpModel;
   sense: SenseModel[];
   steinhaus?: string[];
