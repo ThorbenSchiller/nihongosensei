@@ -108,7 +108,9 @@ export type TransModel = {
   _element: "TransType";
 };
 
-export type GenusType = "M" | "F" | "N" | "MN" | "MF" | "NF" | "MNF";
+export type GenusEnum = "M" | "F" | "N" | "MN" | "MF" | "NF" | "MNF";
+
+export type NumerusEnum = "PL" | "SG";
 
 export type TokenTypeEnum =
   | "N"
@@ -134,7 +136,8 @@ export type TokenTypeEnum =
   | "UNDEF";
 
 export type TokenModel = {
-  genus?: GenusType;
+  genus?: GenusEnum;
+  numerus?: NumerusEnum;
   type?: TokenTypeEnum;
   content: string;
   article?: boolean;

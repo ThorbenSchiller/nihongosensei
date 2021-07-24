@@ -1,11 +1,11 @@
 import { TokenModel } from "../../services/VocabularyService";
 import React from "react";
-import { Genus } from "./Genus";
 import { MinorText } from "./MinorText";
 
 export function Token({
   content,
   genus,
+  numerus,
   type,
   article,
 }: TokenModel): JSX.Element {
@@ -22,7 +22,10 @@ export function Token({
       {genus && (
         <>
           {" "}
-          <Genus genus={genus} />
+          <MinorText component="i">
+            {genus.toLowerCase()}
+            {numerus?.toLowerCase()}
+          </MinorText>
         </>
       )}
     </>
