@@ -1,18 +1,31 @@
-import mysql, { Connection } from "mysql2";
+import mysql, { Pool } from "mysql2";
 
 /**
  * Establishes a database connection.
  * If DATABASE_URL is not set as env variable, an error is thrown.
  * A global connection is reused if it exists.
  */
-function getConnection(): Connection {
+function getConnectionPool(): Pool {
   let connection = global.database;
   if (!connection) {
-    const databaseurl = process.env.DATABASE_URL;
-    if (!databaseurl) {
-      throw new Error("DATABASE_URL not set");
+    const databaseHost = process.env.DATABASE_HOST;
+    const databasePort = Number(process.env.DATABASE_PORT) || undefined;
+    const databaseUser = process.env.DATABASE_USER;
+    const databaseName = process.env.DATABASE_NAME;
+    const databasePassword = process.env.DATABASE_PASSWORD;
+    if (!databaseHost || !databaseUser || !databaseName) {
+      throw new Error("DATABASE_URL, DATABASE_USER or DATABASE_NAME not set");
     }
-    connection = mysql.createConnection(databaseurl);
+    connection = mysql.createPool({
+      host: databaseHost,
+      port: databasePort,
+      user: databaseUser,
+      password: databasePassword,
+      database: databaseName,
+      waitForConnections: true,
+      connectionLimit: 15,
+      queueLimit: 0,
+    });
   }
 
   return connection;
@@ -32,7 +45,7 @@ export function execute<T>(
   binds: ReadonlyArray<string | number>
 ): Promise<T[]> {
   return new Promise<T[]>((resolve, reject) =>
-    getConnection().execute(query, binds, (error, results) => {
+    getConnectionPool().execute(query, binds, (error, results) => {
       if (error) {
         reject(error);
 
