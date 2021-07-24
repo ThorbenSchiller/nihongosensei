@@ -77,3 +77,5 @@ Famn and title: [226081](https://dict.nihongosensei.app/entry/226081)
 Season word: [10000528](https://dict.nihongosensei.app/entry/10000528)
 
 Many senses: [5260527](https://dict.nihongosensei.app/entry/5260527)
+
+Verb with 2 doushi definitions: [2972828](https://dict.nihongosensei.app/entry/2972828)

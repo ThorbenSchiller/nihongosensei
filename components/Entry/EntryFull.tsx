@@ -6,6 +6,7 @@ import { Reading } from "./Reading";
 import { Refs } from "./Refs";
 import { EntryText } from "./EntryText";
 import { createElements } from "./createElements";
+import { GramGrp } from "./GramGrp";
 
 type EntryFullProps = {
   entry: EntryModel;
@@ -20,6 +21,7 @@ export const EntryFull = memo(function EntryFull({
     form: { orth, reading },
     sense,
     ref,
+    gramGrp,
   } = entry;
   const firstReading = orth[0].value;
 
@@ -31,6 +33,11 @@ export const EntryFull = memo(function EntryFull({
       {firstReading !== reading.hatsuon && (
         <MinorText lang="ja" className="text-xl mb-2" component="div">
           <Reading reading={reading.hatsuon} />
+        </MinorText>
+      )}
+      {gramGrp && (
+        <MinorText component="div" className="mb-2">
+          (<GramGrp {...gramGrp} />)
         </MinorText>
       )}
       <SenseEntries sense={sense} />

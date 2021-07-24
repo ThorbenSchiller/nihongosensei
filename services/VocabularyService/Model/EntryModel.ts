@@ -4,7 +4,15 @@ export type EntryWrapperModel = {
   lastchange: Date;
 };
 
-export type OrthTypes = "IRREG" | "READ" | "LONG" | "MISTAKE";
+export type OrthTypes =
+  // irreguläre Schreibung
+  | "IRREG"
+  // irreguläre Lesung
+  | "READ"
+  // enthält Langzeichen aka Kyuji/Itaiji
+  | "LONG"
+  // häufige Falschschreibung
+  | "MISTAKE";
 
 export type OrthModel = {
   value: string;
@@ -192,11 +200,17 @@ export type TopicModel = {
 };
 
 export type RefTypeEnum =
+  // Referenz auf Haupteintrag
   | "MAIN"
+  // Referenz auf Synonym
   | "SYN"
+  // Referenz auf Antonym
   | "ANTO"
+  // Referenz auf alternative Lesung
   | "ALTREAD"
+  // Referenz auf alternative Katakana-Transkription eines Fremdwortes<
   | "ALTTRANSCR"
+  // einfache Referenz
   | "OTHER";
 
 export type RefModel = {
@@ -214,6 +228,148 @@ export type TranscrModel = {
   _element: "TranscrType";
 };
 
+export type TransitivityEnum = "TRANS" | "INTRANS" | "BOTH";
+
+export type LevelEnum =
+  | "1i"
+  | "1e"
+  | "2i"
+  | "2e"
+  | "4"
+  | "5"
+  | "suru"
+  | "kuru"
+  | "ra";
+
+export type GodanrowEnum =
+  | "wa"
+  | "wa_o"
+  | "ba"
+  | "ga"
+  | "ka"
+  | "ka_i_yu"
+  | "ra"
+  | "ra_i"
+  | "na"
+  | "ma"
+  | "sa"
+  | "ta";
+
+export type DoushiModel = {
+  _element: "Doushi";
+  level?: LevelEnum;
+  transitivity?: TransitivityEnum;
+  onbin?: boolean;
+  godanrow?: GodanrowEnum;
+};
+
+export type KeiyoudoushiModel = {
+  no?: boolean;
+  nari?: boolean;
+  _element: "Keiyoudoushi";
+};
+
+export type FukushiModel = {
+  ni?: boolean;
+  to?: boolean;
+  taru?: boolean;
+  suru?: TransitivityEnum;
+  _element: "Fukushi";
+};
+
+export type GramGrpModel = {
+  meishi?: { _element: "Meishi" };
+  /**
+   * Hilfsverb/助動詞
+   */
+  jodoushi?: { _element: "Jodoushi" };
+  /**
+   * Partikel/助詞
+   */
+  joshi?: { _element: "Joshi" };
+  /**
+   * Adverb
+   */
+  fukushi?: FukushiModel;
+  /**
+   * i-Adjektiv/ku-Adjektiv/形容詞
+   */
+  keiyoushi?: {
+    ku?: boolean;
+    shiku?: boolean;
+    _element: "Keiyoushi";
+  };
+  /**
+   * na-Adjektiv/Nominaladjektiv/形容動詞
+   */
+  keiyoudoushi?: KeiyoudoushiModel;
+  /**
+   * Interjektion/感動詞
+   */
+  kandoushi?: { _element: "Kandoushi" };
+  /**
+   * Präfix/接頭語
+   */
+  prefix?: { _element: "Prefix" };
+  /**
+   * Suffix/接尾語
+   */
+  suffix?: { _element: "Suffix" };
+  /**
+   * Adnomen/連体詞
+   */
+  rentaishi: { _element: "Rentaishi" };
+  /**
+   * Konjunktion/接続詞
+   */
+  setsuzokushi?: { _element: "Setsuzokushi" };
+  /**
+   * Pronomen/代名詞
+   */
+  daimeishi?: { _element: "Daimeishi" };
+  /**
+   * Konjunktionalpartikel/接続助詞
+   */
+  setsuzokujoshi?: { _element: "Setsuzokujoshi" };
+  /**
+   * Satzschlusspartikel/終助詞
+   */
+  shuujoshi?: { _element: "Shuujoshi" };
+  /**
+   * Themapartikel = keijoshi/係助詞
+   */
+  kakarijoshi?: { _element: "Kakarijoshi" };
+  /**
+   * Kasuspartikel/格助詞
+   */
+  kakujoshi?: { _element: "Kakujoshi" };
+  /**
+   * Adverbialpartikel/副助詞
+   */
+  fukujoshi?: { _element: "Fukujoshi" };
+  /**
+   * Wortkomponente/造
+   */
+  wordcomponent?: { _element: "Wordcomponent" };
+  /**
+   * Sonderzeichen
+   */
+  specialcharacter?: { _element: "Specialcharacter" };
+  /**
+   * Kanji/漢字
+   */
+  kanji?: { _element: "Kanji" };
+  /**
+   * Zusammensetzung/連語
+   */
+  rengo?: { _element: "Rengo" };
+  /**
+   * Verb/動詞
+   */
+  doushi?: DoushiModel[];
+  _element: "GramGrpType";
+};
+
 export type EntryModel = {
   id: number;
   version: string;
@@ -223,6 +379,7 @@ export type EntryModel = {
     orth: OrthModel[];
     reading: ReadingModel;
   };
+  gramGrp?: GramGrpModel;
   sense: SenseModel[];
   steinhaus?: string[];
   ruigos?: RuigosModel;

@@ -34,7 +34,7 @@ export const getServerSideProps: GetServerSideProps<ExamplePageProps> =
     const ids = [
       7253900, 167612, 1707, 273, 208, 515, 4029690, 4151, 8042046, 11712, 8545,
       490814, 2516676, 3778315, 8444455, 8444455, 5075870, 226081, 10000528,
-      5260527,
+      5260527, 2972828,
     ];
     const results = await findByIds(ids);
 
