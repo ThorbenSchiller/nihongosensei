@@ -1,1 +1,1 @@
-export * from "./SimplePagination";
+export * from "./Pagination";

@@ -1,0 +1,56 @@
+import ReactPaginate, { ReactPaginateProps } from "react-paginate";
+import React, { useCallback } from "react";
+import { useRouter } from "next/router";
+
+type PaginationProps = {
+  offset: number;
+  limit: number;
+  count: number;
+  className?: string;
+};
+
+export function Pagination({
+  limit,
+  count,
+  offset,
+  className = "",
+}: PaginationProps): JSX.Element {
+  const router = useRouter();
+  const currentPage = offset / limit;
+  const pageCount = Math.ceil(count / limit);
+  const handlePageChange: ReactPaginateProps["onPageChange"] = useCallback(
+    ({ selected }) => {
+      router.push({
+        query: {
+          ...router.query,
+          offset: selected * limit,
+          limit,
+        },
+      });
+    },
+    [router, limit]
+  );
+
+  return (
+    <ReactPaginate
+      disableInitialCallback={true}
+      previousLabel="«"
+      nextLabel="»"
+      breakLabel="..."
+      pageCount={pageCount}
+      initialPage={currentPage}
+      forcePage={currentPage}
+      marginPagesDisplayed={2}
+      pageRangeDisplayed={3}
+      onPageChange={handlePageChange}
+      activeClassName="text-primary-500 bold"
+      containerClassName={`flex justify-between items-center ${className}`}
+      pageClassName=""
+      pageLinkClassName="inline-flex px-3 py-1"
+      previousLinkClassName="inline-flex px-3 py-1"
+      nextLinkClassName="inline-flex px-3 py-1"
+      disabledClassName="opacity-50 pointer-events-none"
+      breakClassName="opacity-50 pointer-events-none"
+    />
+  );
+}
