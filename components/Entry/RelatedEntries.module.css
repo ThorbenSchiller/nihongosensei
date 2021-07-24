@@ -3,3 +3,7 @@
 
   content: "・";
 }
+
+.relatedEntry:last-child::after {
+  content: "";
+}
