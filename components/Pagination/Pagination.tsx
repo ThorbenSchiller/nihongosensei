@@ -40,11 +40,11 @@ export function Pagination({
       pageCount={pageCount}
       initialPage={currentPage}
       forcePage={currentPage}
-      marginPagesDisplayed={2}
+      marginPagesDisplayed={3}
       pageRangeDisplayed={3}
       onPageChange={handlePageChange}
       activeClassName="text-primary-500 bold"
-      containerClassName={`flex justify-between items-center ${className}`}
+      containerClassName={`flex justify-center items-center ${className}`}
       pageClassName=""
       pageLinkClassName="inline-flex px-3 py-1"
       previousLinkClassName="inline-flex px-3 py-1"

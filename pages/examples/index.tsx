@@ -2,7 +2,7 @@ import React from "react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { EntryModel, findByIds } from "../../services/VocabularyService";
-import { EntryCard } from "../../components/Entry";
+import { EntryFull } from "../../components/Entry";
 import { ContentWrapper } from "../../components/ContentWrapper";
 import { SITE_NAME } from "../_app";
 
@@ -21,7 +21,7 @@ export default function ExamplePage({
       <ContentWrapper>
         <div>
           {results.map((entry) => (
-            <EntryCard key={entry.id} entry={entry} className="mb-4" />
+            <EntryFull key={entry.id} entry={entry} className="mb-4" />
           ))}
         </div>
       </ContentWrapper>

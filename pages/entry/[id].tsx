@@ -6,7 +6,7 @@ import {
   EntryModel,
   findByIds,
 } from "../../services/VocabularyService";
-import { EntryCard, RelatedEntries } from "../../components/Entry";
+import { EntryFull, RelatedEntries } from "../../components/Entry";
 import { OtherReadings } from "../../components/Entry/OtherReadings";
 import { ContentWrapper } from "../../components/ContentWrapper";
 import { SITE_NAME } from "../_app";
@@ -28,7 +28,7 @@ export default function EntryDetailPage({
         </title>
       </Head>
       <ContentWrapper>
-        <EntryCard entry={entry} />
+        <EntryFull entry={entry} />
         <OtherReadings orth={entry.form.orth} />
         <RelatedEntries entries={relatedEntries} />
       </ContentWrapper>

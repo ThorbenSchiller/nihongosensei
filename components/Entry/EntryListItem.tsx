@@ -11,17 +11,17 @@ import { useRouter } from "next/router";
 import { useEntryContext } from "./EntryContext";
 import { createElements } from "./createElements";
 
-type EntryCardProps = {
+type EntryListItemProps = {
   entry: EntryModel;
   className?: string;
 };
 
-export const EntryCard = memo(function EntryCard({
+export const EntryListItem = memo(function EntryListItem({
   entry,
   className = "",
-}: EntryCardProps): JSX.Element {
+}: EntryListItemProps): JSX.Element {
   const {
-    form: { orth },
+    form: { orth, reading },
     sense,
     ref,
   } = entry;
@@ -30,9 +30,9 @@ export const EntryCard = memo(function EntryCard({
 
   return (
     <div
-      className={`border dark:border-gray-700 rounded p-4 font-serif ${className}`}
+      className={`border-b dark:border-gray-700 pb-4 font-serif ${className}`}
     >
-      <div className="text-4xl mb-2">
+      <div className="mb-1">
         <RouterLink
           href={{
             pathname: `${detailBasePath}/${entry.id}`,
@@ -42,13 +42,13 @@ export const EntryCard = memo(function EntryCard({
           }}
           passHref={true}
         >
-          <Link lang="ja" color="text">
+          <Link lang="ja" color="text" className="text-xl">
             <EntryText orth={orth} />
           </Link>
         </RouterLink>
-      </div>
-      <div lang="ja" className="text-xl text-gray-700 dark:text-gray-300 mb-2">
-        <Reading reading={entry.form.reading.hatsuon} />
+        <MinorText lang="ja" className="ml-2">
+          <Reading reading={reading.hatsuon} />
+        </MinorText>
       </div>
       <SenseEntries sense={sense} />
       {entry.expl && entry.expl.length > 0 && (

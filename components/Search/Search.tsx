@@ -29,7 +29,8 @@ export function Search(props: SearchProps): JSX.Element {
         value={value}
         placeholder="Einträge suchen..."
         onChange={(e) => setValue(e.currentTarget.value)}
-        className="w-full p-3 bg-transparent text-black dark:text-white border border-gray-300 dark:border-gray-700 rounded outline-none focus:border-gray-500"
+        className="w-full px-3 py-2 bg-transparent text-black dark:text-white border border-gray-300 dark:border-gray-700 rounded outline-none focus:border-gray-500"
+        autoFocus={true}
       />
     </form>
   );

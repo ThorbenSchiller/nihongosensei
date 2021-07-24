@@ -2,7 +2,7 @@ import React from "react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { findById, EntryModel } from "../../../../services/VocabularyService";
-import { EntryCard, EntryContextProvider } from "../../../../components/Entry";
+import { EntryFull, EntryContextProvider } from "../../../../components/Entry";
 import { SITE_NAME } from "../../../_app";
 import { useScrollHeightPostMessage } from "../../../../components/hooks";
 
@@ -21,7 +21,7 @@ export default function EmbedByIdPage({ entry }: EmbedByIdPage): JSX.Element {
         </title>
       </Head>
       <EntryContextProvider detailBasePath="/embed/entry/byId">
-        <EntryCard entry={entry} />
+        <EntryFull entry={entry} />
       </EntryContextProvider>
     </>
   );

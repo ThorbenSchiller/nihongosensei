@@ -7,7 +7,7 @@ import {
   findByQueryCount,
   FindOptions,
 } from "../../services/VocabularyService";
-import { EntryCard } from "../../components/Entry";
+import { EntryListItem } from "../../components/Entry";
 import { DEFAULT_LIMIT } from "../../services/constants";
 import { ContentWrapper } from "../../components/ContentWrapper";
 import { SITE_NAME } from "../_app";
@@ -42,7 +42,7 @@ export default function SearchPage({
         </MinorText>
         <div>
           {results.map((entry) => (
-            <EntryCard key={entry.id} entry={entry} className="mb-4" />
+            <EntryListItem key={entry.id} entry={entry} className="mb-3" />
           ))}
         </div>
         <Pagination offset={offset} limit={limit} count={count} />

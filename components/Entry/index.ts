@@ -1,3 +1,4 @@
 export * from "./EntryContext";
-export * from "./EntryCard";
+export * from "./EntryFull";
+export * from "./EntryListItem";
 export * from "./RelatedEntries";

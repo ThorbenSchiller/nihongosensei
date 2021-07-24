@@ -8,12 +8,9 @@ type ContentWrapperProps = {
 
 export function ContentWrapper({ children }: ContentWrapperProps): JSX.Element {
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col mx-auto" style={{ maxWidth: 680 }}>
       <Header />
-      <div
-        className="flex flex-col mx-auto p-3 flex-grow"
-        style={{ maxWidth: 400 }}
-      >
+      <div className="flex flex-col  p-3 flex-grow">
         <main className="flex-grow">{children}</main>
         <Footer className="mt-4 text-center" />
       </div>
