@@ -17,7 +17,7 @@ export default function Home(): JSX.Element | null {
       >
         <div className="w-full flex flex-col flex-grow justify-center items-center">
           <Logo className="mb-8" size="big" />
-          <Search className="w-full mb-8" />
+          <Search className="w-full mb-8" autoFocus={true} />
         </div>
         <Footer />
       </div>
