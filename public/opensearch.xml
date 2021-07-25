@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>日本語先生 Dict Suche</ShortName>
+    <Description>Wörterbuchsuche für Japanisch-Deutsch</Description>
+    <Image height="48" width="48" type="image/png">https://dict.nihongosensei.app/favicon.ico</Image>
+    <Url type="text/html" method="get" template="https://dict.nihongosensei.app/search?q={searchTerms}"/>
+</OpenSearchDescription>
