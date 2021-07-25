@@ -40,19 +40,11 @@ export type Executor = typeof execute;
  * @param query The query to execute.
  * @param binds The binds to apply.
  */
-export function execute<T>(
+export async function execute<T>(
   query: string,
   binds: ReadonlyArray<string | number>
 ): Promise<T[]> {
-  return new Promise<T[]>((resolve, reject) =>
-    getConnectionPool().execute(query, binds, (error, results) => {
-      if (error) {
-        reject(error);
+  const [rows] = await getConnectionPool().promise().execute(query, binds);
 
-        return;
-      }
-
-      resolve(results as T[]);
-    })
-  );
+  return rows as T[];
 }
