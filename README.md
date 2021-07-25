@@ -11,19 +11,37 @@ The dictionary uses a single table for now which holds the converted xml entry i
 and additional fields ot enable text search.
 
 ```sql
-CREATE TABLE `entry`
+create table entry
 (
-    `id`             int unsigned                 NOT NULL,
-    `entry_json`     json                                  DEFAULT NULL,
-    `lastchange`     timestamp                    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    `text_plain`     varchar(255) CHARSET utf8mb4 NULL,
-    `hiragana_plain` varchar(255) CHARSET utf8mb4 NULL,
-    `orths_plain`    varchar(255) CHARSET utf8mb4 NULL,
-    `senses_plain`   text CHARSET utf8mb4         NULL,
-    PRIMARY KEY (`id`),
-    FULLTEXT KEY `entry_text` (`text_plain`, `hiragana_plain`, `orths_plain`, `senses_plain`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+    id             int unsigned                        not null
+        primary key,
+    entry_json     json                                null,
+    lastchange     timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
+    text_plain     varchar(255) charset utf8mb4        null,
+    hiragana_plain varchar(255) charset utf8mb4        null,
+    orths_plain    varchar(255) charset utf8mb4        null,
+    senses_plain   text charset utf8mb4                null
+)
+    charset = utf8;
+
+create index entry_hiragana_plain
+    on entry (hiragana_plain);
+
+create fulltext index entry_text
+    on entry (text_plain, hiragana_plain, orths_plain, senses_plain);
+
+create index entry_text_plain
+    on entry (text_plain);
+
+create table entry_ref
+(
+    target_id    int          not null,
+    source_id    int          not null,
+    type         varchar(255) not null,
+    subentrytype varchar(255) null,
+    constraint entry_ref_pk
+        unique (target_id, source_id)
+);
 ```
 
 ## Import Data
