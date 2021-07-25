@@ -1,0 +1,27 @@
+import { EntryModel } from "../../services/VocabularyService";
+import React from "react";
+import { EntryLink } from "./EntryLink";
+import styles from "./RelatedEntries.module.css";
+
+type SynonymsProps = {
+  entries: EntryModel[];
+};
+
+export function Synonyms({ entries }: SynonymsProps): JSX.Element | null {
+  if (!entries.length) {
+    return null;
+  }
+
+  return (
+    <div className="mt-2">
+      Synonyme:{" "}
+      {entries.map((entry) => (
+        <EntryLink
+          className={styles.relatedEntry}
+          key={entry.id}
+          entry={entry}
+        />
+      ))}
+    </div>
+  );
+}

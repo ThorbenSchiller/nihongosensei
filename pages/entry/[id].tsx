@@ -5,19 +5,23 @@ import {
   findById,
   EntryModel,
   findByIds,
+  findMainRefsByTargetId,
+  ResolvedEntryRefModel,
 } from "../../services/VocabularyService";
-import { EntryFull, RelatedEntries } from "../../components/Entry";
+import { EntryFull, RelatedEntries, Synonyms } from "../../components/Entry";
 import { OtherReadings } from "../../components/Entry/OtherReadings";
 import { ContentWrapper } from "../../components/ContentWrapper";
 import { SITE_NAME } from "../_app";
 
 type EntryDetailPageProps = {
   entry: EntryModel;
-  relatedEntries: EntryModel[];
+  synonyms: EntryModel[];
+  relatedEntries: ResolvedEntryRefModel[];
 };
 
 export default function EntryDetailPage({
   entry,
+  synonyms,
   relatedEntries,
 }: EntryDetailPageProps): JSX.Element {
   return (
@@ -30,6 +34,7 @@ export default function EntryDetailPage({
       <ContentWrapper>
         <EntryFull entry={entry} />
         <OtherReadings orth={entry.form.orth} />
+        <Synonyms entries={synonyms} />
         <RelatedEntries entries={relatedEntries} />
       </ContentWrapper>
     </>
@@ -49,18 +54,22 @@ export const getServerSideProps: GetServerSideProps<EntryDetailPageProps> =
       };
     }
 
+    // resolve refs
+
     // resolve relations
     const relationIds = entry.ruigos?.ruigo
       .map((related) => related.id)
       .filter((id) => id !== entry.id);
-    let relatedEntries: EntryModel[] = [];
-    if (relationIds?.length) {
-      relatedEntries = await findByIds(relationIds);
-    }
+
+    const [synonyms = [], relatedEntries = []] = await Promise.all([
+      relationIds?.length ? await findByIds(relationIds) : undefined,
+      await findMainRefsByTargetId(entry.id),
+    ]);
 
     return {
       props: {
         entry,
+        synonyms,
         relatedEntries,
       },
     };

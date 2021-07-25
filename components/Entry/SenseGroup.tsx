@@ -3,9 +3,19 @@ import styles from "./Sense.module.css";
 import React from "react";
 import { SenseEntry } from "./SenseEntry";
 
-export function SenseGroup({ senses }: { senses: SenseModel[] }): JSX.Element {
+type SenseGroupProps = {
+  senses: SenseModel[];
+  display?: "block" | "inline";
+};
+
+export function SenseGroup({
+  senses,
+  display = "block",
+}: SenseGroupProps): JSX.Element {
   return (
-    <li className={styles.senseGroupEntry}>
+    <li
+      className={`${styles.senseGroupEntry} ${display == "inline" && "inline"}`}
+    >
       <ul className="inline">
         {senses.map((sense, index) => (
           <SenseEntry key={index} senseEntry={sense} />

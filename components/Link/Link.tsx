@@ -5,7 +5,7 @@ const COLOR_MAP = {
   text: "",
 };
 
-type LinkProps = HTMLProps<HTMLAnchorElement> & {
+export type LinkProps = HTMLProps<HTMLAnchorElement> & {
   color?: keyof typeof COLOR_MAP;
 };
 

@@ -7,6 +7,7 @@ type SenseEntriesProps = {
   sense: SenseModel[];
   className?: string;
   listType?: "decimal" | "alphabetic";
+  display?: "block" | "inline";
 };
 
 /**
@@ -37,6 +38,7 @@ export function SenseEntries({
   sense,
   className = "",
   listType = "decimal",
+  display = "block",
 }: SenseEntriesProps): JSX.Element {
   const groupedByRelated = groupByRelated(sense);
   const hasMultipleSenses = sense.some((entry) => entry.sense);
@@ -45,9 +47,13 @@ export function SenseEntries({
   }
 
   return (
-    <ol className={`list-inside ${styles[listType]} ${className}`}>
+    <ol
+      className={`list-inside ${styles[listType]} ${
+        display === "inline" && "inline"
+      } ${className}`}
+    >
       {groupedByRelated.map((senseGroup, index) => (
-        <SenseGroup key={index} senses={senseGroup} />
+        <SenseGroup key={index} display={display} senses={senseGroup} />
       ))}
     </ol>
   );

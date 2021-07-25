@@ -389,3 +389,72 @@ export type EntryModel = {
   ruigos?: RuigosModel;
   ref?: RefModel[];
 };
+
+export type SubentryTypeEnum =
+  // Komponentenanfang
+  | "HEAD"
+  // Komponentenende
+  | "TAIL"
+  // Ableitung, Nominalisierung mit sa
+  | "SA"
+  // Ableitung mit suru
+  | "SURU"
+  // Ableitung mit saseru
+  | "SASERU"
+  // Ableitung mit shita
+  | "SHITA"
+  // Ableitung mit shite
+  | "SHITE"
+  // Ableitung mit teki
+  | "TEKI"
+  // Ableitung mit to
+  | "TO"
+  // Ableitung mit taru
+  | "TARU"
+  // Ableitung mit na
+  | "NA"
+  // Ableitung mit ni
+  | "NI"
+  // Ableitung mit no
+  | "NO"
+  // Ableitung mit da
+  | "DA"
+  // Ableitung mit de
+  | "DE"
+  // Ableitung mit e
+  | "E"
+  // Ableitung mit Präfix o-
+  | "O"
+  // Ableitung mit kara
+  | "KARA"
+  // Ableitung mit garu
+  | "GARU"
+  // Ableitung mit ge
+  | "GE"
+  // Ableitung, Adverb mit ku
+  | "KU"
+  // Ableitung, Nominalisierung mit mi
+  | "MI"
+  // Verwendungsbeispiel
+  | "VW_BSP"
+  // W_Idiom
+  | "W_IDIOM"
+  // XSatz
+  | "X_SATZ"
+  // Z_Sprichwort
+  | "Z_SPR_W"
+  // andere Ableitung
+  | "OTHER";
+
+export type EntryRefModel = {
+  target_id: number;
+  source_id: number;
+  type: RefTypeEnum;
+  subentrytype?: SubentryTypeEnum;
+};
+
+export type ResolvedEntryRefModel = {
+  type: RefTypeEnum;
+  subentrytype?: SubentryTypeEnum;
+  entry: EntryModel;
+};

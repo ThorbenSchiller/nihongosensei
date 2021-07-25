@@ -30,7 +30,7 @@ export const EntryListItem = memo(function EntryListItem({
 
   return (
     <div
-      className={`border-b dark:border-gray-700 pb-4 font-serif text-lg ${className}`}
+      className={`border-b border-gray-300 dark:border-gray-700 pb-4 font-serif text-lg ${className}`}
     >
       <div className="mb-1">
         <RouterLink
