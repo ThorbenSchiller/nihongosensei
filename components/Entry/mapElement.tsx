@@ -1,4 +1,4 @@
-import React, { cloneElement, Fragment } from "react";
+import React, { Fragment } from "react";
 import {
   isBracket,
   isDef,
@@ -108,18 +108,4 @@ export function mapElement(element: unknown): JSX.Element | null {
   }
 
   return null;
-}
-
-export function mapElementWithKey(
-  element: unknown,
-  index: number
-): JSX.Element | null {
-  const mappedElement = mapElement(element);
-  if (!mappedElement) {
-    return null;
-  }
-
-  return cloneElement(mappedElement, {
-    key: index,
-  });
 }

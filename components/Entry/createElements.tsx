@@ -1,7 +1,8 @@
 import { isDef, isExpl, isTrans } from "./guards";
 import { MinorText } from "./MinorText";
-import React, { cloneElement } from "react";
+import React from "react";
 import { mapElement } from "./mapElement";
+import { setKeyProperty } from "./helper";
 
 type ElementType<T> = T | null | JSX.Element;
 
@@ -55,22 +56,8 @@ export function createElements<T>(
   }
 
   if (carry) {
-    created.push(
-      <MinorText>
-        (
-        {carry.map((element, index) =>
-          cloneElement(element, {
-            key: index,
-          })
-        )}
-        )
-      </MinorText>
-    );
+    created.push(<MinorText>({carry.map(setKeyProperty())})</MinorText>);
   }
 
-  return created.map((element, index) =>
-    cloneElement(element, {
-      key: index,
-    })
-  );
+  return created.map(setKeyProperty());
 }

@@ -8,7 +8,7 @@ import {
   LevelEnum,
   TransitivityEnum,
 } from "../../services/VocabularyService";
-import { joinBy } from "./helper";
+import { joinBy, setKeyProperty } from "./helper";
 import { isDefined } from "./guards";
 
 const GOUDAN_MAP: Record<GodanrowEnum, JSX.Element> = {
@@ -136,9 +136,12 @@ function Doushi({
     <>V.</>,
     (godanrow && GOUDAN_MAP[godanrow]) ??
       (level && LEVEL_CONJUNCTION_MAP[level]),
-  ].filter(isDefined);
+  ]
+    .filter(isDefined)
+    .map(setKeyProperty())
+    .reduce(joinBy(" "), []);
 
-  return <>{pieces.reduce(joinBy(" "), [])}</>;
+  return <>{pieces}</>;
 }
 
 function Keiyoudoushi({ no, nari }: KeiyoudoushiModel): JSX.Element {
@@ -258,11 +261,14 @@ export function GramGrp({
     specialcharacter && <>Sonderzeichen</>,
     kanji && <>Kanji</>,
     rengo && <>Zus.</>,
-  ].filter(isDefined);
+  ]
+    .filter(isDefined)
+    .map(setKeyProperty())
+    .reduce(joinBy("; "), []);
 
   return (
     <>
-      {parts.reduce(joinBy("; "), [])}
+      {parts}
       {doushi
         ?.map((doushiEntry, index) => <Doushi key={index} {...doushiEntry} />)
         .reduce(joinBy("; "), [])}
