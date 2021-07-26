@@ -6,29 +6,31 @@ import mysql, { Pool } from "mysql2";
  * A global connection is reused if it exists.
  */
 function getConnectionPool(): Pool {
-  let connection = global.database;
-  if (!connection) {
-    const databaseHost = process.env.DATABASE_HOST;
-    const databasePort = Number(process.env.DATABASE_PORT) || undefined;
-    const databaseUser = process.env.DATABASE_USER;
-    const databaseName = process.env.DATABASE_NAME;
-    const databasePassword = process.env.DATABASE_PASSWORD;
-    if (!databaseHost || !databaseUser || !databaseName) {
-      throw new Error("DATABASE_URL, DATABASE_USER or DATABASE_NAME not set");
-    }
-    connection = mysql.createPool({
-      host: databaseHost,
-      port: databasePort,
-      user: databaseUser,
-      password: databasePassword,
-      database: databaseName,
-      waitForConnections: true,
-      connectionLimit: 15,
-      queueLimit: 0,
-    });
+  const connection = global.database;
+  if (connection) {
+    return connection;
   }
 
-  return connection;
+  const databaseHost = process.env.DATABASE_HOST;
+  const databasePort = Number(process.env.DATABASE_PORT) || undefined;
+  const databaseUser = process.env.DATABASE_USER;
+  const databaseName = process.env.DATABASE_NAME;
+  const databasePassword = process.env.DATABASE_PASSWORD;
+  if (!databaseHost || !databaseUser || !databaseName) {
+    throw new Error("DATABASE_URL, DATABASE_USER or DATABASE_NAME not set");
+  }
+  global.database = mysql.createPool({
+    host: databaseHost,
+    port: databasePort,
+    user: databaseUser,
+    password: databasePassword,
+    database: databaseName,
+    waitForConnections: true,
+    connectionLimit: 15,
+    queueLimit: 0,
+  });
+
+  return global.database;
 }
 
 export type Executor = typeof execute;
