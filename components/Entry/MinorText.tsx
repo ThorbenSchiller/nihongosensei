@@ -1,6 +1,6 @@
 import React, { HTMLProps } from "react";
 
-type MinorTextProps = HTMLProps<HTMLSpanElement> & {
+export type MinorTextProps = HTMLProps<HTMLSpanElement> & {
   component?: "div" | "span" | "p" | "i";
 };
 
