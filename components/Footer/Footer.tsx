@@ -9,7 +9,7 @@ type FooterProps = {
 
 export function Footer({ className }: FooterProps): JSX.Element {
   return (
-    <MinorText component="p" className={clsx("text-sm", className)}>
+    <MinorText component="footer" className={clsx("text-sm", className)}>
       Diese Seite bietet eine Aufbereitung des{" "}
       <Link
         href="https://www.wadoku.de/downloads/xml-export/"

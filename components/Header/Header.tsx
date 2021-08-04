@@ -13,11 +13,11 @@ export function Header({ className }: HeaderProps): JSX.Element {
   return (
     <header className={clsx("relative flex", className)}>
       <RouterLink href="/" passHref={true}>
-        <Link color="text" className=" p-3 flex items-center">
+        <Link color="text" className="flex items-center mr-8">
           <Logo />
         </Link>
       </RouterLink>
-      <Search className="mx-auto p-3 flex-grow" />
+      <Search className="mx-auto flex-grow" />
     </header>
   );
 }
