@@ -8,6 +8,7 @@ import { Etym } from "./Etym";
 import { createElements } from "./createElements";
 import { UsgEntries } from "./UsgEntries";
 import clsx from "clsx";
+import { SeasonWord } from "./SeasonWord";
 
 type SenseEntryProps = {
   senseEntry: SenseModel;
@@ -21,7 +22,9 @@ export function SenseEntry({ senseEntry }: SenseEntryProps): JSX.Element {
     transAndBracketAndDef = [],
     ref,
     usg = [],
+    seasonword,
   } = senseEntry;
+
   return (
     <li className={clsx(styles.senseEntry, !sense && styles.senseEntryWithDot)}>
       {etym &&
@@ -35,6 +38,9 @@ export function SenseEntry({ senseEntry }: SenseEntryProps): JSX.Element {
         <span>{createElements(transAndBracketAndDef)}</span>
       )}
       <Refs className="ml-1" component="span" refs={ref ?? []} />
+      {seasonword?.map((season) => (
+        <SeasonWord key={season.type} {...season} />
+      ))}
     </li>
   );
 }

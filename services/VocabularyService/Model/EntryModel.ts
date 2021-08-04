@@ -34,7 +34,15 @@ export type SenseModel = {
   sense?: SenseModel[];
   descr?: DescrModel;
   etym?: EtymModel[];
+  seasonword?: SeasonModel[];
   _element: "SenseType";
+};
+
+export type SeasonEnum = "SUMMER" | "WINTER" | "AUTUMN" | "SPRING" | "NEWYEAR";
+
+export type SeasonModel = {
+  type: SeasonEnum;
+  _element: "SeasonType";
 };
 
 export type EtymModel = {
