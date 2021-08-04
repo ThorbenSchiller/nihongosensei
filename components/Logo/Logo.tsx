@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 
 type LogoProps = {
   className?: string;
@@ -10,12 +11,9 @@ const SIZE_MAP = {
   big: "text-4xl",
 };
 
-export function Logo({
-  className = "",
-  size = "normal",
-}: LogoProps): JSX.Element {
+export function Logo({ className, size = "normal" }: LogoProps): JSX.Element {
   return (
-    <span className={`font-serif ${SIZE_MAP[size]} ${className}`}>
+    <span className={clsx("font-serif", SIZE_MAP[size], className)}>
       <span lang="ja">日本語先生</span> Dict
     </span>
   );

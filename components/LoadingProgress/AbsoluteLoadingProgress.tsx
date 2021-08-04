@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "./AbsoluteLoadingProgress.module.css";
+import clsx from "clsx";
 
 export function AbsoluteLoadingProgress(): JSX.Element | null {
   const router = useRouter();
@@ -23,8 +24,12 @@ export function AbsoluteLoadingProgress(): JSX.Element | null {
 
   return loading ? (
     <div className="h-1 w-full z-10 fixed overflow-hidden bg-primary-700">
-      <div className={`h-full bg-primary-500 absolute ${styles.loading1}`} />
-      <div className={`h-full bg-primary-500 absolute ${styles.loading2}`} />
+      <div
+        className={clsx("h-full bg-primary-500 absolute", styles.loading1)}
+      />
+      <div
+        className={clsx("h-full bg-primary-500 absolute", styles.loading2)}
+      />
     </div>
   ) : null;
 }

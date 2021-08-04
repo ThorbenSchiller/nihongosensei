@@ -2,6 +2,7 @@ import { SenseModel } from "../../services/VocabularyService";
 import React from "react";
 import { SenseGroup } from "./SenseGroup";
 import styles from "./SenseEntries.module.css";
+import clsx from "clsx";
 
 type SenseEntriesProps = {
   sense: SenseModel[];
@@ -36,7 +37,7 @@ function groupByRelated(senseEntries: ReadonlyArray<SenseModel>) {
 
 export function SenseEntries({
   sense,
-  className = "",
+  className,
   listType = "decimal",
   display = "block",
 }: SenseEntriesProps): JSX.Element {
@@ -48,9 +49,12 @@ export function SenseEntries({
 
   return (
     <ol
-      className={`list-inside ${styles[listType]} ${
-        display === "inline" && "inline"
-      } ${className}`}
+      className={clsx(
+        "list-inside",
+        styles[listType],
+        display === "inline" && "inline",
+        className
+      )}
     >
       {groupedByRelated.map((senseGroup, index) => (
         <SenseGroup key={index} display={display} senses={senseGroup} />

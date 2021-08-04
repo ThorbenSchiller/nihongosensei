@@ -12,7 +12,7 @@ const IGNORED_TYPES: RefTypeEnum[] = ["MAIN"];
 
 export function Refs({
   refs,
-  className = "",
+  className,
   component = "div",
 }: RefsProps): JSX.Element | null {
   const relevantRefs = refs.filter(({ type }) => !IGNORED_TYPES.includes(type));

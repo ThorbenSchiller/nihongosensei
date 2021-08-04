@@ -1,5 +1,6 @@
 import { UsgModel, UsgTypeEnum } from "../../services/VocabularyService";
 import React from "react";
+import clsx from "clsx";
 
 const USG_MAP: Record<string, string> = {
   coll: "usg.",
@@ -33,7 +34,7 @@ export function Usg({
   if (content) {
     return (
       <span
-        className={`${COLOR_MAP[type] ?? DEFAULT_COLOR} italic`}
+        className={clsx(COLOR_MAP[type] ?? DEFAULT_COLOR, "italic")}
         style={STYLE_MAP[type] ?? DEFAULT_STYLE}
       >
         {content}

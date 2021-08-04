@@ -7,6 +7,7 @@ import { Refs } from "./Refs";
 import { Etym } from "./Etym";
 import { createElements } from "./createElements";
 import { UsgEntries } from "./UsgEntries";
+import clsx from "clsx";
 
 type SenseEntryProps = {
   senseEntry: SenseModel;
@@ -22,9 +23,7 @@ export function SenseEntry({ senseEntry }: SenseEntryProps): JSX.Element {
     usg = [],
   } = senseEntry;
   return (
-    <li
-      className={`${styles.senseEntry} ${!sense && styles.senseEntryWithDot}`}
-    >
+    <li className={clsx(styles.senseEntry, !sense && styles.senseEntryWithDot)}>
       {etym &&
         etym.map((etymEntry, index) => (
           <Etym key={index} className="mr-1" {...etymEntry} />

@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "../Link";
 import { MinorText } from "../Entry/MinorText";
+import clsx from "clsx";
 
 type FooterProps = {
   className?: string;
 };
 
-export function Footer({ className = "" }: FooterProps): JSX.Element {
+export function Footer({ className }: FooterProps): JSX.Element {
   return (
-    <MinorText component="p" className={`text-sm ${className}`}>
+    <MinorText component="p" className={clsx("text-sm", className)}>
       Diese Seite bietet eine Aufbereitung des{" "}
       <Link
         href="https://www.wadoku.de/downloads/xml-export/"

@@ -1,6 +1,7 @@
 import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 import React, { useCallback } from "react";
 import { useRouter } from "next/router";
+import clsx from "clsx";
 
 type PaginationProps = {
   offset: number;
@@ -13,7 +14,7 @@ export function Pagination({
   limit,
   count,
   offset,
-  className = "",
+  className,
 }: PaginationProps): JSX.Element {
   const router = useRouter();
   const currentPage = offset / limit;
@@ -44,7 +45,7 @@ export function Pagination({
       pageRangeDisplayed={3}
       onPageChange={handlePageChange}
       activeClassName="text-primary-500 bold"
-      containerClassName={`flex justify-center items-center ${className}`}
+      containerClassName={clsx("flex justify-center items-center", className)}
       pageClassName=""
       pageLinkClassName="inline-flex px-3 py-1"
       previousLinkClassName="inline-flex px-3 py-1"

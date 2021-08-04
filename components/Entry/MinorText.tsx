@@ -5,7 +5,7 @@ export type MinorTextProps = HTMLProps<HTMLSpanElement> & {
 };
 
 export function MinorText({
-  className = "",
+  className,
   component = "span",
   ...rest
 }: MinorTextProps): JSX.Element {

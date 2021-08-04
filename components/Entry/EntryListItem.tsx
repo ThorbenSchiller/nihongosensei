@@ -10,6 +10,7 @@ import { EntryText } from "./EntryText";
 import { useRouter } from "next/router";
 import { useEntryContext } from "./EntryContext";
 import { createElements } from "./createElements";
+import clsx from "clsx";
 
 type EntryListItemProps = {
   entry: EntryModel;
@@ -18,7 +19,7 @@ type EntryListItemProps = {
 
 export const EntryListItem = memo(function EntryListItem({
   entry,
-  className = "",
+  className,
 }: EntryListItemProps): JSX.Element {
   const {
     form: { orth, reading },
@@ -30,7 +31,10 @@ export const EntryListItem = memo(function EntryListItem({
 
   return (
     <div
-      className={`border-b border-gray-300 dark:border-gray-700 pb-4 font-serif text-lg ${className}`}
+      className={clsx(
+        "border-b border-gray-300 dark:border-gray-700 pb-4 font-serif text-lg",
+        className
+      )}
     >
       <div className="mb-1">
         <RouterLink

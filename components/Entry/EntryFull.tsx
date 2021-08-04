@@ -8,6 +8,7 @@ import { EntryText } from "./EntryText";
 import { createElements } from "./createElements";
 import { GramGrp } from "./GramGrp";
 import { UsgEntries } from "./UsgEntries";
+import clsx from "clsx";
 
 type EntryFullProps = {
   entry: EntryModel;
@@ -16,7 +17,7 @@ type EntryFullProps = {
 
 export const EntryFull = memo(function EntryFull({
   entry,
-  className = "",
+  className,
 }: EntryFullProps): JSX.Element {
   const {
     form: { orth, reading },
@@ -28,7 +29,7 @@ export const EntryFull = memo(function EntryFull({
   const firstReading = orth[0].value;
 
   return (
-    <div className={`font-serif text-lg ${className}`}>
+    <div className={clsx("font-serif text-lg", className)}>
       <div lang="ja" className="mb-2 text-5xl">
         <EntryText orth={orth} />
       </div>

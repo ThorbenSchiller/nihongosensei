@@ -3,10 +3,15 @@ import { Search } from "../Search";
 import { Link } from "../Link";
 import RouterLink from "next/link";
 import { Logo } from "../Logo";
+import clsx from "clsx";
 
-export function Header(): JSX.Element {
+type HeaderProps = {
+  className?: string;
+};
+
+export function Header({ className }: HeaderProps): JSX.Element {
   return (
-    <header className="relative flex">
+    <header className={clsx("relative flex", className)}>
       <RouterLink href="/" passHref={true}>
         <Link color="text" className=" p-3 flex items-center">
           <Logo />

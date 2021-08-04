@@ -22,7 +22,7 @@ export function Ref({
   jap,
   transcr,
   type,
-  className = "",
+  className,
 }: RefProps): JSX.Element {
   const { detailBasePath } = useEntryContext();
 
