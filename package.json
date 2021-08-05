@@ -1,5 +1,5 @@
 {
-  "name": "furigana",
+  "name": "@thorbens/wadoku-dict",
   "version": "0.1.0",
   "private": true,
   "scripts": {
