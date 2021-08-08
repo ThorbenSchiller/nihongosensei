@@ -34,9 +34,7 @@ export function SenseEntry({ senseEntry }: SenseEntryProps): JSX.Element {
       {descr && <Descr {...descr} />}
       {sense && <SenseEntries className="ml-4" sense={sense} />}
       {usg && <UsgEntries usg={usg} />}
-      {transAndBracketAndDef && (
-        <span>{createElements(transAndBracketAndDef)}</span>
-      )}
+      {transAndBracketAndDef && createElements(transAndBracketAndDef)}
       <Refs className="ml-1" component="span" refs={ref ?? []} />
       {seasonword?.map((season) => (
         <SeasonWord key={season.type} {...season} />

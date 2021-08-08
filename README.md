@@ -16,7 +16,8 @@ create table entry
     id         int unsigned                        not null
         primary key,
     entry_json json                                null,
-    lastchange timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP
+    lastchange timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
+    jlpt       tinyint unsigned                    null
 )
     charset = utf8;
 
@@ -57,6 +58,10 @@ See https://www.wadoku.de/downloads/xml-export/https://www.wadoku.de/downloads/x
 ## Wadoku Data License
 
 See https://www.wadoku.de/wiki/display/WAD/Wadoku.de-Daten+Lizenz
+
+## JLPT Levels
+
+JLPT levels are imported from wikipedia: https://en.wiktionary.org/wiki/Appendix:JLPT
 
 ## Examples
 

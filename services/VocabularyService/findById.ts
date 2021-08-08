@@ -1,5 +1,5 @@
 import { execute } from "./connection";
-import { EntryModel, EntryWrapperModel } from "./Model";
+import { EntryWrapperModel } from "./Model";
 
 /**
  * Finds an EntryModel by the given id.
@@ -11,15 +11,11 @@ import { EntryModel, EntryWrapperModel } from "./Model";
 export async function findById(
   id: number,
   executor = execute
-): Promise<EntryModel | null> {
-  const results = await executor<EntryWrapperModel>(
-    `SELECT entry_json FROM entry WHERE id = ?`,
+): Promise<EntryWrapperModel | null> {
+  const [result] = await executor<EntryWrapperModel>(
+    `SELECT * FROM entry WHERE id = ?`,
     [id]
   );
 
-  if (results.length) {
-    return results[0].entry_json;
-  }
-
-  return null;
+  return result ?? null;
 }

@@ -1,17 +1,20 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { EntryModel, findByText } from "../../../../services/VocabularyService";
+import {
+  EntryWrapperModel,
+  findByText,
+} from "../../../../services/VocabularyService";
 import { EntryFull, EntryContextProvider } from "../../../../components/Entry";
 import { SITE_NAME } from "../../../_app";
 import { useScrollHeightPostMessage } from "../../../../components/hooks";
 
 type EmbedByTextPage = {
-  entry: EntryModel;
+  entry: EntryWrapperModel;
 };
 
 export default function EmbedByTextPage({
-  entry,
+  entry: { entry_json },
 }: EmbedByTextPage): JSX.Element {
   useScrollHeightPostMessage();
 
@@ -19,11 +22,11 @@ export default function EmbedByTextPage({
     <>
       <Head>
         <title>
-          {entry.form.orth[0]?.value} - {SITE_NAME}
+          {entry_json.form.orth[0]?.value} - {SITE_NAME}
         </title>
       </Head>
       <EntryContextProvider detailBasePath="/embed/entry/byId">
-        <EntryFull entry={entry} />
+        <EntryFull entry={entry_json} />
       </EntryContextProvider>
     </>
   );

@@ -3,24 +3,25 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import {
   findById,
-  EntryModel,
   findByIds,
   findMainRefsByTargetId,
   ResolvedEntryRefModel,
+  EntryWrapperModel,
 } from "../../services/VocabularyService";
 import { EntryFull, RelatedEntries, Synonyms } from "../../components/Entry";
 import { OtherReadings } from "../../components/Entry/OtherReadings";
 import { ContentWrapper } from "../../components/ContentWrapper";
 import { SITE_NAME } from "../_app";
+import { JlptBadge } from "../../components/Entry/JlptBadge";
 
 type EntryDetailPageProps = {
-  entry: EntryModel;
-  synonyms: EntryModel[];
+  entry: EntryWrapperModel;
+  synonyms: EntryWrapperModel[];
   relatedEntries: ResolvedEntryRefModel[];
 };
 
 export default function EntryDetailPage({
-  entry,
+  entry: { entry_json, jlpt },
   synonyms,
   relatedEntries,
 }: EntryDetailPageProps): JSX.Element {
@@ -28,13 +29,18 @@ export default function EntryDetailPage({
     <>
       <Head>
         <title>
-          {entry.form.orth[0]?.value} - {SITE_NAME}
+          {entry_json.form.orth[0]?.value} - {SITE_NAME}
         </title>
       </Head>
       <ContentWrapper>
-        <EntryFull entry={entry} />
-        <OtherReadings orth={entry.form.orth} />
-        <Synonyms entries={synonyms} />
+        <EntryFull entry={entry_json} />
+        <OtherReadings orth={entry_json.form.orth} />
+        {jlpt && (
+          <div className="mt-2 font-sans">
+            <JlptBadge level={jlpt} />
+          </div>
+        )}
+        <Synonyms entries={synonyms.map((entry) => entry.entry_json)} />
         <RelatedEntries entries={relatedEntries} />
       </ContentWrapper>
     </>
@@ -57,7 +63,7 @@ export const getServerSideProps: GetServerSideProps<EntryDetailPageProps> =
     // resolve refs
 
     // resolve relations
-    const relationIds = entry.ruigos?.ruigo
+    const relationIds = entry.entry_json.ruigos?.ruigo
       .map((related) => related.id)
       .filter((id) => id !== entry.id);
 

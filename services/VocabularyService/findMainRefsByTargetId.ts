@@ -12,7 +12,7 @@ export async function findMainRefsByTargetId(
   targetId: number,
   executor = execute
 ): Promise<ResolvedEntryRefModel[]> {
-  const result = await executor<ResolvedEntryRefModel>(
+  return executor<ResolvedEntryRefModel>(
     `
         SELECT type, subentrytype, entry.entry_json as entry
         FROM entry_ref
@@ -20,7 +20,4 @@ export async function findMainRefsByTargetId(
         WHERE target_id = ? AND type = 'MAIN'`,
     [targetId]
   );
-
-  // allow serialization of entries
-  return result.map((entry) => ({ ...entry }));
 }

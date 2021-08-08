@@ -1,13 +1,13 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { EntryModel, findByIds } from "../../services/VocabularyService";
+import { EntryWrapperModel, findByIds } from "../../services/VocabularyService";
 import { EntryFull } from "../../components/Entry";
 import { ContentWrapper } from "../../components/ContentWrapper";
 import { SITE_NAME } from "../_app";
 
 type ExamplePageProps = {
-  results: EntryModel[];
+  results: EntryWrapperModel[];
 };
 
 export default function ExamplePage({
@@ -20,8 +20,12 @@ export default function ExamplePage({
       </Head>
       <ContentWrapper>
         <div>
-          {results.map((entry) => (
-            <EntryFull key={entry.id} entry={entry} className="mb-4" />
+          {results.map(({ entry_json }) => (
+            <EntryFull
+              key={entry_json.id}
+              entry={entry_json}
+              className="mb-4"
+            />
           ))}
         </div>
       </ContentWrapper>

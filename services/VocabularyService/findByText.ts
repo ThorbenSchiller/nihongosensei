@@ -1,11 +1,13 @@
 import { execute } from "./connection";
-import { EntryModel, EntryWrapperModel } from "./Model";
+import { EntryWrapperModel } from "./Model";
 
-export async function findByText(text: string): Promise<EntryModel | null> {
-  const results = await execute<EntryWrapperModel>(
+export async function findByText(
+  text: string
+): Promise<EntryWrapperModel | null> {
+  const [result] = await execute<EntryWrapperModel>(
     `
         SELECT
-            entry.entry_json
+            entry.*
         FROM entry_map
         JOIN entry ON entry.id = entry_map.entry_id
         WHERE
@@ -14,9 +16,5 @@ export async function findByText(text: string): Promise<EntryModel | null> {
     [text, text]
   );
 
-  if (results.length) {
-    return results[0].entry_json;
-  }
-
-  return null;
+  return result ?? null;
 }

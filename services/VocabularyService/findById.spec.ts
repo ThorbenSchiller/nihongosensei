@@ -12,11 +12,10 @@ describe("findById", () => {
 
     const result = await findById(1, executorMock);
 
-    expect(result).toEqual(mockEntryWrapperElement.entry_json);
+    expect(result).toEqual(mockEntryWrapperElement);
     expect(executorMock).toBeCalledTimes(1);
-    expect(executorMock).toBeCalledWith(
-      `SELECT entry_json FROM entry WHERE id = ?`,
-      [1]
-    );
+    expect(executorMock).toBeCalledWith(`SELECT * FROM entry WHERE id = ?`, [
+      1,
+    ]);
   });
 });

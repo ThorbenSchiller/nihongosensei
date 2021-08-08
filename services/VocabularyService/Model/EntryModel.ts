@@ -1,6 +1,7 @@
 export type EntryWrapperModel = {
   id: number;
   entry_json: EntryModel;
+  jlpt: number | null;
   lastchange: Date;
 };
 

@@ -28,6 +28,7 @@ function getConnectionPool(): Pool {
     waitForConnections: true,
     connectionLimit: 15,
     queueLimit: 0,
+    typeCast: false,
   });
 
   return global.database;
@@ -48,5 +49,12 @@ export async function execute<T>(
 ): Promise<T[]> {
   const [rows] = await getConnectionPool().promise().execute(query, binds);
 
-  return rows as T[];
+  if (Array.isArray(rows)) {
+    // XXX: mysql2 objects are not serializable by nextjs, so use this for a quick solution
+    // this applies to Date and the JSON object
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return rows.map((row: any) => JSON.parse(JSON.stringify(row)));
+  }
+
+  throw new Error("unexpected result set");
 }

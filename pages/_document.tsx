@@ -22,7 +22,7 @@ export default class MyDocument extends Document {
             />
           )}
         </Head>
-        <body className="bg-white text-black dark:bg-gray-900 dark:text-white font-normal">
+        <body className="bg-white text-black dark:bg-gray-900 dark:text-white font-sans">
           <Main />
           <NextScript />
         </body>

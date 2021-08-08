@@ -3,8 +3,8 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import {
   EntryWrapperModel,
-  findByQuery,
-  findByQueryCount,
+  findByJlpt,
+  findByJlptCount,
   FindOptions,
 } from "../../services/VocabularyService";
 import { EntryListItem } from "../../components/Entry";
@@ -14,26 +14,26 @@ import { SITE_NAME } from "../_app";
 import { Pagination } from "../../components/Pagination";
 import { MinorText } from "../../components/Entry/MinorText";
 
-type SearchPageProps = {
-  query: string;
+type JlptPageProps = {
+  level: number;
   results: EntryWrapperModel[];
   options: FindOptions;
   count: number;
 };
 
-export default function SearchPage({
+export default function JlptPage({
+  level,
   results,
-  query,
   options = {},
   count,
-}: SearchPageProps): JSX.Element {
+}: JlptPageProps): JSX.Element {
   const { offset = 0, limit = DEFAULT_LIMIT } = options;
 
   return (
     <>
       <Head>
         <title>
-          Suche {query} - {SITE_NAME}
+          JLPT N{level} - {SITE_NAME}
         </title>
       </Head>
       <ContentWrapper>
@@ -55,22 +55,22 @@ export default function SearchPage({
   );
 }
 
-export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (
+export const getServerSideProps: GetServerSideProps<JlptPageProps> = async (
   context
 ) => {
-  const { q = "", offset: offsetString = "0" } = context.query;
-  const query = Array.isArray(q) ? q[0] : q;
+  const { level = "", offset: offsetString = "0" } = context.query;
+  const levelNumber = Number(Array.isArray(level) ? level[0] : level) || 5;
   const offset = Number(offsetString) || 0;
   const options = { offset, limit: DEFAULT_LIMIT };
 
   const [results, count] = await Promise.all([
-    findByQuery(query, options),
-    findByQueryCount(query),
+    findByJlpt(levelNumber, options),
+    findByJlptCount(levelNumber),
   ]);
 
   return {
     props: {
-      query,
+      level: levelNumber,
       results,
       count,
       options,
