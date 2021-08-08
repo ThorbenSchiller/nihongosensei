@@ -210,6 +210,11 @@ export type TopicModel = {
   _element: "TopicType";
 };
 
+export type TranslModel = {
+  value: string;
+  _element: "TranslModel";
+};
+
 export type RefTypeEnum =
   // Referenz auf Haupteintrag
   | "MAIN"

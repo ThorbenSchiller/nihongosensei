@@ -16,6 +16,7 @@ import {
   isTr,
   isTrans,
   isTranscr,
+  isTranslModel,
 } from "./guards";
 import { TrEntry } from "./TrEntry";
 import { Token } from "./Token";
@@ -33,6 +34,7 @@ import { Specchar } from "./Specchar";
 import { Topic } from "./Topic";
 import { Famn } from "./Famn";
 import { Title } from "./Title";
+import { Transl } from "./Transl";
 
 export function mapElement(element: unknown): JSX.Element | null {
   if (isTrans(element)) {
@@ -97,6 +99,10 @@ export function mapElement(element: unknown): JSX.Element | null {
 
   if (isTitleModel(element)) {
     return <Title {...element} />;
+  }
+
+  if (isTranslModel(element)) {
+    return <Transl {...element} />;
   }
 
   if (typeof element === "string") {

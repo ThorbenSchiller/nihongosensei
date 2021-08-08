@@ -1,0 +1,7 @@
+.transl::before {
+  content: "»";
+}
+
+.transl::after {
+  content: "«";
+}

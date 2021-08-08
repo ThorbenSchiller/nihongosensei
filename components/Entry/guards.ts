@@ -14,6 +14,7 @@ import {
   TokenModel,
   TopicModel,
   TranscrModel,
+  TranslModel,
   TransModel,
   TrModel,
 } from "../../services/VocabularyService";
@@ -84,6 +85,10 @@ export function isFamnModel(input: unknown): input is FamnModel {
 
 export function isTitleModel(input: unknown): input is TitleModel {
   return isElementProvider(input) && input._element === "TitleType";
+}
+
+export function isTranslModel(input: unknown): input is TranslModel {
+  return isElementProvider(input) && input._element === "TranslType";
 }
 
 export function isDefined<T>(input: T): input is NonNullable<T> {
