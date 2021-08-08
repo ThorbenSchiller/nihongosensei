@@ -13,7 +13,7 @@ export async function findById(
   executor = execute
 ): Promise<EntryModel | null> {
   const results = await executor<EntryWrapperModel>(
-    `SELECT * FROM entry WHERE id = ?`,
+    `SELECT entry_json FROM entry WHERE id = ?`,
     [id]
   );
 

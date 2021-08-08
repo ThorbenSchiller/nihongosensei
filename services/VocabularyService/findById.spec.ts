@@ -14,8 +14,9 @@ describe("findById", () => {
 
     expect(result).toEqual(mockEntryWrapperElement.entry_json);
     expect(executorMock).toBeCalledTimes(1);
-    expect(executorMock).toBeCalledWith(`SELECT * FROM entry WHERE id = ?`, [
-      1,
-    ]);
+    expect(executorMock).toBeCalledWith(
+      `SELECT entry_json FROM entry WHERE id = ?`,
+      [1]
+    );
   });
 });

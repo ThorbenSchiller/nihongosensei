@@ -14,7 +14,7 @@ export async function findByIds(
   executor = execute
 ): Promise<EntryModel[]> {
   const results = await executor<EntryWrapperModel>(
-    `SELECT * FROM entry WHERE id IN (${new Array(ids.length)
+    `SELECT entry_json FROM entry WHERE id IN (${new Array(ids.length)
       .fill("?")
       .join(",")})`,
     [...ids]

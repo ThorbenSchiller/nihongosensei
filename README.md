@@ -7,31 +7,31 @@ Deployment available under [dict.nihongosensei.app](https://dict.nihongosensei.a
 
 ## Schema
 
-The dictionary uses a single table for now which holds the converted xml entry in json
-and additional fields ot enable text search.
+The dictionary uses a single table for now which holds the converted xml entry in json and additional fields ot enable
+text search.
 
 ```sql
 create table entry
 (
-    id             int unsigned                        not null
+    id         int unsigned                        not null
         primary key,
-    entry_json     json                                null,
-    lastchange     timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
-    text_plain     varchar(255) charset utf8mb4        null,
-    hiragana_plain varchar(255) charset utf8mb4        null,
-    orths_plain    varchar(255) charset utf8mb4        null,
-    senses_plain   text charset utf8mb4                null
+    entry_json json                                null,
+    lastchange timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP
 )
     charset = utf8;
 
-create index entry_hiragana_plain
-    on entry (hiragana_plain);
+create table entry_map
+(
+    entry_id int                          not null,
+    text     varchar(255) charset utf8mb4 not null,
+    primary key (entry_id, text)
+);
 
-create fulltext index entry_text
-    on entry (text_plain, hiragana_plain, orths_plain, senses_plain);
+create fulltext index entry_map__text
+    on entry_map (text);
 
-create index entry_text_plain
-    on entry (text_plain);
+create index entry_map__text_index
+    on entry_map (text);
 
 create table entry_ref
 (
@@ -39,9 +39,11 @@ create table entry_ref
     source_id    int          not null,
     type         varchar(255) not null,
     subentrytype varchar(255) null,
-    constraint entry_ref_pk
-        unique (target_id, source_id)
+    primary key (target_id, source_id)
 );
+
+create index entry_ref__target_id
+    on entry_ref (target_id);
 ```
 
 ## Import Data

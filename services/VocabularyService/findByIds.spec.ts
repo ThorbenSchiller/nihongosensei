@@ -11,7 +11,7 @@ describe("findByIds", () => {
     expect(result).toEqual(mockedResult);
     expect(executorMock).toBeCalledTimes(1);
     expect(executorMock).toBeCalledWith(
-      `SELECT * FROM entry WHERE id IN (?,?,?)`,
+      `SELECT entry_json FROM entry WHERE id IN (?,?,?)`,
       [1, 2, 3]
     );
   });

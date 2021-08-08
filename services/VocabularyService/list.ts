@@ -5,7 +5,7 @@ import { DEFAULT_LIMIT, MAX_LIMIT } from "../constants";
 export async function list(options: FindOptions = {}): Promise<EntryModel[]> {
   const { limit = DEFAULT_LIMIT, offset = 0 } = options;
   const results = await execute<EntryWrapperModel>(
-    `SELECT * FROM entry LIMIT ?, ?`,
+    `SELECT entry_json FROM entry LIMIT ?, ?`,
     [offset.toString(), Math.min(limit, MAX_LIMIT).toString()]
   );
 
