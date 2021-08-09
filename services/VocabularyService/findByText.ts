@@ -13,7 +13,7 @@ export async function findByText(
         WHERE
             entry_map.text = ?
         LIMIT 1`,
-    [text, text]
+    [text]
   );
 
   return result ?? null;
