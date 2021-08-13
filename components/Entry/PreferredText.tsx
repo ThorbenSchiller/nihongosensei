@@ -29,6 +29,8 @@ const PIECE_MAP: Record<string, JSX.Element> = {
   ")": <PreferredTextSign>)</PreferredTextSign>,
   "{": <PreferredTextSign>《</PreferredTextSign>,
   "}": <PreferredTextSign>》</PreferredTextSign>,
+  "〈": <PreferredTextSign>〈</PreferredTextSign>,
+  "〉": <PreferredTextSign>〉</PreferredTextSign>,
 };
 
 export function PreferredText({ text }: PreferredTextProps): JSX.Element {
