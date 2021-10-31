@@ -7,11 +7,11 @@ import React, { Fragment } from "react";
  * @param glue The glue to use.
  */
 export function joinBy(glue: string) {
-  return (
+  return function joinedBy(
     prev: JSX.Element[],
     curr: JSX.Element | null,
     index: number
-  ): JSX.Element[] => {
+  ): JSX.Element[] {
     if (!curr) {
       return prev;
     }
