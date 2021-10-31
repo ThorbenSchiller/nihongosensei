@@ -1,5 +1,10 @@
 import { FindOptions } from "../index";
 
+/**
+ * Parses pagination params from the given record.
+ *
+ * @param params The params to parse from.
+ */
 export function parsePaginationParams(
   params: Record<string, string | string[]>
 ): FindOptions {
