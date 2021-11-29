@@ -8,6 +8,7 @@ import {
 import { EntryFull, EntryContextProvider } from "../../../../components/Entry";
 import { SITE_NAME } from "../../../_app";
 import { useScrollHeightPostMessage } from "../../../../components/hooks";
+import { addCachingHeader } from "../../../../helper/addCachingHeader";
 
 type EmbedByTextPage = {
   entry: EntryWrapperModel;
@@ -32,10 +33,10 @@ export default function EmbedByTextPage({
   );
 }
 
-export const getServerSideProps: GetServerSideProps<EmbedByTextPage> = async (
-  context
-) => {
-  const { text } = context.params ?? {};
+export const getServerSideProps: GetServerSideProps<EmbedByTextPage> = async ({
+  params: { text } = {},
+  res,
+}) => {
   if (!text) {
     return {
       notFound: true,
@@ -50,6 +51,8 @@ export const getServerSideProps: GetServerSideProps<EmbedByTextPage> = async (
       notFound: true,
     };
   }
+
+  addCachingHeader(res);
 
   return {
     props: {

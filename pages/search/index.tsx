@@ -13,6 +13,7 @@ import { ContentWrapper } from "../../components/ContentWrapper";
 import { SITE_NAME } from "../_app";
 import { Pagination } from "../../components/Pagination";
 import { MinorText } from "../../components/Entry/MinorText";
+import { addCachingHeader } from "../../helper/addCachingHeader";
 
 type SearchPageProps = {
   query: string;
@@ -55,10 +56,10 @@ export default function SearchPage({
   );
 }
 
-export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (
-  context
-) => {
-  const { q = "", offset: offsetString = "0" } = context.query;
+export const getServerSideProps: GetServerSideProps<SearchPageProps> = async ({
+  query: { q = "", offset: offsetString = "0" },
+  res,
+}) => {
   const query = Array.isArray(q) ? q[0] : q;
   const offset = Number(offsetString) || 0;
   const options = { offset, limit: DEFAULT_LIMIT };
@@ -67,6 +68,11 @@ export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (
     findByQuery(query, options),
     findByQueryCount(query),
   ]);
+
+  addCachingHeader(res, {
+    maxAgeInSeconds: 60,
+    staleAgeInSeconds: 60,
+  });
 
   return {
     props: {

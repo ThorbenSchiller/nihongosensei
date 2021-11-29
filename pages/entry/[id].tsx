@@ -13,6 +13,7 @@ import { OtherReadings } from "../../components/Entry/OtherReadings";
 import { ContentWrapper } from "../../components/ContentWrapper";
 import { SITE_NAME } from "../_app";
 import { JlptBadge } from "../../components/Entry/JlptBadge";
+import { addCachingHeader } from "../../helper/addCachingHeader";
 
 type EntryDetailPageProps = {
   entry: EntryWrapperModel;
@@ -47,36 +48,38 @@ export default function EntryDetailPage({
   );
 }
 
-export const getServerSideProps: GetServerSideProps<EntryDetailPageProps> =
-  async (context) => {
-    const { id } = context.params ?? {};
-    const idNumber = Number(Array.isArray(id) ? id[0] : id);
+export const getServerSideProps: GetServerSideProps<
+  EntryDetailPageProps
+> = async ({ params: { id } = {}, res }) => {
+  const idNumber = Number(Array.isArray(id) ? id[0] : id);
 
-    const entry = await findById(idNumber);
+  const entry = await findById(idNumber);
 
-    if (!entry) {
-      return {
-        notFound: true,
-      };
-    }
-
-    // resolve refs
-
-    // resolve relations
-    const relationIds = entry.entry_json.ruigos?.ruigo
-      .map((related) => related.id)
-      .filter((id) => id !== entry.id);
-
-    const [synonyms = [], relatedEntries = []] = await Promise.all([
-      relationIds?.length ? await findByIds(relationIds) : undefined,
-      await findMainRefsByTargetId(entry.id),
-    ]);
-
+  if (!entry) {
     return {
-      props: {
-        entry,
-        synonyms,
-        relatedEntries,
-      },
+      notFound: true,
     };
+  }
+
+  // resolve refs
+
+  // resolve relations
+  const relationIds = entry.entry_json.ruigos?.ruigo
+    .map((related) => related.id)
+    .filter((id) => id !== entry.id);
+
+  const [synonyms = [], relatedEntries = []] = await Promise.all([
+    relationIds?.length ? await findByIds(relationIds) : undefined,
+    await findMainRefsByTargetId(entry.id),
+  ]);
+
+  addCachingHeader(res);
+
+  return {
+    props: {
+      entry,
+      synonyms,
+      relatedEntries,
+    },
   };
+};

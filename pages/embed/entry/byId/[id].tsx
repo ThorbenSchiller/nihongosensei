@@ -8,6 +8,7 @@ import {
 import { EntryFull, EntryContextProvider } from "../../../../components/Entry";
 import { SITE_NAME } from "../../../_app";
 import { useScrollHeightPostMessage } from "../../../../components/hooks";
+import { addCachingHeader } from "../../../../helper/addCachingHeader";
 
 type EmbedByIdPage = {
   entry: EntryWrapperModel;
@@ -32,10 +33,10 @@ export default function EmbedByIdPage({
   );
 }
 
-export const getServerSideProps: GetServerSideProps<EmbedByIdPage> = async (
-  context
-) => {
-  const { id } = context.params ?? {};
+export const getServerSideProps: GetServerSideProps<EmbedByIdPage> = async ({
+  params: { id } = {},
+  res,
+}) => {
   const idNumber = Number(Array.isArray(id) ? id[0] : id);
   if (isNaN(idNumber)) {
     return {
@@ -50,6 +51,8 @@ export const getServerSideProps: GetServerSideProps<EmbedByIdPage> = async (
       notFound: true,
     };
   }
+
+  addCachingHeader(res);
 
   return {
     props: {

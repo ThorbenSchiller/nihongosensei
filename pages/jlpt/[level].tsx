@@ -13,6 +13,7 @@ import { ContentWrapper } from "../../components/ContentWrapper";
 import { SITE_NAME } from "../_app";
 import { Pagination } from "../../components/Pagination";
 import { MinorText } from "../../components/Entry/MinorText";
+import { addCachingHeader } from "../../helper/addCachingHeader";
 
 type JlptPageProps = {
   level: number;
@@ -55,10 +56,10 @@ export default function JlptPage({
   );
 }
 
-export const getServerSideProps: GetServerSideProps<JlptPageProps> = async (
-  context
-) => {
-  const { level = "", offset: offsetString = "0" } = context.query;
+export const getServerSideProps: GetServerSideProps<JlptPageProps> = async ({
+  query: { level = "", offset: offsetString = "0" } = {},
+  res,
+}) => {
   const levelNumber = Number(Array.isArray(level) ? level[0] : level) || 5;
   const offset = Number(offsetString) || 0;
   const options = { offset, limit: DEFAULT_LIMIT };
@@ -67,6 +68,8 @@ export const getServerSideProps: GetServerSideProps<JlptPageProps> = async (
     findByJlpt(levelNumber, options),
     findByJlptCount(levelNumber),
   ]);
+
+  addCachingHeader(res);
 
   return {
     props: {
