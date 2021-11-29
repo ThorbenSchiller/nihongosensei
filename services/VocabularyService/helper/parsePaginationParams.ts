@@ -1,4 +1,4 @@
-import { FindOptions } from "../index";
+import { FindOptions } from "../Model";
 
 /**
  * Parses pagination params from the given record.
