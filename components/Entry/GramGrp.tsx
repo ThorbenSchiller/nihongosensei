@@ -1,5 +1,5 @@
 import React from "react";
-import {
+import type {
   DoushiModel,
   FukushiModel,
   GodanrowEnum,
@@ -8,8 +8,8 @@ import {
   LevelEnum,
   TransitivityEnum,
 } from "../../services/VocabularyService";
-import { joinBy, setKeyProperty } from "./helper";
 import { isDefined } from "./guards";
+import { joinBy, setKeyProperty } from "./helper";
 
 const GOUDAN_MAP: Record<GodanrowEnum, JSX.Element> = {
   ka_i_yu: (

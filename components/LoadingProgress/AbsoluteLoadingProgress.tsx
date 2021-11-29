@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import styles from "./AbsoluteLoadingProgress.module.css";
 import clsx from "clsx";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import styles from "./AbsoluteLoadingProgress.module.css";
 
 export function AbsoluteLoadingProgress(): JSX.Element | null {
   const router = useRouter();

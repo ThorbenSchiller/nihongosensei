@@ -1,8 +1,8 @@
-import { OrthModel, OrthTypes } from "../../services/VocabularyService";
 import React from "react";
+import type { OrthModel, OrthTypes } from "../../services/VocabularyService";
 import { MinorText } from "./MinorText";
-import { PreferredText } from "./PreferredText";
 import styles from "./OtherReadings.module.css";
+import { PreferredText } from "./PreferredText";
 
 type OtherReadingsProps = {
   orth: OrthModel[];

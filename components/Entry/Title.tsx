@@ -1,5 +1,5 @@
 import React from "react";
-import { TitleModel } from "../../services/VocabularyService";
+import type { TitleModel } from "../../services/VocabularyService";
 import { createElements } from "./createElements";
 import styles from "./Title.module.css";
 

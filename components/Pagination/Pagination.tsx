@@ -1,7 +1,7 @@
-import ReactPaginate, { ReactPaginateProps } from "react-paginate";
-import React, { useCallback } from "react";
-import { useRouter } from "next/router";
 import clsx from "clsx";
+import { useRouter } from "next/router";
+import React, { useCallback } from "react";
+import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 
 type PaginationProps = {
   offset: number;

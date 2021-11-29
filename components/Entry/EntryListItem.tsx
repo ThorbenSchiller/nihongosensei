@@ -1,16 +1,16 @@
-import { EntryModel } from "../../services/VocabularyService";
-import { SenseEntries } from "./SenseEntries";
-import React, { memo } from "react";
-import { MinorText } from "./MinorText";
+import clsx from "clsx";
 import RouterLink from "next/link";
+import { useRouter } from "next/router";
+import React, { memo } from "react";
+import type { EntryModel } from "../../services/VocabularyService";
 import { Link } from "../Link";
+import { createElements } from "./createElements";
+import { useEntryContext } from "./EntryContext";
+import { EntryText } from "./EntryText";
+import { MinorText } from "./MinorText";
 import { Reading } from "./Reading";
 import { Refs } from "./Refs";
-import { EntryText } from "./EntryText";
-import { useRouter } from "next/router";
-import { useEntryContext } from "./EntryContext";
-import { createElements } from "./createElements";
-import clsx from "clsx";
+import { SenseEntries } from "./SenseEntries";
 
 type EntryListItemProps = {
   entry: EntryModel;

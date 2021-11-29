@@ -1,5 +1,5 @@
 import React from "react";
-import { TopicModel } from "../../services/VocabularyService";
+import type { TopicModel } from "../../services/VocabularyService";
 import styles from "./Topic.module.css";
 
 export function Topic({ value }: TopicModel): JSX.Element {

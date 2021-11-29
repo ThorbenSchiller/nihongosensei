@@ -1,8 +1,8 @@
-import { isDef, isExpl, isTrans } from "./guards";
-import { MinorText } from "./MinorText";
 import React from "react";
-import { mapElement } from "./mapElement";
+import { isDef, isExpl, isTrans } from "./guards";
 import { setKeyProperty } from "./helper";
+import { mapElement } from "./mapElement";
+import { MinorText } from "./MinorText";
 
 type ElementType<T> = T | null | JSX.Element;
 

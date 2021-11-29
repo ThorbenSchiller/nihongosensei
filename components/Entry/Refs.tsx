@@ -1,5 +1,5 @@
-import { RefModel, RefTypeEnum } from "../../services/VocabularyService";
 import React from "react";
+import type { RefModel, RefTypeEnum } from "../../services/VocabularyService";
 import { Ref } from "./Ref";
 
 type RefsProps = {

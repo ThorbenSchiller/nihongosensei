@@ -1,9 +1,9 @@
-import React from "react";
-import { Search } from "../Search";
-import { Link } from "../Link";
-import RouterLink from "next/link";
-import { Logo } from "../Logo";
 import clsx from "clsx";
+import RouterLink from "next/link";
+import React from "react";
+import { Link } from "../Link";
+import { Logo } from "../Logo";
+import { Search } from "../Search";
 
 type HeaderProps = {
   className?: string;

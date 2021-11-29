@@ -1,19 +1,19 @@
-import React from "react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import React from "react";
+import { ContentWrapper } from "../../components/ContentWrapper";
+import { EntryFull, RelatedEntries, Synonyms } from "../../components/Entry";
+import { JlptBadge } from "../../components/Entry/JlptBadge";
+import { OtherReadings } from "../../components/Entry/OtherReadings";
+import { addCachingHeader } from "../../helper/addCachingHeader";
 import {
+  EntryWrapperModel,
   findById,
   findByIds,
   findMainRefsByTargetId,
   ResolvedEntryRefModel,
-  EntryWrapperModel,
 } from "../../services/VocabularyService";
-import { EntryFull, RelatedEntries, Synonyms } from "../../components/Entry";
-import { OtherReadings } from "../../components/Entry/OtherReadings";
-import { ContentWrapper } from "../../components/ContentWrapper";
 import { SITE_NAME } from "../_app";
-import { JlptBadge } from "../../components/Entry/JlptBadge";
-import { addCachingHeader } from "../../helper/addCachingHeader";
 
 type EntryDetailPageProps = {
   entry: EntryWrapperModel;

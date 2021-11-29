@@ -1,5 +1,5 @@
 import React from "react";
-import { TranslModel } from "../../services/VocabularyService";
+import type { TranslModel } from "../../services/VocabularyService";
 import styles from "./Transl.module.css";
 
 export function Transl({ value }: TranslModel): JSX.Element {

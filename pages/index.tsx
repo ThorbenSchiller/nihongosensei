@@ -1,9 +1,9 @@
-import React from "react";
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import { Search } from "../components/Search";
-import { Logo } from "../components/Logo";
+import React from "react";
 import { Footer } from "../components/Footer";
+import { Logo } from "../components/Logo";
+import { Search } from "../components/Search";
 
 export default function Home(): JSX.Element | null {
   return (

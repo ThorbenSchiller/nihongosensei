@@ -1,9 +1,9 @@
-import React from "react";
+import type { AppProps } from "next/app";
 import Head from "next/head";
-import { AppProps } from "next/app";
+import React from "react";
+import "tailwindcss/tailwind.css";
 import { AbsoluteLoadingProgress } from "../components/LoadingProgress";
 import "./scrollbar.css";
-import "tailwindcss/tailwind.css";
 
 export const SITE_NAME = "日本語先生 Dict";
 const SEO_DESCRIPTION =

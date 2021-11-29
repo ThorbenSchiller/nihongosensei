@@ -1,9 +1,9 @@
-import React from "react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { EntryWrapperModel, findByIds } from "../../services/VocabularyService";
-import { EntryFull } from "../../components/Entry";
+import React from "react";
 import { ContentWrapper } from "../../components/ContentWrapper";
+import { EntryFull } from "../../components/Entry";
+import { EntryWrapperModel, findByIds } from "../../services/VocabularyService";
 import { SITE_NAME } from "../_app";
 
 type ExamplePageProps = {
@@ -33,18 +33,19 @@ export default function ExamplePage({
   );
 }
 
-export const getServerSideProps: GetServerSideProps<ExamplePageProps> =
-  async () => {
-    const ids = [
-      7253900, 167612, 1707, 273, 208, 515, 4029690, 4151, 8042046, 11712, 8545,
-      490814, 2516676, 3778315, 8444455, 8444455, 5075870, 226081, 10000528,
-      5260527, 2972828,
-    ];
-    const results = await findByIds(ids);
+export const getServerSideProps: GetServerSideProps<
+  ExamplePageProps
+> = async () => {
+  const ids = [
+    7253900, 167612, 1707, 273, 208, 515, 4029690, 4151, 8042046, 11712, 8545,
+    490814, 2516676, 3778315, 8444455, 8444455, 5075870, 226081, 10000528,
+    5260527, 2972828,
+  ];
+  const results = await findByIds(ids);
 
-    return {
-      props: {
-        results,
-      },
-    };
+  return {
+    props: {
+      results,
+    },
   };
+};

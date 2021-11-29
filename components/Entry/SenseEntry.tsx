@@ -1,14 +1,14 @@
-import React from "react";
-import { SenseModel } from "../../services/VocabularyService";
-import styles from "./SenseEntry.module.css";
-import { SenseEntries } from "./SenseEntries";
-import { Descr } from "./Descr";
-import { Refs } from "./Refs";
-import { Etym } from "./Etym";
-import { createElements } from "./createElements";
-import { UsgEntries } from "./UsgEntries";
 import clsx from "clsx";
+import React from "react";
+import type { SenseModel } from "../../services/VocabularyService";
+import { createElements } from "./createElements";
+import { Descr } from "./Descr";
+import { Etym } from "./Etym";
+import { Refs } from "./Refs";
 import { SeasonWord } from "./SeasonWord";
+import { SenseEntries } from "./SenseEntries";
+import styles from "./SenseEntry.module.css";
+import { UsgEntries } from "./UsgEntries";
 
 type SenseEntryProps = {
   senseEntry: SenseModel;

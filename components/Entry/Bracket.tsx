@@ -1,5 +1,5 @@
 import React from "react";
-import { BracketModel } from "../../services/VocabularyService";
+import type { BracketModel } from "../../services/VocabularyService";
 import { createElements } from "./createElements";
 
 export function Bracket({

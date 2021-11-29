@@ -1,5 +1,5 @@
-import { TokenModel } from "../../services/VocabularyService";
 import React from "react";
+import type { TokenModel } from "../../services/VocabularyService";
 import { MinorText } from "./MinorText";
 
 export function Token({

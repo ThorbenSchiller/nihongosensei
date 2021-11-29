@@ -1,8 +1,8 @@
-import { EtymModel } from "../../services/VocabularyService";
 import React from "react";
-import { Ref } from "./Ref";
-import { MinorText } from "./MinorText";
+import { EtymModel } from "../../services/VocabularyService";
 import { createElements } from "./createElements";
+import { MinorText } from "./MinorText";
+import { Ref } from "./Ref";
 
 type EtymProps = EtymModel & {
   className?: string;

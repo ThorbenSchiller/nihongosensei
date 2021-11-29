@@ -1,14 +1,14 @@
-import { EntryModel } from "../../services/VocabularyService";
-import { SenseEntries } from "./SenseEntries";
+import clsx from "clsx";
 import React, { memo } from "react";
+import type { EntryModel } from "../../services/VocabularyService";
+import { createElements } from "./createElements";
+import { EntryText } from "./EntryText";
+import { GramGrp } from "./GramGrp";
 import { MinorText } from "./MinorText";
 import { Reading } from "./Reading";
 import { Refs } from "./Refs";
-import { EntryText } from "./EntryText";
-import { createElements } from "./createElements";
-import { GramGrp } from "./GramGrp";
+import { SenseEntries } from "./SenseEntries";
 import { UsgEntries } from "./UsgEntries";
-import clsx from "clsx";
 
 type EntryFullProps = {
   entry: EntryModel;

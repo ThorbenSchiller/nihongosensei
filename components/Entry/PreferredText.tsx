@@ -1,5 +1,5 @@
-import { MinorText, MinorTextProps } from "./MinorText";
 import React, { cloneElement, ReactNode } from "react";
+import { MinorText, MinorTextProps } from "./MinorText";
 
 const PreferredTextSign = (props: MinorTextProps) => (
   <MinorText className="select-none" {...props} />

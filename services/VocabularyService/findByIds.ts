@@ -1,5 +1,5 @@
 import { execute } from "./connection";
-import { EntryWrapperModel } from "./Model";
+import type { EntryWrapperModel } from "./Model";
 
 /**
  * Finds EntryModels by the given ids.

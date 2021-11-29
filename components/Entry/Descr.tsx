@@ -1,8 +1,8 @@
 import React from "react";
-import { DescrModel } from "../../services/VocabularyService";
-import { MinorText } from "./MinorText";
-import styles from "./Descr.module.css";
+import type { DescrModel } from "../../services/VocabularyService";
 import { createElements } from "./createElements";
+import styles from "./Descr.module.css";
+import { MinorText } from "./MinorText";
 
 export function Descr({ textAndJapAndTranscr }: DescrModel): JSX.Element {
   return (

@@ -1,4 +1,4 @@
-import { ServerResponse } from "http";
+import type { ServerResponse } from "http";
 
 type CachingHeaderOptions = {
   maxAgeInSeconds?: number;

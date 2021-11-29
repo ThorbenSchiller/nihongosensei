@@ -1,8 +1,8 @@
-import { SenseModel } from "../../services/VocabularyService";
-import React from "react";
-import { SenseGroup } from "./SenseGroup";
-import styles from "./SenseEntries.module.css";
 import clsx from "clsx";
+import React from "react";
+import type { SenseModel } from "../../services/VocabularyService";
+import styles from "./SenseEntries.module.css";
+import { SenseGroup } from "./SenseGroup";
 
 type SenseEntriesProps = {
   sense: SenseModel[];

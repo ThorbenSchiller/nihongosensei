@@ -1,6 +1,6 @@
-import { execute } from "./connection";
-import { EntryWrapperModel, FindOptions } from "./Model";
 import { DEFAULT_LIMIT, MAX_LIMIT } from "../constants";
+import { execute } from "./connection";
+import type { EntryWrapperModel, FindOptions } from "./Model";
 
 const FIND_ENTRIES_QUERY = `
     SELECT *

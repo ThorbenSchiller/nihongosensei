@@ -1,8 +1,8 @@
-import { OrthModel } from "../../services/VocabularyService";
-import React from "react";
-import { PreferredText } from "./PreferredText";
-import styles from "./EntryText.module.css";
 import clsx from "clsx";
+import React from "react";
+import type { OrthModel } from "../../services/VocabularyService";
+import styles from "./EntryText.module.css";
+import { PreferredText } from "./PreferredText";
 
 type EntryCardProps = {
   orth: OrthModel[];

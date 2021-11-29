@@ -1,5 +1,5 @@
-import { EntryModel } from "../../services/VocabularyService";
 import React from "react";
+import type { EntryModel } from "../../services/VocabularyService";
 import { EntryLink } from "./EntryLink";
 import styles from "./RelatedEntries.module.css";
 

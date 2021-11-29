@@ -1,10 +1,10 @@
 import RouterLink from "next/link";
-import { EntryModel } from "../../services/VocabularyService";
-import React from "react";
-import { Link, LinkProps } from "../Link";
-import { EntryText } from "./EntryText";
 import { useRouter } from "next/router";
+import React from "react";
+import type { EntryModel } from "../../services/VocabularyService";
+import { Link, LinkProps } from "../Link";
 import { useEntryContext } from "./EntryContext";
+import { EntryText } from "./EntryText";
 
 type RelatedEntryProps = {
   entry: EntryModel;

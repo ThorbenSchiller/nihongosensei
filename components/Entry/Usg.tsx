@@ -1,6 +1,6 @@
-import { UsgModel, UsgTypeEnum } from "../../services/VocabularyService";
-import React from "react";
 import clsx from "clsx";
+import React from "react";
+import type { UsgModel, UsgTypeEnum } from "../../services/VocabularyService";
 
 const USG_MAP: Record<string, string> = {
   coll: "usg.",

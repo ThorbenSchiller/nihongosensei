@@ -1,10 +1,10 @@
-import {
+import React, { Fragment, HTMLProps } from "react";
+import type {
   ResolvedEntryRefModel,
   SubentryTypeEnum,
 } from "../../services/VocabularyService";
-import React, { Fragment, HTMLProps } from "react";
+import type { EnhancedTypeEnum } from "./RelatedEntries";
 import { RelatedEntry } from "./RelatedEntry";
-import { EnhancedTypeEnum } from "./RelatedEntries";
 
 const ENHANCED_SUBTYPE_MAP: Partial<Record<EnhancedTypeEnum, string>> = {
   DERIVATION: "Ableitung",

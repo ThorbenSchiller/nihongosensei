@@ -1,6 +1,6 @@
+import { render } from "@testing-library/react";
 import React from "react";
 import { createElements } from "./createElements";
-import { render } from "@testing-library/react";
 
 describe("createElements", () => {
   it("should not create a whitespace before a bracket for expl", () => {

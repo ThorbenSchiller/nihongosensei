@@ -1,4 +1,10 @@
 import React, { Fragment } from "react";
+import { Bracket } from "./Bracket";
+import { Def } from "./Def";
+import { Emph } from "./Emph";
+import { Expl } from "./Expl";
+import { Famn } from "./Famn";
+import { Foreign } from "./Foreign";
 import {
   isBracket,
   isDef,
@@ -18,23 +24,17 @@ import {
   isTranscr,
   isTranslModel,
 } from "./guards";
-import { TrEntry } from "./TrEntry";
-import { Token } from "./Token";
-import { Text } from "./Text";
-import { Bracket } from "./Bracket";
-import { Def } from "./Def";
-import { Ref } from "./Ref";
-import { Foreign } from "./Foreign";
-import { Transcr } from "./Transcr";
-import { Emph } from "./Emph";
-import { Expl } from "./Expl";
-import { Trans } from "./Trans";
 import { Iron } from "./Iron";
+import { Ref } from "./Ref";
 import { Specchar } from "./Specchar";
-import { Topic } from "./Topic";
-import { Famn } from "./Famn";
+import { Text } from "./Text";
 import { Title } from "./Title";
+import { Token } from "./Token";
+import { Topic } from "./Topic";
+import { Trans } from "./Trans";
+import { Transcr } from "./Transcr";
 import { Transl } from "./Transl";
+import { TrEntry } from "./TrEntry";
 
 export function mapElement(element: unknown): JSX.Element | null {
   if (isTrans(element)) {

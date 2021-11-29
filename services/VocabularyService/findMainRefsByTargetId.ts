@@ -1,5 +1,5 @@
 import { execute } from "./connection";
-import { ResolvedEntryRefModel } from "./Model";
+import type { ResolvedEntryRefModel } from "./Model";
 
 /**
  * Finds all refs which have `MAIN` as their {@link RefModel#type}.

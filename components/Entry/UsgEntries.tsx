@@ -1,7 +1,7 @@
-import { UsgModel } from "../../services/VocabularyService";
 import React from "react";
-import { Usg } from "./Usg";
+import type { UsgModel } from "../../services/VocabularyService";
 import { joinBy } from "./helper";
+import { Usg } from "./Usg";
 
 type UsgEntriesProps = {
   usg: UsgModel[];

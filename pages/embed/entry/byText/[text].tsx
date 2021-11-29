@@ -1,14 +1,12 @@
-import React from "react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import {
-  EntryWrapperModel,
-  findByText,
-} from "../../../../services/VocabularyService";
-import { EntryFull, EntryContextProvider } from "../../../../components/Entry";
-import { SITE_NAME } from "../../../_app";
+import React from "react";
+import { EntryContextProvider, EntryFull } from "../../../../components/Entry";
 import { useScrollHeightPostMessage } from "../../../../components/hooks";
 import { addCachingHeader } from "../../../../helper/addCachingHeader";
+import type { EntryWrapperModel } from "../../../../services/VocabularyService";
+import { findByText } from "../../../../services/VocabularyService";
+import { SITE_NAME } from "../../../_app";
 
 type EmbedByTextPage = {
   entry: EntryWrapperModel;

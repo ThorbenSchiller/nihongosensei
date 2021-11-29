@@ -1,5 +1,5 @@
-import React, { forwardRef, HTMLProps } from "react";
 import clsx from "clsx";
+import React, { forwardRef, HTMLProps } from "react";
 
 const COLOR_MAP = {
   primary: "text-primary-700 dark:text-primary-300",

@@ -1,6 +1,6 @@
 import RouterLink from "next/link";
-import { RefModel, RefTypeEnum } from "../../services/VocabularyService";
 import React from "react";
+import type { RefModel, RefTypeEnum } from "../../services/VocabularyService";
 import { Link } from "../Link";
 import { useEntryContext } from "./EntryContext";
 
