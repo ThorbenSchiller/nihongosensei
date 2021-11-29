@@ -1,5 +1,5 @@
 import React from "react";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import { Search } from "../components/Search";
 import { Logo } from "../components/Logo";
@@ -25,7 +25,7 @@ export default function Home(): JSX.Element | null {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = () => {
   return {
     props: {},
   };
