@@ -1,9 +1,9 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
+import RouterLink from "next/link";
 import React from "react";
-import { Footer } from "../components/Footer";
-import { Logo } from "../components/Logo";
 import { Search } from "../components/Search";
+import { Footer, Link, Logo } from "../components/ui";
 
 export default function Home(): JSX.Element | null {
   return (
@@ -18,6 +18,12 @@ export default function Home(): JSX.Element | null {
         <div className="w-full flex flex-col flex-grow justify-center items-center">
           <Logo className="mb-8" size="big" />
           <Search className="w-full mb-8" autoFocus={true} />
+          <p>
+            Weitere Links:{" "}
+            <RouterLink href="/furigana" passHref={true}>
+              <Link>Furigana Generator</Link>
+            </RouterLink>
+          </p>
         </div>
         <Footer />
       </div>

@@ -2,7 +2,7 @@ import RouterLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import type { EntryModel } from "../../services/VocabularyService";
-import { Link, LinkProps } from "../Link";
+import { Link, LinkProps } from "../ui";
 import { useEntryContext } from "./EntryContext";
 import { EntryText } from "./EntryText";
 

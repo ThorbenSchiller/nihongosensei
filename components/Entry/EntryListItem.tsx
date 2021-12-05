@@ -3,7 +3,7 @@ import RouterLink from "next/link";
 import { useRouter } from "next/router";
 import React, { memo } from "react";
 import type { EntryModel } from "../../services/VocabularyService";
-import { Link } from "../Link";
+import { Link } from "../ui";
 import { createElements } from "./createElements";
 import { useEntryContext } from "./EntryContext";
 import { EntryText } from "./EntryText";

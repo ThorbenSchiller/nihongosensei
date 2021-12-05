@@ -1,0 +1,20 @@
+.grid {
+  @apply h-screen pb-0 m-auto gap-4;
+
+  display: grid;
+  max-width: 1210px;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "header header"
+    "content right";
+}
+
+@screen sm {
+  .grid {
+    @apply p-6;
+
+    grid-template-columns: 1fr minmax(200px, 30%);
+    grid-template-rows: auto;
+  }
+}
