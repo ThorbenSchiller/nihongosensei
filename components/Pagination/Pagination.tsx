@@ -39,7 +39,6 @@ export function Pagination({
       nextLabel="»"
       breakLabel="..."
       pageCount={pageCount}
-      initialPage={currentPage}
       forcePage={currentPage}
       marginPagesDisplayed={3}
       pageRangeDisplayed={3}
