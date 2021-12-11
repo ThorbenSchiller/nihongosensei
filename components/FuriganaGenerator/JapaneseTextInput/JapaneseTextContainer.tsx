@@ -30,7 +30,7 @@ async function fetchFurigana(text: string): Promise<FuriganaResponse> {
 
 function JapaneseTextContainer({
   onRubyClick,
-  debounceDelayInMs,
+  debounceDelayInMs = 300,
   defaultFurigana,
   defaultValue,
   defaultError,
