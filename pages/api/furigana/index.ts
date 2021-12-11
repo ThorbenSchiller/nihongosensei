@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { parseError } from "../../../helper/parseError";
 import {
   FuriganaModel,
   FuriganaService,
@@ -20,7 +21,19 @@ export default async function (
     return;
   }
   const input = req.body?.trim();
-  const furigana = input ? await furiganaService.getFurigana(input) : null;
+  let furigana;
+  try {
+    furigana = input ? await furiganaService.getFurigana(input) : null;
+  } catch (e) {
+    console.error(e);
+
+    res.setHeader("Content-Type", "application/json");
+    res.status(500).json({
+      error: parseError(e),
+    });
+
+    return;
+  }
 
   res.setHeader("Content-Type", "application/json");
   res.status(200).json({
