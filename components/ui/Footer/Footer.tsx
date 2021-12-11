@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React from "react";
-import { MinorText } from "../../Entry/MinorText";
 import { Link } from "../Link";
+import { MinorText } from "../Typography";
 
 type FooterProps = {
   className?: string;

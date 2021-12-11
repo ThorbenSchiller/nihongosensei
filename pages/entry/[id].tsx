@@ -1,10 +1,14 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import React from "react";
-import { ContentWrapper } from "../../components/ContentWrapper";
-import { EntryFull, RelatedEntries, Synonyms } from "../../components/Entry";
-import { JlptBadge } from "../../components/Entry/JlptBadge";
-import { OtherReadings } from "../../components/Entry/OtherReadings";
+import {
+  ContentWrapper,
+  EntryFull,
+  RelatedEntries,
+  Synonyms,
+} from "../../components/Dict";
+import { JlptBadge } from "../../components/Dict/Entry/JlptBadge";
+import { OtherReadings } from "../../components/Dict/Entry/OtherReadings";
 import { addCachingHeader } from "../../helper/addCachingHeader";
 import {
   EntryWrapperModel,

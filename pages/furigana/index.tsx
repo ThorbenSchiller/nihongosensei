@@ -2,9 +2,11 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import RouterLink from "next/link";
 import React, { useCallback, useState } from "react";
-import { JapaneseTextContainer } from "../../components/JapaneseTextInput";
+import {
+  JapaneseTextContainer,
+  VocabularyContainer,
+} from "../../components/FuriganaGenerator";
 import { Grid, Link, Logo } from "../../components/ui";
-import { VocabularyContainer } from "../../components/Vocabulary";
 import { FuriganaModel, FuriganaService } from "../../services/FuriganaService";
 import { SITE_NAME } from "../_app";
 

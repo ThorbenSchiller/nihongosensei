@@ -1,10 +1,9 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import React from "react";
-import { ContentWrapper } from "../../components/ContentWrapper";
-import { EntryListItem } from "../../components/Entry";
-import { MinorText } from "../../components/Entry/MinorText";
+import { ContentWrapper, EntryListItem } from "../../components/Dict";
 import { Pagination } from "../../components/Pagination";
+import { MinorText } from "../../components/ui";
 import { addCachingHeader } from "../../helper/addCachingHeader";
 import { DEFAULT_LIMIT } from "../../services/constants";
 import {

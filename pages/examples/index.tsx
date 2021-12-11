@@ -1,8 +1,7 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import React from "react";
-import { ContentWrapper } from "../../components/ContentWrapper";
-import { EntryFull } from "../../components/Entry";
+import { ContentWrapper, EntryFull } from "../../components/Dict";
 import { EntryWrapperModel, findByIds } from "../../services/VocabularyService";
 import { SITE_NAME } from "../_app";
 

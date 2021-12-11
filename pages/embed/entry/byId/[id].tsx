@@ -1,7 +1,10 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import React from "react";
-import { EntryContextProvider, EntryFull } from "../../../../components/Entry";
+import {
+  EntryContextProvider,
+  EntryFull,
+} from "../../../../components/Dict/Entry";
 import { useScrollHeightPostMessage } from "../../../../components/hooks";
 import { addCachingHeader } from "../../../../helper/addCachingHeader";
 import {
