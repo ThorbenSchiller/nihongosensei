@@ -5,7 +5,7 @@ import { Invisible } from "../ui";
 
 export type RubyProps = {
   /**
-   * An html string which (may) contain <ruby> elements.
+   * A html string which (may) contain <ruby> elements.
    * The string will be parsed and converted to own elements.
    */
   furigana: ReadonlyArray<FuriganaModel>;

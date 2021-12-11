@@ -9,8 +9,9 @@ import { FuriganaModel, FuriganaService } from "../../services/FuriganaService";
 import { SITE_NAME } from "../_app";
 
 type FuriganaIndexProps = {
-  text: string;
-  furigana: ReadonlyArray<FuriganaModel>;
+  text: string | null;
+  furigana: ReadonlyArray<FuriganaModel> | null;
+  error: string | null;
 };
 
 const DEFAULT_TEXT = process.env.DEFAULT_FURIGANA_INPUT_VALUE;
@@ -20,6 +21,7 @@ const furiganaService = FuriganaService.getInstance();
 export default function FuriganaIndex({
   text,
   furigana,
+  error,
 }: FuriganaIndexProps): JSX.Element {
   const [vocabulary, setVocabulary] = useState<string>("");
   const handleRubyClick = useCallback((model: FuriganaModel) => {
@@ -42,6 +44,7 @@ export default function FuriganaIndex({
           onRubyClick={handleRubyClick}
           defaultValue={text}
           defaultFurigana={furigana}
+          defaultError={error}
         />
         <VocabularyContainer
           onChange={setVocabulary}
@@ -58,12 +61,20 @@ export const getServerSideProps: GetServerSideProps<
 > = async (context) => {
   const { text: queryText = DEFAULT_TEXT } = context.query ?? {};
   const text = (Array.isArray(queryText) ? queryText[0] : queryText) ?? "";
-  const furigana = text ? await furiganaService.getFurigana(text) : [];
+  let error = null;
+  let furigana = null;
+  try {
+    furigana = text ? await furiganaService.getFurigana(text) : [];
+  } catch (e) {
+    console.error(e);
+    error = "Could not convert to furigana.";
+  }
 
   return {
     props: {
       text,
       furigana,
+      error,
     },
   };
 };
