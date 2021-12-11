@@ -142,7 +142,6 @@ function handleKana(token: IpadicFeatures): KuroshiroNotation[] {
   return Array.from(token.surface_form).map((char, index) => ({
     surfaceForm: char,
     type: "mixed",
-    reading: token.reading ? toRawHiragana(token.reading[index]) : undefined,
     pronunciation:
       (token.pronunciation && token.pronunciation[index]) ||
       token.reading?.[index],
