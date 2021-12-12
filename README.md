@@ -1,11 +1,21 @@
-# Wadoku Dict
+# 日本語先生 (Nihongosensei)
 
-This project provides a simple dictionary search based on [wadoku.de](https://wadoku.de)
-xml data.
+Live: [nihongosensei.app](https://nihongosensei.app)
+日本語先生
+This project provides a collection of useful tools for learning japanese.
 
-Deployment available under [dict.nihongosensei.app](https://dict.nihongosensei.app)
+## Furigana
 
-## Schema
+Live:
+
+A simple generator for adding furigana to japanese text via [kuroshiro](https://www.npmjs.com/package/kuroshiro) is available
+under [nihongosensei.app/furigana](https://nihongosensei.app/furigana).
+
+## Dictionary
+
+A dictionary is available based on [wadoku.de](https://wadoku.de) xml data.
+
+### Schema
 
 The dictionary uses a single table for now which holds the converted xml entry in json and additional fields ot enable
 text search.
@@ -47,23 +57,23 @@ create index entry_ref__target_id
     on entry_ref (target_id);
 ```
 
-## Import Data
+### Import Data
 
 See https://github.com/nihongosensei/wadoku-export-reader
 
-## Wadoku XML Exports
+### Wadoku XML Exports
 
 See https://www.wadoku.de/downloads/xml-export/https://www.wadoku.de/downloads/xml-export/
 
-## Wadoku Data License
+### Wadoku Data License
 
 See https://www.wadoku.de/wiki/display/WAD/Wadoku.de-Daten+Lizenz
 
-## JLPT Levels
+### JLPT Levels
 
 JLPT levels are imported from wikipedia: https://en.wiktionary.org/wiki/Appendix:JLPT
 
-## Examples
+### Examples
 
 Multiple Senses: [167612](https://nihongosensei.app/entry/167612)
 
