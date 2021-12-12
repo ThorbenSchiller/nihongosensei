@@ -3,8 +3,8 @@ import type {
   EntryModel,
   EntryWrapperModel,
 } from "../../../services/VocabularyService";
-import { EntryFull } from "../../Dict/Entry";
-import { Alert, LoadingProgress } from "../../ui";
+import { EntryFull } from "../../Dict";
+import { Alert, Button, LoadingProgress } from "../../ui";
 
 type VocabularyProps = {
   text: string;
@@ -41,7 +41,14 @@ export function VocabularyProvider({
   return (
     <div className={className}>
       {loading && <LoadingProgress />}
-      {entry && <EntryFull entry={entry} />}
+      {entry && (
+        <>
+          <EntryFull entry={entry} className="mb-4" />
+          <Button as="a" href={`/entry/${entry.id}`} target="_blank">
+            Im Wörterbuch anzeigen
+          </Button>
+        </>
+      )}
       {error && <Alert type="error">{error}</Alert>}
     </div>
   );

@@ -1,4 +1,6 @@
 export * from "./Alert";
+export * from "./Box";
+export * from "./Button";
 export * from "./Footer";
 export * from "./Grid";
 export * from "./Header";
