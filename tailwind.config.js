@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gray: colors.gray,
+        gray: colors.neutral,
         primary: colors.pink,
       },
       fontWeight: {
