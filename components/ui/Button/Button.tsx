@@ -22,7 +22,7 @@ export const Button: BoxComponent<ButtonProps> = forwardRef(function Button<
 ) {
   return (
     <Box
-      is={as ?? "button"}
+      as={as ?? "button"}
       className={`select-none text-sm p-2 focus:outline-none rounded uppercase font-bold border border-gray-700 ${
         COLOR_MAP[variant as ButtonVariant]
       } ${className}`}
