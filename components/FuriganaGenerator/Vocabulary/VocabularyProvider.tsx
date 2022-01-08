@@ -43,7 +43,10 @@ export function VocabularyProvider({
       {loading && <LoadingProgress />}
       {entry && (
         <>
-          <EntryFull entry={entry} className="mb-4" />
+          <EntryFull
+            entry={entry}
+            className="mb-4 p-4 border border-gray-300 dark:border-gray-700 rounded"
+          />
           <Button as="a" href={`/entry/${entry.id}`} target="_blank">
             Im Wörterbuch anzeigen
           </Button>
