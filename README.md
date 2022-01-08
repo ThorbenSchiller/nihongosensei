@@ -63,7 +63,7 @@ See https://github.com/nihongosensei/wadoku-export-reader
 
 ### Wadoku XML Exports
 
-See https://www.wadoku.de/downloads/xml-export/https://www.wadoku.de/downloads/xml-export/
+See https://www.wadoku.de/downloads/xml-export/
 
 ### Wadoku Data License
 
