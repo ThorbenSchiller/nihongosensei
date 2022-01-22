@@ -28,11 +28,11 @@ export const EntryFull = memo(function EntryFull({
 
   return (
     <div className={clsx("font-serif text-lg", className)}>
-      <div lang="ja" className="mb-2 text-5xl">
+      <h1 lang="ja" className="mb-2 text-5xl">
         <EntryText orth={orth} />
-      </div>
+      </h1>
       {firstReading !== reading.hatsuon && (
-        <MinorText lang="ja" className="text-xl mb-2" component="div">
+        <MinorText lang="ja" className="text-xl mb-2" component="h2">
           <Reading reading={reading.hatsuon} />
         </MinorText>
       )}
