@@ -120,8 +120,8 @@ const LEVEL_CONJUNCTION_MAP: Partial<Record<LevelEnum, JSX.Element | null>> = {
 
 const TRANSITIVITY_MAP: Record<TransitivityEnum, JSX.Element> = {
   TRANS: <>trans.</>,
-  INTRANS: <>intrans.</>,
-  BOTH: <>intrans. od. trans.</>,
+  INTRANS: <>intransitiv</>,
+  BOTH: <>intransitiv oder transitiv</>,
 };
 
 function Doushi({
@@ -130,10 +130,10 @@ function Doushi({
   transitivity,
 }: DoushiModel): JSX.Element | null {
   const pieces = [
+    <>Verb, </>,
     level === "kuru" ? <>unregelm.</> : null,
     level && LEVEL_MAP[level],
     transitivity && TRANSITIVITY_MAP[transitivity],
-    <>V.</>,
     (godanrow && GOUDAN_MAP[godanrow]) ??
       (level && LEVEL_CONJUNCTION_MAP[level]),
   ]
@@ -148,21 +148,21 @@ function Keiyoudoushi({ no, nari }: KeiyoudoushiModel): JSX.Element {
   if (nari) {
     return (
       <>
-        Na.‑Adj. mit <em>nari</em>
+        Na.‑Adjektiv mit <em>nari</em>
       </>
     );
   }
 
   return (
     <>
-      Na.‑Adj. mit <em>na</em>
+      Na.‑Adjektiv mit <em>na</em>
       {no && (
         <>
           {" "}
           od. <em>no</em>
         </>
       )}{" "}
-      bzw. präd. mit <em>da</em> etc.
+      bzw. prädikativ mit <em>da</em> etc.
     </>
   );
 }
@@ -170,7 +170,7 @@ function Keiyoudoushi({ no, nari }: KeiyoudoushiModel): JSX.Element {
 function Fukushi({ suru, ni, to, taru }: FukushiModel): JSX.Element {
   return (
     <>
-      Adv.
+      Adverb
       {ni && (
         <>
           {" "}
@@ -224,15 +224,29 @@ export function GramGrp({
   rengo,
 }: GramGrpModel): JSX.Element {
   const parts = [
-    prefix && <>Pref.</>,
-    suffix && <>Suff.</>,
-    meishi && <>N.</>,
-    jodoushi && <>Hilfsv.</>,
-    joshi && <>Part.</>,
+    prefix && <>Präfix</>,
+    suffix && <>Suffix</>,
+    rentaishi && <>Adnomen</>,
+    setsuzokujoshi && <>konjunktionale Partikel</>,
+    daimeishi && <>Pronomen</>,
+    kandoushi && <>Interjektion</>,
+    jodoushi && <>Hilfsverb.</>,
+    joshi && <>Partikel</>,
+    fukujoshi && <>adverbial Partikel</>,
+    kakarijoshi && <>Themapartikel</>,
+    kakujoshi && <>Kasuspartikel</>,
+    setsuzokushi && <>Konjunktionalpartikel</>,
+    shuujoshi && <>satzbeendende Partikel</>,
+    wordcomponent && <>Wortkomponente</>,
+    specialcharacter && <>Sonderzeichen</>,
+    rengo && <>Zusammensetzung</>,
+    kanji && <>Kanji</>,
+
+    meishi && <>Nomen</>,
     fukushi && <Fukushi {...fukushi} />,
     keiyoushi && (
       <>
-        Adj.
+        Adjektiv
         {keiyoushi.ku && (
           <>
             {" "}
@@ -248,19 +262,6 @@ export function GramGrp({
       </>
     ),
     keiyoudoushi && <Keiyoudoushi {...keiyoudoushi} />,
-    kandoushi && <>Interj.</>,
-    rentaishi && <>Adn.</>,
-    setsuzokushi && <>Konj.</>,
-    daimeishi && <>Pron.</>,
-    setsuzokujoshi && <>konjunktionale Part.</>,
-    shuujoshi && <>satzbeendende Part.</>,
-    kakarijoshi && <>Themenpart.</>,
-    kakujoshi && <>Kasuspart.</>,
-    fukujoshi && <>adv. Part.</>,
-    wordcomponent && <>Wortkomp.</>,
-    specialcharacter && <>Sonderzeichen</>,
-    kanji && <>Kanji</>,
-    rengo && <>Zus.</>,
   ]
     .filter(isDefined)
     .map(setKeyProperty())
