@@ -11,7 +11,7 @@ export type FuriganaResponse = {
 
 const furiganaService = FuriganaService.getInstance();
 
-export default async function (
+async function handleFurigana(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
@@ -40,3 +40,5 @@ export default async function (
     furigana,
   } as FuriganaResponse);
 }
+
+export default handleFurigana;
