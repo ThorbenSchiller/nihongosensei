@@ -4,6 +4,7 @@ import type { EntryModel } from "../../../services/VocabularyService";
 import { MinorText } from "../../ui";
 import { createElements, GramGrp, Refs } from "../Elements";
 import { EntryText } from "./EntryText";
+import { OtherReadings } from "./OtherReadings";
 import { Reading } from "./Reading";
 import { SenseEntries } from "./SenseEntries";
 import { UsgEntries } from "./UsgEntries";
@@ -47,6 +48,7 @@ export const EntryFull = memo(function EntryFull({
         <MinorText className="mt-2">{createElements(entry.expl)}</MinorText>
       )}
       <Refs className="mt-2" refs={ref ?? []} />
+      <OtherReadings orth={orth} />
     </div>
   );
 });

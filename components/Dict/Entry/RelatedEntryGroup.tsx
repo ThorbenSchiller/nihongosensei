@@ -57,7 +57,7 @@ export function RelatedEntryGroup({
   let firstType: SubentryTypeEnum | undefined;
 
   return (
-    <Fragment>
+    <>
       {ENHANCED_SUBTYPE_MAP[type] && (
         <div className="mt-3 mb-2">{ENHANCED_SUBTYPE_MAP[type]}</div>
       )}
@@ -79,6 +79,6 @@ export function RelatedEntryGroup({
           </Fragment>
         );
       })}
-    </Fragment>
+    </>
   );
 }

@@ -32,8 +32,7 @@ export function Ref({
   return (
     <RouterLink href={`${detailBasePath}/${id}`} passHref={true}>
       <Link className={className}>
-        <span className="font-serif">{TYPE_MAP[type]}</span>{" "}
-        {transcr && <i>{transcr.content.join(", ")}</i>} {jap}
+        {TYPE_MAP[type]} {transcr && <i>{transcr.content.join(", ")}</i>} {jap}
       </Link>
     </RouterLink>
   );

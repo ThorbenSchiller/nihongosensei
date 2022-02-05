@@ -8,7 +8,6 @@ import {
   Synonyms,
 } from "../../components/Dict";
 import { JlptBadge } from "../../components/Dict/Entry/JlptBadge";
-import { OtherReadings } from "../../components/Dict/Entry/OtherReadings";
 import { addCachingHeader } from "../../helper/addCachingHeader";
 import {
   EntryWrapperModel,
@@ -39,13 +38,15 @@ export default function EntryDetailPage({
       </Head>
       <ContentWrapper>
         <EntryFull entry={entry_json} />
-        <OtherReadings orth={entry_json.form.orth} />
         {jlpt && (
-          <div className="mt-2 font-sans">
+          <div className="mt-2">
             <JlptBadge level={jlpt} />
           </div>
         )}
-        <Synonyms entries={synonyms.map((entry) => entry.entry_json)} />
+        <Synonyms
+          className="font-serif text-lg"
+          entries={synonyms.map((entry) => entry.entry_json)}
+        />
         <RelatedEntries entries={relatedEntries} />
       </ContentWrapper>
     </>

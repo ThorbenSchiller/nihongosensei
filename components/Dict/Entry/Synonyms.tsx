@@ -4,16 +4,20 @@ import { EntryLink } from "./EntryLink";
 import styles from "./RelatedEntries.module.css";
 
 type SynonymsProps = {
-  entries: EntryModel[];
+  entries: ReadonlyArray<EntryModel>;
+  className?: string;
 };
 
-export function Synonyms({ entries }: SynonymsProps): JSX.Element | null {
+export function Synonyms({
+  entries,
+  className,
+}: SynonymsProps): JSX.Element | null {
   if (!entries.length) {
     return null;
   }
 
   return (
-    <div className="mt-2">
+    <div className={className}>
       Synonyme:{" "}
       {entries.map((entry) => (
         <EntryLink
