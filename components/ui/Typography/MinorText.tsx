@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React, { HTMLProps } from "react";
 
 export type MinorTextProps = HTMLProps<HTMLSpanElement> & {
@@ -10,7 +11,7 @@ export function MinorText({
   ...rest
 }: MinorTextProps): JSX.Element {
   return React.createElement(component, {
-    className: `text-gray-700 dark:text-gray-300 ${className}`,
+    className: clsx("text-gray-700 dark:text-gray-300", className),
     ...rest,
   });
 }
