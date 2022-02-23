@@ -1,6 +1,6 @@
 import React, { createElement, forwardRef } from "react";
 
-export type BoxProps<E extends React.ElementType = any> = {
+export type BoxProps<E extends React.ElementType = never> = {
   as?: E;
 } & React.ComponentPropsWithRef<E>;
 

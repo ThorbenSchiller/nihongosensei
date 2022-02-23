@@ -1,13 +1,7 @@
 import { Pool } from "mysql2";
 
 declare global {
-  interface Window {
-    database: Pool | null;
-  }
-
-  namespace NodeJS {
-    export interface Global {
-      database: Pool | null;
-    }
-  }
+  // seems like const or let do not work...
+  // eslint-disable-next-line no-var
+  var database: Pool | null;
 }
