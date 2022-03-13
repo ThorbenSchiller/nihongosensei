@@ -11,6 +11,6 @@ module.exports = createJestConfig({
   moduleNameMapper: {
     "^@components/(.*)$": "<rootDir>/components/$1",
     "^@helper$": "<rootDir>/helper",
-    "^@services": "<rootDir>/services/$1",
+    "^@services/(.*)$": "<rootDir>/services/$1",
   },
 });

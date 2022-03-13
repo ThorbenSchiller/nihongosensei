@@ -1,6 +1,6 @@
 import KuromojiAnalyzer from "kuroshiro-analyzer-kuromoji";
 import { Kuroshiro, KuroshiroNotation } from "./kuroshiro";
-import { FuriganaModel } from "./Model";
+import type { FuriganaModel } from "./Model";
 
 function createFuriganaModel({
   surfaceForm,
@@ -15,17 +15,20 @@ function createFuriganaModel({
   };
 }
 
+const DEFAULT_ANALYZER_FACTORY: () => KuromojiAnalyzer = () =>
+  new KuromojiAnalyzer();
+
 /**
  * Services for converting a given text into a {@link FuriganaModel}.
  */
 export class FuriganaService {
-  private readonly kuroshiro: Kuroshiro;
   private initialized = false;
   private static instance: FuriganaService;
 
-  public constructor() {
-    this.kuroshiro = new Kuroshiro();
-  }
+  public constructor(
+    private readonly kuroshiro: Kuroshiro = new Kuroshiro(),
+    private readonly analyzerFactory = DEFAULT_ANALYZER_FACTORY
+  ) {}
 
   public isInitialized(): boolean {
     return this.initialized;
@@ -57,12 +60,8 @@ export class FuriganaService {
       return;
     }
 
-    await this.kuroshiro.init(this.createAnalyzer());
+    await this.kuroshiro.init(this.analyzerFactory());
 
     this.initialized = true;
-  }
-
-  private createAnalyzer(): KuromojiAnalyzer {
-    return new KuromojiAnalyzer();
   }
 }
