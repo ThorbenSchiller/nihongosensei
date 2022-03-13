@@ -1,5 +1,5 @@
+import { findById } from "@services/VocabularyService";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { findById } from "../../../services/VocabularyService";
 
 export default async function handleEntryById(
   req: NextApiRequest,

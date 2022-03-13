@@ -1,6 +1,6 @@
+import { SITE_NAME } from "@services/constants";
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import React from "react";
-import { SITE_NAME } from "./_app";
 
 export default class MyDocument extends Document {
   render(): JSX.Element {
@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
           <link
             rel="search"
             type="application/opensearchdescription+xml"
-            title={`${SITE_NAME} Suche`}
+            title={`Suche - ${SITE_NAME}`}
             href="/opensearch.xml"
           />
           {process.env.NODE_ENV === "production" && (

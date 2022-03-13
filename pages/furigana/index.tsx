@@ -1,3 +1,6 @@
+import { Grid, Link, Logo } from "@components/ui";
+import { SITE_NAME } from "@services/constants";
+import { FuriganaModel, FuriganaService } from "@services/FuriganaService";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import RouterLink from "next/link";
@@ -6,9 +9,6 @@ import {
   JapaneseTextContainer,
   VocabularyContainer,
 } from "../../components/FuriganaGenerator";
-import { Grid, Link, Logo } from "../../components/ui";
-import { FuriganaModel, FuriganaService } from "../../services/FuriganaService";
-import { SITE_NAME } from "../_app";
 
 type FuriganaIndexProps = {
   text: string | null;

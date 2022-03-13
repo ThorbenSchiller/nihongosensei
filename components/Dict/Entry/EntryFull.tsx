@@ -1,6 +1,6 @@
+import type { EntryModel } from "@services/VocabularyService";
 import clsx from "clsx";
 import React, { memo } from "react";
-import type { EntryModel } from "../../../services/VocabularyService";
 import { MinorText } from "../../ui";
 import { createElements, GramGrp, Refs } from "../Elements";
 import { EntryText } from "./EntryText";

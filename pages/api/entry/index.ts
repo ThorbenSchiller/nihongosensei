@@ -1,8 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import {
   findByQuery,
   parsePaginationParams,
-} from "../../../services/VocabularyService";
+} from "@services/VocabularyService";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handleEntry(
   { method, query }: NextApiRequest,

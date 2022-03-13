@@ -1,8 +1,8 @@
+import type { EntryModel } from "@services/VocabularyService";
 import clsx from "clsx";
 import RouterLink from "next/link";
 import { useRouter } from "next/router";
 import React, { memo } from "react";
-import type { EntryModel } from "../../../services/VocabularyService";
 import { Link, MinorText } from "../../ui";
 import { useEntryContext } from "../Context";
 import { createElements, Refs } from "../Elements";

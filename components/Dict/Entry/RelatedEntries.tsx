@@ -1,8 +1,8 @@
-import React from "react";
 import type {
   ResolvedEntryRefModel,
   SubentryTypeEnum,
-} from "../../../services/VocabularyService";
+} from "@services/VocabularyService";
+import React from "react";
 import { RelatedEntryGroup } from "./RelatedEntryGroup";
 
 type RelatedEntriesProps = {

@@ -1,13 +1,10 @@
+import { AbsoluteLoadingProgress } from "@components/ui";
+import { SEO_DESCRIPTION, SITE_NAME } from "@services/constants";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import React from "react";
 import "tailwindcss/tailwind.css";
-import { AbsoluteLoadingProgress } from "../components/ui";
 import "./scrollbar.css";
-
-export const SITE_NAME = "日本語先生";
-const SEO_DESCRIPTION =
-  "Japanisch-Deutsches Wörterbuch basierend auf wadoku.de Daten";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (

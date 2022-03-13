@@ -1,6 +1,6 @@
+import type { SenseModel } from "@services/VocabularyService";
 import clsx from "clsx";
 import React from "react";
-import type { SenseModel } from "../../../services/VocabularyService";
 import styles from "./SenseEntries.module.css";
 import { SenseGroup } from "./SenseGroup";
 

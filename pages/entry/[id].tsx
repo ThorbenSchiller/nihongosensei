@@ -1,22 +1,22 @@
-import { GetServerSideProps } from "next";
-import Head from "next/head";
-import React from "react";
 import {
   ContentWrapper,
   EntryFull,
+  JlptBadge,
   RelatedEntries,
   Synonyms,
-} from "../../components/Dict";
-import { JlptBadge } from "../../components/Dict/Entry/JlptBadge";
-import { addCachingHeader } from "../../helper/addCachingHeader";
+} from "@components/Dict";
+import { addCachingHeader } from "@helper";
+import { SITE_NAME } from "@services/constants";
 import {
   EntryWrapperModel,
   findById,
   findByIds,
   findMainRefsByTargetId,
   ResolvedEntryRefModel,
-} from "../../services/VocabularyService";
-import { SITE_NAME } from "../_app";
+} from "@services/VocabularyService";
+import { GetServerSideProps } from "next";
+import Head from "next/head";
+import React from "react";
 
 type EntryDetailPageProps = {
   entry: EntryWrapperModel;

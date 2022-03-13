@@ -1,5 +1,5 @@
+import type { FuriganaModel } from "@services/FuriganaService";
 import React, { HTMLProps, memo } from "react";
-import type { FuriganaModel } from "../../../services/FuriganaService";
 import { Invisible } from "../../ui";
 import { Furigana } from "../Furigana";
 

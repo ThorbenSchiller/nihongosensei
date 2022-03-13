@@ -1,8 +1,5 @@
+import { findByJlpt, parsePaginationParams } from "@services/VocabularyService";
 import type { NextApiRequest, NextApiResponse } from "next";
-import {
-  findByJlpt,
-  parsePaginationParams,
-} from "../../../../services/VocabularyService";
 
 export default async function handleEntryById(
   { query, method }: NextApiRequest,

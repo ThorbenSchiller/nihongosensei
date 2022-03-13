@@ -1,9 +1,9 @@
+import { Search } from "@components/Search";
+import { Footer, Link, Logo } from "@components/ui";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import RouterLink from "next/link";
 import React from "react";
-import { Search } from "../components/Search";
-import { Footer, Link, Logo } from "../components/ui";
 
 export default function Home(): JSX.Element | null {
   return (

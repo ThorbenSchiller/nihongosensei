@@ -1,5 +1,5 @@
+import type { ForeignModel } from "@services/VocabularyService";
 import React from "react";
-import type { ForeignModel } from "../../../services/VocabularyService";
 import { setKeyProperty } from "../helper";
 import { isDefined } from "./helper/guards";
 import { mapElement } from "./helper/mapElement";

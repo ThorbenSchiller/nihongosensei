@@ -1,5 +1,5 @@
+import type { DescrModel } from "@services/VocabularyService";
 import React from "react";
-import type { DescrModel } from "../../../services/VocabularyService";
 import { MinorText } from "../../ui";
 import styles from "./Descr.module.css";
 import { createElements } from "./helper/createElements";

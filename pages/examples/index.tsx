@@ -1,9 +1,9 @@
+import { ContentWrapper, EntryFull } from "@components/Dict";
+import { SITE_NAME } from "@services/constants";
+import { EntryWrapperModel, findByIds } from "@services/VocabularyService";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import React from "react";
-import { ContentWrapper, EntryFull } from "../../components/Dict";
-import { EntryWrapperModel, findByIds } from "../../services/VocabularyService";
-import { SITE_NAME } from "../_app";
 
 type ExamplePageProps = {
   results: EntryWrapperModel[];

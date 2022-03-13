@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
 import type {
   EntryModel,
   EntryWrapperModel,
-} from "../../../services/VocabularyService";
+} from "@services/VocabularyService";
+import React, { useEffect, useState } from "react";
 import { EntryFull } from "../../Dict";
 import { Alert, Button, LoadingProgress } from "../../ui";
 

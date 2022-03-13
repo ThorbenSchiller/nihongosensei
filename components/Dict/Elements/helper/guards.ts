@@ -17,7 +17,7 @@ import type {
   TranslModel,
   TransModel,
   TrModel,
-} from "../../../../services/VocabularyService";
+} from "@services/VocabularyService";
 
 export function isElementProvider(input: unknown): input is ElementProvider {
   return typeof input === "object" && input != null && "_element" in input;

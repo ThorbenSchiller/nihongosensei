@@ -1,5 +1,5 @@
+import type { UsgModel } from "@services/VocabularyService";
 import React from "react";
-import type { UsgModel } from "../../../services/VocabularyService";
 import { Usg } from "../Elements";
 import { joinBy } from "../helper";
 

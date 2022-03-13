@@ -1,5 +1,5 @@
+import type { TitleModel } from "@services/VocabularyService";
 import React from "react";
-import type { TitleModel } from "../../../services/VocabularyService";
 import { createElements } from "./helper/createElements";
 import styles from "./Title.module.css";
 

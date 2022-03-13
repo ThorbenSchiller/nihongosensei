@@ -1,9 +1,6 @@
+import { parseError } from "@helper";
+import { FuriganaModel, FuriganaService } from "@services/FuriganaService";
 import { NextApiRequest, NextApiResponse } from "next";
-import { parseError } from "../../../helper/parseError";
-import {
-  FuriganaModel,
-  FuriganaService,
-} from "../../../services/FuriganaService";
 
 export type FuriganaResponse = {
   furigana: FuriganaModel[];

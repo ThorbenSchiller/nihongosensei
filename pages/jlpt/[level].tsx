@@ -1,18 +1,17 @@
-import { GetServerSideProps } from "next";
-import Head from "next/head";
-import React from "react";
-import { ContentWrapper, EntryListItem } from "../../components/Dict";
-import { Pagination } from "../../components/Pagination";
-import { MinorText } from "../../components/ui";
-import { addCachingHeader } from "../../helper/addCachingHeader";
-import { DEFAULT_LIMIT } from "../../services/constants";
+import { ContentWrapper, EntryListItem } from "@components/Dict";
+import { Pagination } from "@components/Pagination";
+import { MinorText } from "@components/ui";
+import { addCachingHeader } from "@helper";
+import { DEFAULT_LIMIT, SITE_NAME } from "@services/constants";
 import {
   EntryWrapperModel,
   findByJlpt,
   findByJlptCount,
   FindOptions,
-} from "../../services/VocabularyService";
-import { SITE_NAME } from "../_app";
+} from "@services/VocabularyService";
+import { GetServerSideProps } from "next";
+import Head from "next/head";
+import React from "react";
 
 type JlptPageProps = {
   level: number;

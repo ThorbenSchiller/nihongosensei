@@ -1,5 +1,5 @@
+import { FuriganaModel } from "@services/FuriganaService";
 import React, { useCallback } from "react";
-import { FuriganaModel } from "../../../services/FuriganaService";
 import { Ruby } from "../Ruby";
 import { TextareaAutosize } from "./TextareaAutosize";
 

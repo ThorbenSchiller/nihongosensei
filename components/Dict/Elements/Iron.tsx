@@ -1,5 +1,5 @@
+import type { IronModel } from "@services/VocabularyService";
 import React from "react";
-import type { IronModel } from "../../../services/VocabularyService";
 import { createElements } from "./helper/createElements";
 import styles from "./Iron.module.css";
 

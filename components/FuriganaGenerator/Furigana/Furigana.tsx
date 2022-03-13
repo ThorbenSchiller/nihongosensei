@@ -1,5 +1,5 @@
+import type { FuriganaModel } from "@services/FuriganaService";
 import React, { memo, useCallback } from "react";
-import type { FuriganaModel } from "../../../services/FuriganaService";
 
 export type FuriganaProps = {
   onClick?: (model: FuriganaModel) => void;
@@ -18,7 +18,7 @@ function Furigana({ onClick, ...furiganaModel }: FuriganaProps) {
     >
       {/*
         this span seems to be required if the kanji is at the box.
-        the textarea has not line whereas a single span performs a line break.
+        the textarea has no line whereas a single span performs a line break.
        */}
       <span className="relative" lang="ja">
         <span className="opacity-0">{text}</span>

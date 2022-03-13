@@ -1,17 +1,11 @@
+import { EntryContextProvider, EntryFull } from "@components/Dict";
+import { useScrollHeightPostMessage } from "@components/hooks";
+import { addCachingHeader } from "@helper";
+import { SITE_NAME } from "@services/constants";
+import { EntryWrapperModel, findById } from "@services/VocabularyService";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import React from "react";
-import {
-  EntryContextProvider,
-  EntryFull,
-} from "../../../../components/Dict/Entry";
-import { useScrollHeightPostMessage } from "../../../../components/hooks";
-import { addCachingHeader } from "../../../../helper/addCachingHeader";
-import {
-  EntryWrapperModel,
-  findById,
-} from "../../../../services/VocabularyService";
-import { SITE_NAME } from "../../../_app";
 
 type EmbedByIdPage = {
   entry: EntryWrapperModel;

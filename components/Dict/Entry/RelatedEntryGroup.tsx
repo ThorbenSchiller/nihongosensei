@@ -1,8 +1,8 @@
-import React, { Fragment, HTMLProps } from "react";
 import type {
   ResolvedEntryRefModel,
   SubentryTypeEnum,
-} from "../../../services/VocabularyService";
+} from "@services/VocabularyService";
+import React, { Fragment, HTMLProps } from "react";
 import type { EnhancedTypeEnum } from "./RelatedEntries";
 import { RelatedEntry } from "./RelatedEntry";
 

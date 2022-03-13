@@ -1,6 +1,6 @@
+import type { EntryModel } from "@services/VocabularyService";
 import clsx from "clsx";
 import React from "react";
-import type { EntryModel } from "../../../services/VocabularyService";
 import { EntryLink } from "./EntryLink";
 import { SenseEntries } from "./SenseEntries";
 

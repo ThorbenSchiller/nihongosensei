@@ -1,4 +1,3 @@
-import React from "react";
 import type {
   DoushiModel,
   FukushiModel,
@@ -7,7 +6,8 @@ import type {
   KeiyoudoushiModel,
   LevelEnum,
   TransitivityEnum,
-} from "../../../services/VocabularyService";
+} from "@services/VocabularyService";
+import React from "react";
 import { joinBy, setKeyProperty } from "../helper";
 import { isDefined } from "./helper/guards";
 

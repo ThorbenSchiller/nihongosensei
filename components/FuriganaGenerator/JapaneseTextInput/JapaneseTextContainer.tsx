@@ -1,8 +1,8 @@
+import { parseError } from "@helper";
+import type { FuriganaModel } from "@services/FuriganaService";
 import React, { memo, useCallback, useRef, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
-import { parseError } from "../../../helper/parseError";
 import type { FuriganaResponse } from "../../../pages/api/furigana";
-import type { FuriganaModel } from "../../../services/FuriganaService";
 import { useTextSize } from "../../hooks";
 import { Alert, LoadingProgress } from "../../ui";
 import { JapaneseTextControls } from "./JapaneseTextControls";

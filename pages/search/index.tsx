@@ -1,19 +1,17 @@
-import { GetServerSideProps } from "next";
-import Head from "next/head";
-import React from "react";
-import { ContentWrapper, EntryListItem } from "../../components/Dict";
-import { Pagination } from "../../components/Pagination";
-import { Alert, MinorText } from "../../components/ui";
-import { addCachingHeader } from "../../helper/addCachingHeader";
-import { parseError } from "../../helper/parseError";
-import { DEFAULT_LIMIT } from "../../services/constants";
+import { ContentWrapper, EntryListItem } from "@components/Dict";
+import { Pagination } from "@components/Pagination";
+import { Alert, MinorText } from "@components/ui";
+import { addCachingHeader, parseError } from "@helper";
+import { DEFAULT_LIMIT, SITE_NAME } from "@services/constants";
 import {
   EntryWrapperModel,
   findByQuery,
   findByQueryCount,
   FindOptions,
-} from "../../services/VocabularyService";
-import { SITE_NAME } from "../_app";
+} from "@services/VocabularyService";
+import { GetServerSideProps } from "next";
+import Head from "next/head";
+import React from "react";
 
 type SearchPageProps = {
   query: string;
