@@ -2,7 +2,7 @@ import MinusIcon from "@heroicons/react/solid/MinusIcon";
 import PlusIcon from "@heroicons/react/solid/PlusIcon";
 import React from "react";
 
-type JapaneseTextControlsProps = {
+export type JapaneseTextControlsProps = {
   textSize?: number;
   minTextSize?: number;
   maxTextSize?: number;
@@ -23,13 +23,17 @@ export function JapaneseTextControls({
     onTextSizeChange?.(textSize + textSizeStep);
 
   return (
-    <div className="sticky border-b border-gray-300 dark:border-gray-700 p-3">
+    <div
+      className="sticky border-b border-gray-300 dark:border-gray-700 p-3"
+      data-testid="text-controls"
+    >
       <div className="border border-gray-300 dark:border-gray-700 rounded inline-block">
         <button
           onClick={decreaseTextSizeHandler}
           disabled={textSize - textSizeStep < minTextSize}
           className="py-2 px-3"
           aria-label="Decrease Font Size"
+          data-testid="text-controls-decrease-text-size"
         >
           <MinusIcon className="w-4 h-4" />
         </button>
@@ -39,6 +43,7 @@ export function JapaneseTextControls({
           disabled={textSize + textSizeStep > maxTextSize}
           className="py-2 px-3"
           aria-label="Increase Font Size"
+          data-testid="text-controls-increase-text-size"
         >
           <PlusIcon className="w-4 h-4" />
         </button>

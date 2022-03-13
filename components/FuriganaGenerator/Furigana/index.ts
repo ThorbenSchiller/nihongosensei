@@ -1,1 +1,1 @@
-export { default as Furigana } from "./Furigana";
+export * from "./Furigana";

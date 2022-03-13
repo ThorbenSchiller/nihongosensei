@@ -1,1 +1,1 @@
-export { default as Ruby } from "./Ruby";
+export * from "./Ruby";

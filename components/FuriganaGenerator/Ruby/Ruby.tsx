@@ -1,7 +1,6 @@
+import { RubyEntry } from "@components/FuriganaGenerator/Ruby/RubyEntry";
 import type { FuriganaModel } from "@services/FuriganaService";
-import React, { HTMLProps, memo } from "react";
-import { Invisible } from "../../ui";
-import { Furigana } from "../Furigana";
+import React, { HTMLProps } from "react";
 
 export type RubyProps = {
   /**
@@ -17,24 +16,16 @@ export type RubyProps = {
   onClick?: (model: FuriganaModel) => void;
 } & Omit<HTMLProps<HTMLSpanElement>, "onClick">;
 
-function Ruby({ furigana, onClick, ...rest }: RubyProps): JSX.Element {
+export function Ruby({ furigana, onClick, ...rest }: RubyProps): JSX.Element {
   return (
-    <span {...rest}>
-      {furigana.map((furiganaEntry, index) => {
-        return furiganaEntry.reading ? (
-          <Furigana
-            key={`ruby-${index}`}
-            onClick={onClick}
-            {...furiganaEntry}
-          />
-        ) : (
-          <Invisible key={`invisible-${index}`} lang="ja">
-            {furiganaEntry.text}
-          </Invisible>
-        );
-      })}
+    <span {...rest} data-testid="ruby">
+      {furigana.map((furiganaEntry, index) => (
+        <RubyEntry
+          key={`ruby-${furiganaEntry.text}-${index}`}
+          onClick={onClick}
+          {...furiganaEntry}
+        />
+      ))}
     </span>
   );
 }
-
-export default memo(Ruby);

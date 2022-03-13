@@ -1,1 +1,1 @@
-export { default as Invisible } from "./Invisible";
+export * from "./Invisible";
