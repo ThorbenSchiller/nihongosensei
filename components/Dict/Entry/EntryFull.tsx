@@ -1,7 +1,7 @@
+import { MinorText } from "@components/ui";
 import type { EntryModel } from "@services/VocabularyService";
 import clsx from "clsx";
 import React, { memo } from "react";
-import { MinorText } from "../../ui";
 import { createElements, GramGrp, Refs } from "../Elements";
 import { EntryText } from "./EntryText";
 import { OtherReadings } from "./OtherReadings";

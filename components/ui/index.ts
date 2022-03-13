@@ -8,4 +8,5 @@ export * from "./Invisible";
 export * from "./Link";
 export * from "./LoadingProgress";
 export * from "./Logo";
+export * from "./Search";
 export * from "./Typography";

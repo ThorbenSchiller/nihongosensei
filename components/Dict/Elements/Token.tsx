@@ -1,6 +1,6 @@
+import { MinorText } from "@components/ui";
 import type { TokenModel } from "@services/VocabularyService";
 import React from "react";
-import { MinorText } from "../../ui";
 
 export function Token({
   content,

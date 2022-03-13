@@ -1,6 +1,5 @@
-import { Search } from "@components/Search";
-import { Footer, Link, Logo } from "@components/ui";
-import { GetStaticProps } from "next";
+import { Footer, Link, Logo, Search } from "@components/ui";
+import type { GetStaticProps } from "next";
 import Head from "next/head";
 import RouterLink from "next/link";
 import React from "react";

@@ -1,10 +1,10 @@
+import { EntryFull } from "@components/Dict";
+import { Alert, Button, LoadingProgress } from "@components/ui";
 import type {
   EntryModel,
   EntryWrapperModel,
 } from "@services/VocabularyService";
 import React, { useEffect, useState } from "react";
-import { EntryFull } from "../../Dict";
-import { Alert, Button, LoadingProgress } from "../../ui";
 
 type VocabularyProps = {
   text: string;

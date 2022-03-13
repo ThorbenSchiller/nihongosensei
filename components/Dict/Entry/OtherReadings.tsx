@@ -1,6 +1,6 @@
+import { MinorText } from "@components/ui";
 import type { OrthModel, OrthTypes } from "@services/VocabularyService";
 import React from "react";
-import { MinorText } from "../../ui";
 import styles from "./OtherReadings.module.css";
 import { PreferredText } from "./PreferredText";
 

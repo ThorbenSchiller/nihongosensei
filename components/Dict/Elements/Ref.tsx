@@ -1,7 +1,7 @@
+import { Link } from "@components/ui";
 import type { RefModel, RefTypeEnum } from "@services/VocabularyService";
 import RouterLink from "next/link";
 import React from "react";
-import { Link } from "../../ui";
 import { useEntryContext } from "../Context";
 
 const TYPE_MAP: Record<RefTypeEnum, string> = {

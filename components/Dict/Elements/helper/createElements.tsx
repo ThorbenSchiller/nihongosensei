@@ -1,5 +1,5 @@
+import { MinorText } from "@components/ui";
 import React from "react";
-import { MinorText } from "../../../ui";
 import { setKeyProperty } from "../../helper";
 import { isDef, isExpl, isTrans } from "./guards";
 import { mapElement } from "./mapElement";

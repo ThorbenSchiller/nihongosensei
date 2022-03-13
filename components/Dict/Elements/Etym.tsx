@@ -1,6 +1,6 @@
+import { MinorText } from "@components/ui";
 import { EtymModel } from "@services/VocabularyService";
 import React from "react";
-import { MinorText } from "../../ui";
 import { createElements } from "./helper/createElements";
 import { Ref } from "./Ref";
 

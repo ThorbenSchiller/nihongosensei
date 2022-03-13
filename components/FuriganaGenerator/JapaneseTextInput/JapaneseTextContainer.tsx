@@ -1,10 +1,10 @@
+import { useTextSize } from "@components/hooks";
+import { Alert, LoadingProgress } from "@components/ui";
 import { parseError } from "@helper";
 import type { FuriganaModel } from "@services/FuriganaService";
 import React, { memo, useCallback, useRef, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import type { FuriganaResponse } from "../../../pages/api/furigana";
-import { useTextSize } from "../../hooks";
-import { Alert, LoadingProgress } from "../../ui";
 import { JapaneseTextControls } from "./JapaneseTextControls";
 import { JapaneseTextInput, JapaneseTextInputProps } from "./JapaneseTextInput";
 

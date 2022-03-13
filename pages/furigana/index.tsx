@@ -1,3 +1,7 @@
+import {
+  JapaneseTextContainer,
+  VocabularyContainer,
+} from "@components/FuriganaGenerator";
 import { Grid, Link, Logo } from "@components/ui";
 import { SITE_NAME } from "@services/constants";
 import { FuriganaModel, FuriganaService } from "@services/FuriganaService";
@@ -5,10 +9,6 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import RouterLink from "next/link";
 import React, { useCallback, useState } from "react";
-import {
-  JapaneseTextContainer,
-  VocabularyContainer,
-} from "../../components/FuriganaGenerator";
 
 type FuriganaIndexProps = {
   text: string | null;
