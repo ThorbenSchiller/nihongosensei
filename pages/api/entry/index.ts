@@ -1,7 +1,5 @@
-import {
-  findByQuery,
-  parsePaginationParams,
-} from "@services/VocabularyService";
+import { parsePaginationParams } from "@services/DatabaseService";
+import { findByQuery } from "@services/VocabularyService";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handleEntry(

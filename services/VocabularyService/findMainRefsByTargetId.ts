@@ -1,4 +1,4 @@
-import { execute } from "./connection";
+import { execute } from "@services/DatabaseService";
 import type { ResolvedEntryRefModel } from "./Model";
 
 /**

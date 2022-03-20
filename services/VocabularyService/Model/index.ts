@@ -1,2 +1,2 @@
 export * from "./EntryModel";
-export * from "./FindOptions";
+export * from "./VocabularyFindOptions";

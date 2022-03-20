@@ -1,12 +1,11 @@
-import { DEFAULT_LIMIT, MAX_LIMIT } from "../constants";
-import { execute } from "./connection";
-import type { EntryWrapperModel, FindOptions } from "./Model";
+import { execute, FindOptions } from "@services/DatabaseService";
+import { MAX_LIMIT } from "../constants";
+import type { EntryWrapperModel } from "./Model";
 
-export async function list(
-  options: FindOptions = {}
-): Promise<EntryWrapperModel[]> {
-  const { limit = DEFAULT_LIMIT, offset = 0 } = options;
-
+export async function list({
+  limit,
+  offset,
+}: FindOptions): Promise<EntryWrapperModel[]> {
   return execute<EntryWrapperModel>(`SELECT entry_json FROM entry LIMIT ?, ?`, [
     offset.toString(),
     Math.min(limit, MAX_LIMIT).toString(),

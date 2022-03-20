@@ -1,5 +1,6 @@
-export type EntryWrapperModel = {
-  id: number;
+import { IDProviderModel } from "@services/DatabaseService";
+
+export type EntryWrapperModel = IDProviderModel & {
   entry_json: EntryModel;
   jlpt: number | null;
   lastchange: Date;

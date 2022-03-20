@@ -16,29 +16,38 @@ describe("parsePaginationParams", () => {
     const params = {
       limit: ["5"],
     };
-    const paginationParams = parsePaginationParams(params);
+    const paginationParams = parsePaginationParams(params, {
+      limit: 15,
+      offset: 0,
+    });
 
     expect(paginationParams.limit).toEqual(5);
-    expect(paginationParams.offset).toBeUndefined();
+    expect(paginationParams.offset).toEqual(0);
   });
 
   it("should parse correctly if limit is not a number", () => {
     const params = {
       limit: "foo",
     };
-    const paginationParams = parsePaginationParams(params);
+    const paginationParams = parsePaginationParams(params, {
+      limit: 15,
+      offset: 0,
+    });
 
-    expect(paginationParams.limit).toBeUndefined();
-    expect(paginationParams.offset).toBeUndefined();
+    expect(paginationParams.limit).toEqual(15);
+    expect(paginationParams.offset).toEqual(0);
   });
 
   it("should parse correctly if only limit is present", () => {
     const params = {
       limit: "5",
     };
-    const paginationParams = parsePaginationParams(params);
+    const paginationParams = parsePaginationParams(params, {
+      limit: 15,
+      offset: 0,
+    });
 
     expect(paginationParams.limit).toEqual(5);
-    expect(paginationParams.offset).toBeUndefined();
+    expect(paginationParams.offset).toEqual(0);
   });
 });

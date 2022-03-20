@@ -1,6 +1,6 @@
+import { execute } from "@services/DatabaseService";
 import { DEFAULT_LIMIT, MAX_LIMIT } from "../constants";
-import { execute } from "./connection";
-import type { EntryWrapperModel, FindOptions } from "./Model";
+import type { EntryWrapperModel } from "./Model";
 
 const FIND_ENTRIES_QUERY = `
     SELECT entry.*
@@ -30,10 +30,8 @@ const COUNT_ENTRIES_QUERY = `
 
 export async function findByQuery(
   query: string,
-  options: FindOptions = {}
+  { limit = DEFAULT_LIMIT, offset = 0 }
 ): Promise<EntryWrapperModel[]> {
-  const { limit = DEFAULT_LIMIT, offset = 0 } = options;
-
   return execute<EntryWrapperModel>(
     FIND_ENTRIES_QUERY,
     // parameters seem to be strings, even for limit @see https://github.com/sidorares/node-mysql2/issues/1239

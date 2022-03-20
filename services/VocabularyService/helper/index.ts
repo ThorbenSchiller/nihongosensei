@@ -1,1 +1,1 @@
-export * from "./parsePaginationParams";
+export * from "./transformOptionsToQuery";

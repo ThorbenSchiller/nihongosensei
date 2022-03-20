@@ -45,7 +45,7 @@ export type Executor = typeof execute;
  */
 export async function execute<T>(
   query: string,
-  binds: ReadonlyArray<string | number>
+  binds: ReadonlyArray<string | number | boolean>
 ): Promise<T[]> {
   const [rows] = await getConnectionPool().promise().execute(query, binds);
 
