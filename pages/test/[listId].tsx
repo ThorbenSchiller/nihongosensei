@@ -1,3 +1,4 @@
+import { ContentWrapper } from "@components/Dict";
 import { TestWrapper } from "@components/Test";
 import { Alert, FlashcardsContainer } from "@components/ui";
 import { parseError } from "@helper";
@@ -28,12 +29,21 @@ export default function TestPage({
       </Head>
       <TestWrapper>
         {error && (
-          <Alert type="error">
-            <p>Der Test konnte nicht geladen werden:</p>
-            <code>{error}</code>
-          </Alert>
+          <ContentWrapper>
+            <Alert type="error">
+              <p>Der Test konnte nicht geladen werden:</p>
+              <code>{error}</code>
+            </Alert>
+          </ContentWrapper>
         )}
-        {entries && list && (
+        {entries?.length === 0 && (
+          <ContentWrapper>
+            <Alert type="info">
+              <p>Diese Liste ist leer</p>
+            </Alert>
+          </ContentWrapper>
+        )}
+        {entries && entries.length > 0 && list && (
           <FlashcardsContainer
             list={list}
             entries={entries.map(({ entry_json }) => entry_json)}
