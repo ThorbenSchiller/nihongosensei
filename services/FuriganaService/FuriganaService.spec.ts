@@ -15,6 +15,7 @@ describe("FuriganaService", () => {
     );
 
     expect(furiganaService.isInitialized()).toEqual(false);
+    expect(analyzerFactoryMock).toBeCalledTimes(0);
   });
 
   it("should pass the correct text value to the analyzer", async () => {
