@@ -19,7 +19,7 @@ const DEFAULT_ANALYZER_FACTORY: () => KuromojiAnalyzer = () =>
   new KuromojiAnalyzer();
 
 /**
- * Services for converting a given text into a {@link FuriganaModel}.
+ * Service for converting a given text into a {@link FuriganaModel}.
  */
 export class FuriganaService {
   private initialized = false;

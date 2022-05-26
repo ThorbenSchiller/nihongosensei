@@ -1,6 +1,6 @@
+import { MAX_LIMIT } from "@services/constants";
 import { execute, FindOptions } from "@services/DatabaseService";
-import { transformOptionsToQuery } from "@services/VocabularyService/helper";
-import { MAX_LIMIT } from "../constants";
+import { transformOptionsToQuery } from "./helper";
 import type { EntryWrapperModel, VocabularyFindOptions } from "./Model";
 
 export async function findBy({

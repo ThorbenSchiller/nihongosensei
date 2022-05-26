@@ -1,6 +1,6 @@
 import { DEFAULT_LIMIT } from "@services/constants";
 import { ParsedUrlQuery } from "querystring";
-import { FindOptions } from "../Model";
+import type { FindOptions } from "../Model";
 
 const DEFAULT_OPTIONS: FindOptions = {
   offset: 0,

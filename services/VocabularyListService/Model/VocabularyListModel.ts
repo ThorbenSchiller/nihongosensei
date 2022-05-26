@@ -1,4 +1,4 @@
-import { IDProviderModel } from "@services/DatabaseService";
+import type { IDProviderModel } from "@services/DatabaseService";
 
 export type VocabularyListModel = IDProviderModel & {
   name: string;

@@ -1,5 +1,5 @@
+import { MAX_LIMIT } from "@services/constants";
 import { execute, FindOptions } from "@services/DatabaseService";
-import { MAX_LIMIT } from "../constants";
 import type { EntryWrapperModel } from "./Model";
 
 export async function list({

@@ -1,4 +1,4 @@
-import { VocabularyFindOptions } from "../Model";
+import type { VocabularyFindOptions } from "../Model";
 
 export function transformOptionsToQuery(options: VocabularyFindOptions): {
   where: string;

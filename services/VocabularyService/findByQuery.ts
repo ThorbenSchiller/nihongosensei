@@ -1,5 +1,5 @@
+import { DEFAULT_LIMIT, MAX_LIMIT } from "@services/constants";
 import { execute } from "@services/DatabaseService";
-import { DEFAULT_LIMIT, MAX_LIMIT } from "../constants";
 import type { EntryWrapperModel } from "./Model";
 
 const FIND_ENTRIES_QUERY = `
