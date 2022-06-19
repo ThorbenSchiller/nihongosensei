@@ -63,6 +63,13 @@ export const getServerSideProps: GetServerSideProps<SearchPageProps> = async ({
 
   try {
     list = await findById(Number(listIdString));
+
+    if (!list) {
+      return {
+        notFound: true,
+      };
+    }
+
     entries = await findByIds(list.entryIds);
   } catch (e) {
     console.log(e);
