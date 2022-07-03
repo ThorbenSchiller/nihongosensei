@@ -2,7 +2,7 @@ import { useTextSize } from "@components/hooks";
 import { Alert, LoadingProgress } from "@components/ui";
 import { parseError } from "@helper";
 import type { FuriganaModel } from "@services/FuriganaService";
-import React, { memo, useCallback, useRef, useState } from "react";
+import { memo, useCallback, useRef, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import type { FuriganaResponse } from "../../../pages/api/furigana";
 import { JapaneseTextControls } from "./JapaneseTextControls";
@@ -55,20 +55,21 @@ function JapaneseTextContainer({
       .finally(() => setLoading(false));
   }, debounceDelayInMs);
 
-  const changeHandler: JapaneseTextInputProps["onChange"] = useCallback(
-    (value) => {
-      setValue(value);
+  const changeHandler: NonNullable<JapaneseTextInputProps["onChange"]> =
+    useCallback(
+      (value) => {
+        setValue(value);
 
-      const newValue = value.trim();
-      if (lastValue.current === newValue) {
-        return;
-      }
+        const newValue = value.trim();
+        if (lastValue.current === newValue) {
+          return;
+        }
 
-      lastValue.current = newValue;
-      convertHandler(newValue);
-    },
-    [convertHandler]
-  );
+        lastValue.current = newValue;
+        convertHandler(newValue);
+      },
+      [convertHandler]
+    );
 
   return (
     <div

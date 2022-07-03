@@ -1,5 +1,4 @@
 import { MinorText } from "@components/ui";
-import React from "react";
 import { setKeyProperty } from "../../helper";
 import { isDef, isExpl, isTrans } from "./guards";
 import { mapElement } from "./mapElement";
@@ -14,7 +13,7 @@ function isExplOrDef(input: unknown) {
 
 export function createElements<T>(
   elements: ReadonlyArray<ElementType<T>>
-): ElementType<T>[] {
+): JSX.Element[] | null {
   const created: JSX.Element[] = [];
 
   let carry: JSX.Element[] | undefined = undefined;

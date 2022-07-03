@@ -1,11 +1,5 @@
 import { useRouter } from "next/router";
-import React, {
-  FormEvent,
-  HTMLProps,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import { FormEvent, HTMLProps, useCallback, useEffect, useState } from "react";
 
 type SearchProps = Pick<HTMLProps<HTMLFormElement>, "className" | "style"> &
   Pick<HTMLProps<HTMLInputElement>, "autoFocus">;
@@ -26,7 +20,8 @@ export function Search({ autoFocus, ...formProps }: SearchProps): JSX.Element {
     },
     [router, value]
   );
-  const handleChange = useCallback((e) => setValue(e.currentTarget.value), []);
+  const handleChange: NonNullable<HTMLProps<HTMLInputElement>["onChange"]> =
+    useCallback((e) => setValue(e.currentTarget.value), []);
 
   useEffect(() => {
     setValue(defaultValue);

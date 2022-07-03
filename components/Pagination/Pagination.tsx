@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useRouter } from "next/router";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 
 type PaginationProps = {
@@ -19,18 +19,19 @@ export function Pagination({
   const router = useRouter();
   const currentPage = offset / limit;
   const pageCount = Math.ceil(count / limit);
-  const handlePageChange: ReactPaginateProps["onPageChange"] = useCallback(
-    ({ selected }) => {
-      router.push({
-        query: {
-          ...router.query,
-          offset: selected * limit,
-          limit,
-        },
-      });
-    },
-    [router, limit]
-  );
+  const handlePageChange: NonNullable<ReactPaginateProps["onPageChange"]> =
+    useCallback(
+      ({ selected }) => {
+        router.push({
+          query: {
+            ...router.query,
+            offset: selected * limit,
+            limit,
+          },
+        });
+      },
+      [router, limit]
+    );
 
   return (
     <ReactPaginate
