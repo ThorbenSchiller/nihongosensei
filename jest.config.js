@@ -6,6 +6,7 @@ const createJestConfig = nextJest({
 });
 
 module.exports = createJestConfig({
+  reactStrictMode: true,
   moduleDirectories: ["node_modules", "<rootDir>/"],
   testEnvironment: "jest-environment-jsdom",
   moduleNameMapper: {
