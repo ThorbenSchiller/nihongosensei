@@ -1,8 +1,6 @@
 import { Link, LinkProps } from "@components/ui";
 import type { EntryModel } from "@services/VocabularyService";
-import RouterLink from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
 import { useEntryContext } from "../Context";
 import { EntryText } from "./EntryText";
 
@@ -23,18 +21,17 @@ export function EntryLink({
   const { detailBasePath } = useEntryContext();
 
   return (
-    <RouterLink
+    <Link
       href={{
         pathname: `${detailBasePath}/${entry.id}`,
         query: {
           q: query.q,
         },
       }}
-      passHref={true}
+      className={className}
+      color={color}
     >
-      <Link className={className} color={color}>
-        <EntryText orth={orth} />
-      </Link>
-    </RouterLink>
+      <EntryText orth={orth} />
+    </Link>
   );
 }

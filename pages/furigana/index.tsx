@@ -7,8 +7,7 @@ import { SITE_NAME } from "@services/constants";
 import { FuriganaModel, FuriganaService } from "@services/FuriganaService";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import RouterLink from "next/link";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 type FuriganaIndexProps = {
   text: string | null;
@@ -37,11 +36,9 @@ export default function FuriganaIndex({
         <meta name="description" content="Einfacher Generator für Furigana." />
       </Head>
       <Grid>
-        <RouterLink href="/" passHref={true}>
-          <Link color="text" style={{ gridArea: "header" }}>
-            <Logo text="Furigana Generator" />
-          </Link>
-        </RouterLink>
+        <Link href="/" color="text" style={{ gridArea: "header" }}>
+          <Logo text="Furigana Generator" />
+        </Link>
         <JapaneseTextContainer
           onRubyClick={handleRubyClick}
           defaultValue={text}

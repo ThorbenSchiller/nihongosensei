@@ -1,9 +1,8 @@
 import { Link, MinorText } from "@components/ui";
 import type { EntryModel } from "@services/VocabularyService";
 import clsx from "clsx";
-import RouterLink from "next/link";
 import { useRouter } from "next/router";
-import React, { memo } from "react";
+import { memo } from "react";
 import { useEntryContext } from "../Context";
 import { createElements, Refs } from "../Elements";
 import { EntryText } from "./EntryText";
@@ -35,19 +34,19 @@ export const EntryListItem = memo(function EntryListItem({
       )}
     >
       <div className="mb-1">
-        <RouterLink
+        <Link
           href={{
             pathname: `${detailBasePath}/${entry.id}`,
             query: {
               q: query.q,
             },
           }}
-          passHref={true}
+          lang="ja"
+          color="text"
+          className="text-xl"
         >
-          <Link lang="ja" color="text" className="text-xl">
-            <EntryText orth={orth} />
-          </Link>
-        </RouterLink>
+          <EntryText orth={orth} />
+        </Link>
         <MinorText lang="ja" className="ml-2">
           <Reading reading={reading.hatsuon} />
         </MinorText>

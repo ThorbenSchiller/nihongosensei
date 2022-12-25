@@ -1,7 +1,5 @@
 import { Link } from "@components/ui";
 import type { RefModel, RefTypeEnum } from "@services/VocabularyService";
-import RouterLink from "next/link";
-import React from "react";
 import { useEntryContext } from "../Context";
 
 const TYPE_MAP: Record<RefTypeEnum, string> = {
@@ -27,10 +25,8 @@ export function Ref({
   const { detailBasePath } = useEntryContext();
 
   return (
-    <RouterLink href={`${detailBasePath}/${id}`} passHref={true}>
-      <Link className={className}>
-        {TYPE_MAP[type]} {transcr && <i>{transcr.content.join(", ")}</i>} {jap}
-      </Link>
-    </RouterLink>
+    <Link href={`${detailBasePath}/${id}`} className={className}>
+      {TYPE_MAP[type]} {transcr && <i>{transcr.content.join(", ")}</i>} {jap}
+    </Link>
   );
 }
