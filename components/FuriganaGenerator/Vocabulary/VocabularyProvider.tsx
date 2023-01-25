@@ -1,10 +1,11 @@
 import { EntryFull } from "@components/Dict";
 import { Alert, Button, LoadingProgress } from "@components/ui";
+import ExternalIcon from "@heroicons/react/24/solid/ArrowTopRightOnSquareIcon";
 import type {
   EntryModel,
   EntryWrapperModel,
 } from "@services/VocabularyService";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 type VocabularyProps = {
   text: string;
@@ -47,8 +48,15 @@ export function VocabularyProvider({
             entry={entry}
             className="mb-4 p-4 border border-gray-300 dark:border-gray-700 rounded"
           />
-          <Button as="a" href={`/entry/${entry.id}`} target="_blank">
+          <Button
+            as="a"
+            href={`/entry/${entry.id}`}
+            variant="default"
+            target="_blank"
+            className="inline-flex items-center"
+          >
             Im Wörterbuch anzeigen
+            <ExternalIcon className="ml-1 w-4 h-4" />
           </Button>
         </>
       )}
