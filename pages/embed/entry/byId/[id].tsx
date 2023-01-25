@@ -5,7 +5,6 @@ import { SITE_NAME } from "@services/constants";
 import { EntryWrapperModel, findById } from "@services/VocabularyService";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import React from "react";
 
 type EmbedByIdPage = {
   entry: EntryWrapperModel;
@@ -16,12 +15,12 @@ export default function EmbedByIdPage({
 }: EmbedByIdPage): JSX.Element {
   useScrollHeightPostMessage();
 
+  const title = `${entry_json.form.orth[0]?.value} - ${SITE_NAME}`;
+
   return (
     <>
       <Head>
-        <title>
-          {entry_json.form.orth[0]?.value} - {SITE_NAME}
-        </title>
+        <title>{title}</title>
       </Head>
       <EntryContextProvider detailBasePath="/embed/entry/byId">
         <EntryFull entry={entry_json} />

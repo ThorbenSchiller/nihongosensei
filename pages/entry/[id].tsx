@@ -28,12 +28,12 @@ export default function EntryDetailPage({
   synonyms,
   relatedEntries,
 }: EntryDetailPageProps): JSX.Element {
+  const title = `${entry_json.form.orth[0]?.value} - ${SITE_NAME}`;
+
   return (
     <>
       <Head>
-        <title>
-          {entry_json.form.orth[0]?.value} - {SITE_NAME}
-        </title>
+        <title>{title}</title>
       </Head>
       <ContentWrapper>
         <EntryFull entry={entry_json} />
