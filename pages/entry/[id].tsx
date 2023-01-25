@@ -16,7 +16,6 @@ import {
 } from "@services/VocabularyService";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import React from "react";
 
 type EntryDetailPageProps = {
   entry: EntryWrapperModel;
@@ -39,7 +38,7 @@ export default function EntryDetailPage({
       <ContentWrapper>
         <EntryFull entry={entry_json} />
         {jlpt && (
-          <div className="mt-2">
+          <div className="my-2">
             <JlptBadge level={jlpt} />
           </div>
         )}
