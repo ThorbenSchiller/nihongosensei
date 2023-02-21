@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
+    "@socialgouv/matomo-next": "^1.6.1",
     "clsx": "^1.2.1",
     "kuroshiro-analyzer-kuromoji": "^1.1.0",
     "mysql2": "^3.0.1",
