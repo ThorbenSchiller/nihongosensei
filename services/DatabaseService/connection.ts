@@ -1,4 +1,4 @@
-import mysql, { Pool } from "mysql2";
+import mysql, { Pool } from "mysql2/promise";
 
 /**
  * Establishes a database connection.
@@ -47,7 +47,7 @@ export async function execute<T>(
   query: string,
   binds: ReadonlyArray<string | number | boolean>
 ): Promise<T[]> {
-  const [rows] = await getConnectionPool().promise().execute(query, binds);
+  const [rows] = await getConnectionPool().execute(query, binds);
 
   if (Array.isArray(rows)) {
     // XXX: mysql2 objects are not serializable by nextjs, so use this for a quick solution
