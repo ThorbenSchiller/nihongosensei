@@ -10,7 +10,6 @@ export type KuroshiroNotation = {
   token: IpadicFeatures;
 };
 
-export interface KuroshiroAnalzyer {
-  init(): Promise<void>;
+export interface KuroshioAnalyzer {
   parse(text: string): Promise<IpadicFeatures[]>;
 }

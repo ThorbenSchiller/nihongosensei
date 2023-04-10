@@ -1,5 +1,5 @@
 import { IpadicFeatures } from "kuromoji";
-import { KuroshiroAnalzyer, KuroshiroNotation, StringType } from "./types";
+import { KuroshioAnalyzer, KuroshiroNotation, StringType } from "./types";
 import {
   getStrType,
   isKanji,
@@ -13,31 +13,9 @@ import {
  * Kuroshiro Class
  */
 export class Kuroshiro {
-  private analyzer?: KuroshiroAnalzyer;
-
-  /**
-   * Initialize Kuroshiro.
-   */
-  async init(analyzer: KuroshiroAnalzyer): Promise<void> {
-    if (
-      !analyzer ||
-      typeof analyzer !== "object" ||
-      typeof analyzer.init !== "function" ||
-      typeof analyzer.parse !== "function"
-    ) {
-      throw new Error("Invalid initialization parameter.");
-    } else if (this.analyzer == null) {
-      await analyzer.init();
-      this.analyzer = analyzer;
-    } else {
-      throw new Error("Kuroshiro has already been initialized.");
-    }
-  }
+  public constructor(private readonly analyzer: KuroshioAnalyzer) {}
 
   async convert(str: string): Promise<KuroshiroNotation[]> {
-    if (!this.analyzer) {
-      throw new Error("no analyzer available");
-    }
     if (!str.trim()) {
       return [];
     }
