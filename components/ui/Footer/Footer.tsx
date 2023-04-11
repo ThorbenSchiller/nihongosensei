@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import React from "react";
 import { Link } from "../Link";
 import { MinorText } from "../Typography";
 
@@ -30,7 +29,14 @@ export function Footer({ className }: FooterProps): JSX.Element {
       >
         Lizenzbedingungen
       </Link>
-      .
+      . Quelltext:{" "}
+      <Link
+        href="https://github.com/ThorbenSchiller/nihongosensei"
+        target="_blank"
+        rel="noreferrer"
+      >
+        github.com
+      </Link>
     </MinorText>
   );
 }
