@@ -7,7 +7,6 @@ import type {
   LevelEnum,
   TransitivityEnum,
 } from "@services/VocabularyService";
-import React from "react";
 import { joinBy, setKeyProperty } from "../helper";
 import { isDefined } from "./helper/guards";
 
@@ -75,12 +74,12 @@ const GOUDAN_MAP: Record<GodanrowEnum, JSX.Element> = {
 };
 
 const LEVEL_MAP: Partial<Record<LevelEnum, JSX.Element | null>> = {
-  "1i": <>1-st.</>, // auf ‑i
-  "1e": <>1-st.</>, // auf ‑e
-  "2i": <>2-st.</>, // auf ‑i bzw. ‑u
-  "2e": <>2-st.</>, // auf ‑e bzw. ‑u
+  "1i": <>1-st. (Ichidan)</>, // auf ‑i
+  "1e": <>1-st. (Ichidan)</>, // auf ‑e
+  "2i": <>2-st. (Nidan)</>, // auf ‑i bzw. ‑u
+  "2e": <>2-st. (Nidan)</>, // auf ‑e bzw. ‑u
   "4": <>4-st.</>,
-  "5": <>5-st.</>,
+  "5": <>5-st. (Godan)</>,
   kuru: null, // unregelm. ... V. auf ka
   suru: null, // auf ‑suru
 };
