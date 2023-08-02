@@ -1,17 +1,17 @@
 import React, { createElement, forwardRef } from "react";
 
-export type BoxProps<E extends React.ElementType = never> = {
+export type BoxProps<E extends React.ElementType> = {
   as?: E;
-} & React.ComponentPropsWithRef<E>;
+} & React.ComponentPropsWithoutRef<E>;
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type BoxComponent<P = {}> = <E extends React.ElementType>(
   props: P & BoxProps<E>
-) => JSX.Element | null;
+) => React.ReactNode | null;
 
 export const Box = forwardRef(function Box<
   E extends React.ElementType = React.ElementType
->({ as, ...rest }: BoxProps<E>, ref: React.Ref<unknown> | undefined) {
+>({ as, ...rest }: BoxProps<E>, ref: React.Ref<unknown>) {
   return createElement(as ?? "span", {
     ...rest,
     ref,

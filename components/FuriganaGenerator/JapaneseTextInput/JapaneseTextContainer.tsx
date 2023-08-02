@@ -25,7 +25,7 @@ async function fetchFurigana(text: string): Promise<FuriganaResponse> {
     throw new Error();
   }
 
-  return response.json();
+  return response.json() as Promise<FuriganaResponse>;
 }
 
 function JapaneseTextContainer({
@@ -44,7 +44,7 @@ function JapaneseTextContainer({
   const [error, setError] = useState<string | null>(defaultError);
   const lastValue = useRef(defaultValue);
 
-  const convertHandler = useDebouncedCallback((value) => {
+  const convertHandler = useDebouncedCallback((value: string) => {
     setLoading(true);
     fetchFurigana(value)
       .then((furiganaResponse: FuriganaResponse) => {

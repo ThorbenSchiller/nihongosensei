@@ -1,4 +1,3 @@
-import React from "react";
 import { setKeyProperty } from "./setKeyProperty";
 
 describe("setKeyProperty", () => {
@@ -6,7 +5,7 @@ describe("setKeyProperty", () => {
     const element = <div />;
     const index = 8;
     const keyRetriever = jest.fn();
-    keyRetriever.mockImplementation((index) => index.toString());
+    keyRetriever.mockImplementation((index: number) => index.toString());
     const setKeyFunction = setKeyProperty(keyRetriever);
 
     const elementWithKey = setKeyFunction(element, index);

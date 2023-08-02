@@ -17,10 +17,23 @@ async function handleFurigana(
 
     return;
   }
-  const input = req.body?.trim();
-  let furigana;
+  const input = req.body as unknown;
+  if (typeof input !== "string") {
+    res.status(400).end();
+
+    return;
+  }
+  const trimmedInput = input.trim();
+
   try {
-    furigana = input ? await furiganaService.getFurigana(input) : null;
+    const furigana = trimmedInput
+      ? await furiganaService.getFurigana(trimmedInput)
+      : null;
+
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).json({
+      furigana,
+    } as FuriganaResponse);
   } catch (e) {
     console.error(e);
 
@@ -28,14 +41,7 @@ async function handleFurigana(
     res.status(500).json({
       error: parseError(e),
     });
-
-    return;
   }
-
-  res.setHeader("Content-Type", "application/json");
-  res.status(200).json({
-    furigana,
-  } as FuriganaResponse);
 }
 
 export default handleFurigana;

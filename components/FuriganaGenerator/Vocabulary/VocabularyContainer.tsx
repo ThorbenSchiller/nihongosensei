@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { VocabularyProvider } from "./VocabularyProvider";
 
@@ -14,7 +14,7 @@ export function VocabularyContainer({
   onChange,
 }: VocabularyContainerProps): JSX.Element {
   const [inputValue, setInputValue] = useState(vocabulary);
-  const changeHandler = useDebouncedCallback((value) => {
+  const changeHandler = useDebouncedCallback((value: string) => {
     onChange?.(value);
   }, 500);
   const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {

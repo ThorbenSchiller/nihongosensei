@@ -11,12 +11,14 @@ export function Search({ autoFocus, ...formProps }: SearchProps): JSX.Element {
   const submitHandler = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      router.push({
-        pathname: "/search",
-        query: {
-          q: value,
-        },
-      });
+      router
+        .push({
+          pathname: "/search",
+          query: {
+            q: value,
+          },
+        })
+        .catch(console.error);
     },
     [router, value]
   );
