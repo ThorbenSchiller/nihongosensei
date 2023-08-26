@@ -461,6 +461,11 @@ export type SubentryTypeEnum =
   // andere Ableitung
   | "OTHER";
 
+export type LiteralModel = {
+  _element: "LiteralType";
+  textAndToken: (TextModel | TokenModel)[];
+};
+
 export type EntryRefModel = {
   target_id: number;
   source_id: number;

@@ -7,6 +7,7 @@ import type {
   FamnModel,
   ForeignModel,
   IronModel,
+  LiteralModel,
   RefModel,
   SpeccharModel,
   TextModel,
@@ -93,4 +94,8 @@ export function isTranslModel(input: unknown): input is TranslModel {
 
 export function isDefined<T>(input: T): input is NonNullable<T> {
   return !!input;
+}
+
+export function isLiteral(input: unknown): input is LiteralModel {
+  return isElementProvider(input) && input._element === "LiteralType";
 }

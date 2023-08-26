@@ -1,3 +1,4 @@
+import { Literal } from "@components/Dict/Elements/Literal";
 import React, { Fragment } from "react";
 import { Bracket } from "../Bracket";
 import { Def } from "../Def";
@@ -12,10 +13,10 @@ import { Text } from "../Text";
 import { Title } from "../Title";
 import { Token } from "../Token";
 import { Topic } from "../Topic";
+import { TrEntry } from "../TrEntry";
 import { Trans } from "../Trans";
 import { Transcr } from "../Transcr";
 import { Transl } from "../Transl";
-import { TrEntry } from "../TrEntry";
 import {
   isBracket,
   isDef,
@@ -24,6 +25,7 @@ import {
   isFamnModel,
   isForeign,
   isIron,
+  isLiteral,
   isRef,
   isSpecchar,
   isText,
@@ -103,6 +105,10 @@ export function mapElement(element: unknown): JSX.Element | null {
 
   if (isTranslModel(element)) {
     return <Transl {...element} />;
+  }
+
+  if (isLiteral(element)) {
+    return <Literal {...element} />;
   }
 
   if (typeof element === "string") {
