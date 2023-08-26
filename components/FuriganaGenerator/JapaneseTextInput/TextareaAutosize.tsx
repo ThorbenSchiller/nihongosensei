@@ -1,4 +1,4 @@
-import React, {
+import {
   CSSProperties,
   FormEvent,
   HTMLProps,
@@ -127,7 +127,7 @@ export function TextareaAutosize(props: TextareaAutosizeProps): JSX.Element {
         if (renders.current === 20) {
           console.error(
             [
-              "Material-UI: Too many re-renders. The layout is unstable.",
+              "Too many re-renders. The layout is unstable.",
               "TextareaAutosize limits the number of renders to prevent an infinite loop.",
             ].join("\n")
           );
