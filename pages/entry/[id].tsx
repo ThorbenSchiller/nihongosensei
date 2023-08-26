@@ -43,7 +43,7 @@ export default function EntryDetailPage({
           </div>
         )}
         <Synonyms
-          className="font-serif text-lg"
+          className="font-serif text-lg mt-2"
           entries={synonyms.map((entry) => entry.entry_json)}
         />
         <RelatedEntries entries={relatedEntries} />
