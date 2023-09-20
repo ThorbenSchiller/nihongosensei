@@ -2,13 +2,17 @@ FROM node:18-alpine
 
 WORKDIR /usr/app
 
-COPY . /usr/app/
+COPY public ./public
+COPY package.json ./package.json
 
-RUN npm install --silent --production --ignore-scripts
+COPY .next/standalone ./
+COPY .next/static ./.next/static
 
 ARG NODE_ENV="production"
 ENV NODE_ENV=${NODE_ENV}
 
+ENV HOSTNAME "0.0.0.0"
+
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["node", "server.js"]

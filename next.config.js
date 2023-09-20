@@ -6,6 +6,7 @@
 const nextConfig = {
   compress: false,
   reactStrictMode: true,
+  output: "standalone",
 };
 
 module.exports = nextConfig;
