@@ -1,5 +1,5 @@
-import { DEFAULT_LIMIT, MAX_LIMIT } from "@services/constants";
 import { execute } from "@services/DatabaseService";
+import { DEFAULT_LIMIT, MAX_LIMIT } from "@services/constants";
 import type { EntryWrapperModel } from "./Model";
 
 const FIND_ENTRIES_QUERY = `
@@ -16,7 +16,7 @@ const FIND_ENTRIES_QUERY = `
     LIMIT ?, ?`;
 
 const COUNT_ENTRIES_QUERY = `
-    SELECT COUNT(e.id) AS count
+    SELECT COUNT(*) AS count
     FROM (
              SELECT entry_id AS id
              FROM entry_map

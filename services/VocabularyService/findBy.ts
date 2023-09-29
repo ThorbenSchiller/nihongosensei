@@ -26,7 +26,7 @@ export async function findByCount(
 ): Promise<number> {
   const { where, binds } = transformOptionsToQuery(options);
   const query = `
-    SELECT COUNT(id) AS count
+    SELECT COUNT(*) AS count
     FROM entry
     WHERE 1 AND ${where}`;
 
