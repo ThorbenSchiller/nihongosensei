@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       colors: {
         gray: colors.neutral,
-        primary: colors.pink,
+        primary: colors.blue,
       },
       fontWeight: {
         bold: 600,
