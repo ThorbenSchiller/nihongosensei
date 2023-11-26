@@ -8,7 +8,7 @@ const USG_MAP: Record<string, string> = {
 };
 
 const COLOR_MAP: Partial<Record<UsgTypeEnum, string>> = {
-  TIME: "text-blue-700 dark:text-blue-300",
+  TIME: "text-violet-700 dark:text-violet-300",
   HINT: "text-red-700 dark:text-red-300",
 };
 const DEFAULT_COLOR = "text-green-700 dark:text-green-300";
@@ -25,7 +25,7 @@ export function Usg({
 }: UsgModel): JSX.Element | null {
   if (reg) {
     return (
-      <span className="text-blue-700 dark:text-blue-300 italic">
+      <span className="text-violet-700 dark:text-violet-300 italic">
         {USG_MAP[reg] ?? [reg]}
       </span>
     );

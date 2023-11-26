@@ -2,11 +2,12 @@ import type {
   ResolvedEntryRefModel,
   SubentryTypeEnum,
 } from "@services/VocabularyService";
-import React from "react";
+import type { JSX } from "react";
 import { RelatedEntryGroup } from "./RelatedEntryGroup";
 
 type RelatedEntriesProps = {
   entries: ResolvedEntryRefModel[];
+  className?: string;
 };
 
 export type EnhancedTypeEnum =
@@ -84,6 +85,7 @@ function sortGroups<T, TEntry extends [key: string, value: T]>(
 
 export function RelatedEntries({
   entries,
+  className,
 }: RelatedEntriesProps): JSX.Element | null {
   if (!entries.length) {
     return null;
@@ -92,8 +94,8 @@ export function RelatedEntries({
   const groups = groupByType(entries);
 
   return (
-    <div className="mt-4">
-      <h3 className="text-xl">Relationen ({entries.length})</h3>
+    <div className={className}>
+      <h2 className="text-2xl">Verwandte Einträge</h2>
       {Object.entries(groups)
         .sort(sortGroups)
         .map(([type, entries]) => (

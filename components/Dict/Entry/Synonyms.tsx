@@ -1,7 +1,8 @@
+import { RelatedEntry } from "@components/Dict/Entry/RelatedEntry";
+import { Heading } from "@components/ui";
 import type { EntryModel } from "@services/VocabularyService";
-import React from "react";
-import { EntryLink } from "./EntryLink";
-import styles from "./RelatedEntries.module.css";
+import type { JSX } from "react";
+// import styles from "./RelatedEntries.module.css";
 
 type SynonymsProps = {
   entries: ReadonlyArray<EntryModel>;
@@ -18,14 +19,14 @@ export function Synonyms({
 
   return (
     <div className={className}>
-      Synonyme:{" "}
-      {entries.map((entry) => (
-        <EntryLink
-          className={styles.relatedEntry}
-          key={entry.id}
-          entry={entry}
-        />
-      ))}
+      <Heading level={2} className="mb-3">
+        Synonyme:{" "}
+      </Heading>
+      <ol className="list-decimal list-inside">
+        {entries.map((entry) => (
+          <RelatedEntry key={entry.id} className="py-1" entry={entry} />
+        ))}
+      </ol>
     </div>
   );
 }

@@ -3,8 +3,10 @@ import RouterLink, { LinkProps as RouterLinkProps } from "next/link";
 import React, { forwardRef } from "react";
 
 const COLOR_MAP = {
-  primary: "text-primary-700 dark:text-primary-300",
-  text: "",
+  primary:
+    "underline underline-offset-4 text-primary-700 dark:text-primary-300",
+  text: "underline underline-offset-4",
+  plain: "",
 };
 
 export type LinkProps = Omit<
@@ -21,7 +23,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
 ): JSX.Element {
   return (
     <RouterLink
-      className={clsx(COLOR_MAP[color], "hover:underline", className)}
+      className={clsx(COLOR_MAP[color], className)}
       ref={ref}
       {...rest}
     />

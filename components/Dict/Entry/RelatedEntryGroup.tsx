@@ -1,8 +1,10 @@
+import { Heading } from "@components/ui";
 import type {
+  EntryModel,
   ResolvedEntryRefModel,
   SubentryTypeEnum,
 } from "@services/VocabularyService";
-import React, { Fragment, HTMLProps } from "react";
+import { Fragment, HTMLProps, JSX } from "react";
 import type { EnhancedTypeEnum } from "./RelatedEntries";
 import { RelatedEntry } from "./RelatedEntry";
 
@@ -17,17 +19,17 @@ function SubTypeHeading({
   ...rest
 }: Omit<HTMLProps<HTMLDivElement>, "className">): JSX.Element {
   return (
-    <div className="mt-2" {...rest}>
+    <Heading level={4} className="my-2" {...rest}>
       {children}
-    </div>
+    </Heading>
   );
 }
 
 const SUBTYPE_MAP: Partial<Record<SubentryTypeEnum, JSX.Element | null>> = {
-  HEAD: <SubTypeHeading title="Komponentenanfang">▶</SubTypeHeading>,
-  TAIL: <SubTypeHeading title="Komponentenende">◀</SubTypeHeading>,
-  VW_BSP: <SubTypeHeading title="Beispiel">◇</SubTypeHeading>,
-  W_IDIOM: <SubTypeHeading title="Idiom">★</SubTypeHeading>,
+  HEAD: <SubTypeHeading>Komponentenanfang</SubTypeHeading>,
+  TAIL: <SubTypeHeading>Komponentenende</SubTypeHeading>,
+  VW_BSP: <SubTypeHeading>Beispiel</SubTypeHeading>,
+  W_IDIOM: <SubTypeHeading>Idiom</SubTypeHeading>,
   Z_SPR_W: <SubTypeHeading>Sprichwort</SubTypeHeading>,
   X_SATZ: <SubTypeHeading>Satz</SubTypeHeading>,
 };
@@ -54,31 +56,33 @@ export function RelatedEntryGroup({
     }
   );
 
-  let firstType: SubentryTypeEnum | undefined;
+  const groupByType: Record<SubentryTypeEnum | "default", EntryModel[]> =
+    sortedEntries.reduce((collector, { entry, subentrytype }) => {
+      const type = subentrytype ?? "default";
+
+      collector[type] ??= [];
+      collector[type].push(entry);
+
+      return collector;
+    }, {} as Record<SubentryTypeEnum | "default", EntryModel[]>);
 
   return (
     <>
       {ENHANCED_SUBTYPE_MAP[type] && (
-        <div className="mt-3 mb-2">{ENHANCED_SUBTYPE_MAP[type]}</div>
+        <Heading level={3} className="mt-3 mb-2">
+          {ENHANCED_SUBTYPE_MAP[type]}
+        </Heading>
       )}
-      {sortedEntries.map(({ entry, subentrytype }) => {
-        let typeHeading: JSX.Element | null = null;
-        if (subentrytype && firstType !== subentrytype) {
-          typeHeading = SUBTYPE_MAP[subentrytype] ?? null;
-        }
-
-        firstType = subentrytype;
-
-        return (
-          <Fragment key={entry.id}>
-            {typeHeading}
-            <RelatedEntry
-              className="border-b border-gray-300 dark:border-gray-700 pl-4 py-2"
-              entry={entry}
-            />
-          </Fragment>
-        );
-      })}
+      {Object.entries(groupByType).map(([subentrytype, entries]) => (
+        <Fragment key={subentrytype}>
+          {SUBTYPE_MAP[subentrytype as SubentryTypeEnum]}
+          <ol className="list-decimal list-inside">
+            {entries.map((entry) => (
+              <RelatedEntry key={entry.id} entry={entry} />
+            ))}
+          </ol>
+        </Fragment>
+      ))}
     </>
   );
 }

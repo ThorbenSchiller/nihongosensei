@@ -1,6 +1,6 @@
 import type { EntryModel } from "@services/VocabularyService";
 import clsx from "clsx";
-import React from "react";
+import type { JSX } from "react";
 import { EntryLink } from "./EntryLink";
 import { SenseEntries } from "./SenseEntries";
 
@@ -14,10 +14,10 @@ export function RelatedEntry({
   className,
 }: RelatedEntryProps): JSX.Element {
   return (
-    <div className={clsx("font-serif", className)}>
-      <EntryLink entry={entry} color="text" />
+    <li className={clsx("font-serif", className)}>
+      <EntryLink entry={entry} color="primary" />
       {": "}
       <SenseEntries sense={entry.sense} display="inline" />
-    </div>
+    </li>
   );
 }
