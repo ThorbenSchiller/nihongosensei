@@ -1,1 +1,1 @@
-export { default as JapaneseTextContainer } from "./JapaneseTextContainer";
+export * from "./JapaneseTextContainer";

@@ -13,7 +13,7 @@ export type FuriganaModel = {
    *
    * @example とりつ
    */
-  reading?: string | null;
+  reading: string | null;
   /**
    * The infinite form (only set for verbs).
    *

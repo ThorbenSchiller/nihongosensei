@@ -12,7 +12,7 @@ type JapaneseTextContainerProps = {
   defaultError: string | null;
   onRubyClick: (model: FuriganaModel) => void;
   defaultValue: string | null;
-  defaultFurigana: ReadonlyArray<FuriganaModel> | null;
+  defaultFurigana: ReadonlyArray<FuriganaModel | string> | null;
   debounceDelayInMs?: number;
 };
 
@@ -28,7 +28,7 @@ async function fetchFurigana(text: string): Promise<FuriganaResponse> {
   return response.json() as Promise<FuriganaResponse>;
 }
 
-function JapaneseTextContainer({
+export const JapaneseTextContainer = memo(function JapaneseTextContainer({
   onRubyClick,
   debounceDelayInMs = 300,
   defaultFurigana,
@@ -38,9 +38,9 @@ function JapaneseTextContainer({
   const [textSize, setTextSize] = useTextSize();
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState(defaultValue);
-  const [furigana, setFurigana] = useState<ReadonlyArray<FuriganaModel> | null>(
-    defaultFurigana
-  );
+  const [furigana, setFurigana] = useState<ReadonlyArray<
+    FuriganaModel | string
+  > | null>(defaultFurigana);
   const [error, setError] = useState<string | null>(defaultError);
   const lastValue = useRef(defaultValue);
 
@@ -108,6 +108,4 @@ function JapaneseTextContainer({
       </div>
     </div>
   );
-}
-
-export default memo(JapaneseTextContainer);
+});

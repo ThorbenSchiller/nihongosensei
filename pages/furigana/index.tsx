@@ -11,7 +11,7 @@ import { useCallback, useState } from "react";
 
 type FuriganaIndexProps = {
   text: string | null;
-  furigana: ReadonlyArray<FuriganaModel> | null;
+  furigana: ReadonlyArray<FuriganaModel | string> | null;
   error: string | null;
 };
 

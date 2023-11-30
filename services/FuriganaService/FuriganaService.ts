@@ -1,19 +1,7 @@
+import { flatKuroshiroNotation } from "@services/FuriganaService/flatKuroshiroNotation";
 import { KuromojiAnalyzer } from "./KuromojiAnalyzer";
 import type { FuriganaModel } from "./Model";
-import { Kuroshiro, type KuroshiroNotation } from "./kuroshiro";
-
-function createFuriganaModel({
-  surfaceForm,
-  type,
-  reading,
-  token,
-}: KuroshiroNotation): FuriganaModel {
-  return {
-    text: surfaceForm,
-    reading: type === "kanji" ? reading : null,
-    basicForm: type === "kanji" ? token?.basic_form ?? null : null,
-  };
-}
+import { Kuroshiro } from "./kuroshiro";
 
 /**
  * Service for converting a given text into a {@link FuriganaModel}.
@@ -32,10 +20,10 @@ export class FuriganaService {
    *
    * @param text The text to convert.
    */
-  public async getFurigana(text: string): Promise<FuriganaModel[]> {
+  public async getFurigana(text: string): Promise<(FuriganaModel | string)[]> {
     const converted = await this.kuroshiro.convert(text);
 
-    return converted.map(createFuriganaModel);
+    return flatKuroshiroNotation(converted);
   }
 
   public static getInstance(): FuriganaService {
