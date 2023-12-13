@@ -47,12 +47,12 @@ export function Pagination({
       marginPagesDisplayed={3}
       pageRangeDisplayed={3}
       onPageChange={handlePageChange}
-      activeClassName="text-primary-500 bold"
+      activeLinkClassName="font-bold"
       containerClassName={clsx("flex justify-center items-center", className)}
       pageClassName=""
-      pageLinkClassName="inline-flex px-3 py-1"
-      previousLinkClassName="inline-flex px-3 py-1"
-      nextLinkClassName="inline-flex px-3 py-1"
+      pageLinkClassName="inline-flex px-3 py-1 underline underline-offset-4 text-primary-700 dark:text-primary-300"
+      previousLinkClassName="inline-flex px-3 py-1 underline underline-offset-4 text-primary-700 dark:text-primary-300"
+      nextLinkClassName="inline-flex px-3 py-1 underline underline-offset-4 text-primary-700 dark:text-primary-300"
       disabledClassName="opacity-50 pointer-events-none"
       breakClassName="opacity-50 pointer-events-none"
     />
