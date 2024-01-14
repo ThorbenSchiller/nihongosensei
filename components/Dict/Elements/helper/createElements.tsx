@@ -39,7 +39,7 @@ export function createElements<T>(
 
     if (currentElementIsExplOrDef && !carry) {
       carry = [];
-    } else if (!isExplOrDef && carry) {
+    } else if (!currentElementIsExplOrDef && carry) {
       created.push(<MinorText>({carry})</MinorText>);
       carry = undefined;
     }
