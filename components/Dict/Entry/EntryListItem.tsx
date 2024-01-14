@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { useRouter } from "next/router";
 import { memo } from "react";
 import { useEntryContext } from "../Context";
-import { createElements, Refs } from "../Elements";
+import { Refs, createElements } from "../Elements";
 import { EntryText } from "./EntryText";
 import { Reading } from "./Reading";
 import { SenseEntries } from "./SenseEntries";
@@ -42,7 +42,7 @@ export const EntryListItem = memo(function EntryListItem({
             },
           }}
           lang="ja"
-          color="text"
+          color="primary"
           className="text-xl"
         >
           <EntryText orth={orth} />
