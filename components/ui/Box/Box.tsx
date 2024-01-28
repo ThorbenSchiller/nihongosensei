@@ -6,11 +6,11 @@ export type BoxProps<E extends React.ElementType> = {
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type BoxComponent<P = {}> = <E extends React.ElementType>(
-  props: P & BoxProps<E>
+  props: P & BoxProps<E>,
 ) => React.ReactNode | null;
 
 export const Box = forwardRef(function Box<
-  E extends React.ElementType = React.ElementType
+  E extends React.ElementType = React.ElementType,
 >({ as, ...rest }: BoxProps<E>, ref: React.Ref<unknown>) {
   return createElement(as ?? "span", {
     ...rest,

@@ -10,11 +10,11 @@ import type { EntryWrapperModel } from "./Model";
  */
 export async function findById(
   id: number,
-  executor = execute
+  executor = execute,
 ): Promise<EntryWrapperModel | null> {
   const [result] = await executor<EntryWrapperModel>(
     `SELECT * FROM entry WHERE id = ?`,
-    [id]
+    [id],
   );
 
   return result ?? null;

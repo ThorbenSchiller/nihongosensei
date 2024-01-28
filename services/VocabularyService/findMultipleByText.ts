@@ -7,7 +7,7 @@ type FindByTextOptions = {
 
 export async function findMultipleByText(
   text: string,
-  options: FindByTextOptions = {}
+  options: FindByTextOptions = {},
 ): Promise<EntryWrapperModel[]> {
   const { limit = 1 } = options;
   return execute<EntryWrapperModel>(
@@ -19,6 +19,6 @@ export async function findMultipleByText(
         WHERE
             entry_map.text = ?
         LIMIT ?`,
-    [text, limit.toString()]
+    [text, limit.toString()],
   );
 }

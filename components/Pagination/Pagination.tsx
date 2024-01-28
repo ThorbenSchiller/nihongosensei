@@ -33,7 +33,7 @@ export function Pagination({
           })
           .catch(console.error);
       },
-      [router, limit]
+      [router, limit],
     );
 
   return (

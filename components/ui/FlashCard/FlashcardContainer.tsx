@@ -7,12 +7,12 @@ export type FlashcardContainerProps = Omit<
 >;
 
 export function FlashcardContainer(
-  props: FlashcardContainerProps
+  props: FlashcardContainerProps,
 ): JSX.Element {
   const [flipped, setFlipped] = useState(false);
   const handleFlip = useCallback(
     () => setFlipped((currentFlipped) => !currentFlipped),
-    []
+    [],
   );
 
   return <FlashCard {...props} flipped={flipped} onClick={handleFlip} />;

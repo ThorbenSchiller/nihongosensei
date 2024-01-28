@@ -11,7 +11,7 @@ export function useScrollHeightPostMessage(): void {
       {
         scrollHeight: document.body.scrollHeight,
       },
-      "*"
+      "*",
     );
   }, []);
 }

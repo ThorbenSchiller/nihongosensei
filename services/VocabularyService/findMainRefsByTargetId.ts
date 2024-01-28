@@ -10,7 +10,7 @@ import type { ResolvedEntryRefModel } from "./Model";
  */
 export async function findMainRefsByTargetId(
   targetId: number,
-  executor = execute
+  executor = execute,
 ): Promise<ResolvedEntryRefModel[]> {
   return executor<ResolvedEntryRefModel>(
     `
@@ -18,6 +18,6 @@ export async function findMainRefsByTargetId(
         FROM entry_ref
         JOIN entry ON entry.id = entry_ref.source_id
         WHERE target_id = ? AND type = 'MAIN'`,
-    [targetId]
+    [targetId],
   );
 }

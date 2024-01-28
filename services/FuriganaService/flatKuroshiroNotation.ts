@@ -2,7 +2,7 @@ import type { KuroshiroNotation } from "@services/FuriganaService/kuroshiro";
 import type { FuriganaModel } from "@services/FuriganaService/Model";
 
 export function flatKuroshiroNotation(
-  input: ReadonlyArray<KuroshiroNotation>
+  input: ReadonlyArray<KuroshiroNotation>,
 ): (FuriganaModel | string)[] {
   let carry: string[] = [];
   const furiganaModels: (FuriganaModel | string)[] = [];

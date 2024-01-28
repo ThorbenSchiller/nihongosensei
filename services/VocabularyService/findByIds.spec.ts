@@ -12,7 +12,7 @@ describe("findByIds", () => {
     expect(executorMock).toBeCalledTimes(1);
     expect(executorMock).toBeCalledWith(
       `SELECT * FROM entry WHERE id IN (?,?,?)`,
-      [1, 2, 3]
+      [1, 2, 3],
     );
   });
 });

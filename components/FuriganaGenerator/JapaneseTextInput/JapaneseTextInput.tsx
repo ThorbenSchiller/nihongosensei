@@ -19,7 +19,7 @@ export function JapaneseTextInput({
 }: JapaneseTextInputProps): JSX.Element {
   const changeHandler = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => onChange?.(e.target.value),
-    [onChange]
+    [onChange],
   );
 
   return (

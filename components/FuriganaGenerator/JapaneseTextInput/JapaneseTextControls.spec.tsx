@@ -18,7 +18,7 @@ describe("JapaneseTextContainer", () => {
         minTextSize={minTextSize}
         textSizeStep={textSizeStep}
         onTextSizeChange={handleTextSizeChangeMock}
-      />
+      />,
     );
 
     fireEvent.click(screen.getByTestId("text-controls-increase-text-size"));
@@ -41,7 +41,7 @@ describe("JapaneseTextContainer", () => {
         minTextSize={minTextSize}
         textSizeStep={textSizeStep}
         onTextSizeChange={handleTextSizeChangeMock}
-      />
+      />,
     );
 
     fireEvent.click(screen.getByTestId("text-controls-decrease-text-size"));
@@ -64,14 +64,14 @@ describe("JapaneseTextContainer", () => {
         minTextSize={minTextSize}
         textSizeStep={textSizeStep}
         onTextSizeChange={handleTextSizeChangeMock}
-      />
+      />,
     );
 
     expect(
-      screen.getByTestId("text-controls-increase-text-size")
+      screen.getByTestId("text-controls-increase-text-size"),
     ).toBeDisabled();
     expect(
-      screen.getByTestId("text-controls-decrease-text-size")
+      screen.getByTestId("text-controls-decrease-text-size"),
     ).toBeDisabled();
   });
 });

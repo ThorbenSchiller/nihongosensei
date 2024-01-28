@@ -13,10 +13,10 @@ export function addCachingHeader(
   {
     maxAgeInSeconds = DEFAULT_MAX_AGE,
     staleAgeInSeconds = DEFAULT_STALE_MAX_AGE,
-  }: CachingHeaderOptions = {}
+  }: CachingHeaderOptions = {},
 ): void {
   res.setHeader(
     "Cache-Control",
-    `public, max-age=${maxAgeInSeconds}, stale-while-revalidate=${staleAgeInSeconds}`
+    `public, max-age=${maxAgeInSeconds}, stale-while-revalidate=${staleAgeInSeconds}`,
   );
 }

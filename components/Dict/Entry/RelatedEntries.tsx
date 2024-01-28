@@ -21,7 +21,7 @@ type GroupBySubTypeMap = Partial<
 >;
 
 function groupByType(
-  refs: ReadonlyArray<ResolvedEntryRefModel>
+  refs: ReadonlyArray<ResolvedEntryRefModel>,
 ): GroupBySubTypeMap {
   return refs.reduce((collector, relationModel) => {
     const { subentrytype } = relationModel;
@@ -78,7 +78,7 @@ const USAGE_EXAMPLES: SubentryTypeEnum[] = [
 
 function sortGroups<T, TEntry extends [key: string, value: T]>(
   first: TEntry,
-  second: TEntry
+  second: TEntry,
 ) {
   return first[0].localeCompare(second[0]);
 }

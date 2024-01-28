@@ -53,7 +53,7 @@ export function SenseEntries({
         "list-inside",
         styles[listType],
         display === "inline" && "inline",
-        className
+        className,
       )}
     >
       {groupedByRelated.map((senseGroup, index) => (

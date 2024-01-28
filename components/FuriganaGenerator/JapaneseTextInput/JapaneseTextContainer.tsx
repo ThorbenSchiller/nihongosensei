@@ -68,7 +68,7 @@ export const JapaneseTextContainer = memo(function JapaneseTextContainer({
         lastValue.current = newValue;
         convertHandler(newValue);
       },
-      [convertHandler]
+      [convertHandler],
     );
 
   return (

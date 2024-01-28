@@ -3,11 +3,11 @@ import type { VocabularyListModel } from "./Model";
 
 export async function findById(
   id: number,
-  executor = execute
+  executor = execute,
 ): Promise<VocabularyListModel | null> {
   const [result] = await executor<VocabularyListModel>(
     `SELECT * FROM entry_list WHERE id = ?`,
-    [id]
+    [id],
   );
 
   return result ?? null;

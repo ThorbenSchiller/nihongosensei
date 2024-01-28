@@ -12,7 +12,7 @@ function isExplOrDef(input: unknown) {
 }
 
 export function createElements<T>(
-  elements: ReadonlyArray<ElementType<T>>
+  elements: ReadonlyArray<ElementType<T>>,
 ): JSX.Element[] | null {
   const created: JSX.Element[] = [];
 

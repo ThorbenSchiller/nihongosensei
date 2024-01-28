@@ -15,7 +15,7 @@ const DEFAULT_OPTIONS: FindOptions = {
  */
 export function parsePaginationParams(
   params: Record<string, string | string[]> | ParsedUrlQuery,
-  defaultOptions: FindOptions = DEFAULT_OPTIONS
+  defaultOptions: FindOptions = DEFAULT_OPTIONS,
 ): FindOptions {
   const paginationParams = {
     ...defaultOptions,

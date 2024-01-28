@@ -10,7 +10,7 @@ const furiganaService = FuriganaService.getInstance();
 
 async function handleFurigana(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ): Promise<void> {
   if (req.method !== "POST") {
     res.status(405).end();

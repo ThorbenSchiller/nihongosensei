@@ -10,7 +10,7 @@ export function joinBy(glue: string) {
   return function joinedBy(
     prev: JSX.Element[],
     curr: JSX.Element | null,
-    index: number
+    index: number,
   ): JSX.Element[] {
     if (!curr) {
       return prev;

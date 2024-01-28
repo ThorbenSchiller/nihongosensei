@@ -9,7 +9,7 @@ import weighted from "weighted";
  */
 export function getRandomEntry<T>(
   entries: ReadonlyArray<T>,
-  weights?: ReadonlyArray<number>
+  weights?: ReadonlyArray<number>,
 ): T {
   return weighted.select(entries, weights ?? entries.map(() => 1));
 }

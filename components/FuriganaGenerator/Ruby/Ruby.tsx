@@ -39,7 +39,7 @@ export function Ruby({
             onClick={onClick}
             {...furiganaEntry}
           />
-        )
+        ),
       )}
     </div>
   );

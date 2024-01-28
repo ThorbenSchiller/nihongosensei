@@ -53,18 +53,21 @@ export function RelatedEntryGroup({
       }
 
       return first.localeCompare(second);
-    }
+    },
   );
 
   const groupByType: Record<SubentryTypeEnum | "default", EntryModel[]> =
-    sortedEntries.reduce((collector, { entry, subentrytype }) => {
-      const type = subentrytype ?? "default";
+    sortedEntries.reduce(
+      (collector, { entry, subentrytype }) => {
+        const type = subentrytype ?? "default";
 
-      collector[type] ??= [];
-      collector[type].push(entry);
+        collector[type] ??= [];
+        collector[type].push(entry);
 
-      return collector;
-    }, {} as Record<SubentryTypeEnum | "default", EntryModel[]>);
+        return collector;
+      },
+      {} as Record<SubentryTypeEnum | "default", EntryModel[]>,
+    );
 
   return (
     <>

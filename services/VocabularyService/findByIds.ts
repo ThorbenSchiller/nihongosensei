@@ -11,12 +11,12 @@ import type { EntryWrapperModel } from "./Model";
  */
 export async function findByIds(
   ids: ReadonlyArray<number>,
-  executor = execute
+  executor = execute,
 ): Promise<EntryWrapperModel[]> {
   return executor<EntryWrapperModel>(
     `SELECT * FROM entry WHERE id IN (${new Array(ids.length)
       .fill("?")
       .join(",")})`,
-    [...ids]
+    [...ids],
   );
 }

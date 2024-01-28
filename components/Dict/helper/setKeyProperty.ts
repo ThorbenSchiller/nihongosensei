@@ -10,7 +10,7 @@ const DEFAULT_KET_RETRIEVER: KeyRetriever = (index) => index.toString();
  * @param keyRetriever The key retriever to use. By default, the index is used.
  */
 export function setKeyProperty(
-  keyRetriever: KeyRetriever = DEFAULT_KET_RETRIEVER
+  keyRetriever: KeyRetriever = DEFAULT_KET_RETRIEVER,
 ): (element: JSX.Element, index: number) => JSX.Element {
   return (element, index) =>
     cloneElement(element, {

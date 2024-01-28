@@ -20,7 +20,7 @@ export function Search({ autoFocus, ...formProps }: SearchProps): JSX.Element {
         })
         .catch(console.error);
     },
-    [router, value]
+    [router, value],
   );
   const handleChange: NonNullable<HTMLProps<HTMLInputElement>["onChange"]> =
     useCallback((e) => setValue(e.currentTarget.value), []);

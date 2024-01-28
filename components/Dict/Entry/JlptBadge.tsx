@@ -12,7 +12,7 @@ export function JlptBadge({ level, className }: JlptBadgeProps): JSX.Element {
       href={`/jlpt/${level}`}
       className={clsx(
         "inline-block text-sm px-1 border rounded border-primary-700 dark:border-primary-300 text-primary-700 dark:text-primary-300",
-        className
+        className,
       )}
     >
       JLPT N{level}

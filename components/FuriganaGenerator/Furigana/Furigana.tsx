@@ -16,7 +16,7 @@ export function Furigana({ onClick, ...furiganaModel }: FuriganaProps) {
     <span
       className={clsx(
         "text-black dark:text-white relative",
-        onClick && "cursor-pointer pointer-events-auto"
+        onClick && "cursor-pointer pointer-events-auto",
       )}
       onClick={clickHandler}
       data-testid="furigana"

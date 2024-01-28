@@ -152,7 +152,7 @@ export const getStrType = function (str: string): StringType {
  * @param inputTokens Given tokens
  */
 export const patchTokens = function (
-  inputTokens: ReadonlyArray<IpadicFeatures>
+  inputTokens: ReadonlyArray<IpadicFeatures>,
 ): IpadicFeatures[] {
   const tokens = [...inputTokens];
   // patch for token structure

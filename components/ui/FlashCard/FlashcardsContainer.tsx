@@ -24,7 +24,7 @@ function flashCardReducer(state: FlashcardsState, action: "next" | "previous") {
       let newCards = cards;
       if (nextIndex >= cards.length - 1) {
         const randomEntry = getRandomEntry(
-          entries.filter((card) => card.id !== cards[state.activeIndex].id)
+          entries.filter((card) => card.id !== cards[state.activeIndex].id),
         );
         newCards = [...cards, randomEntry];
       }

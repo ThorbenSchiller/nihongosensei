@@ -2,7 +2,7 @@ import { execute } from "@services/DatabaseService";
 import type { EntryWrapperModel } from "./Model";
 
 export async function findByText(
-  text: string
+  text: string,
 ): Promise<EntryWrapperModel | null> {
   const [result] = await execute<EntryWrapperModel>(
     `
@@ -13,7 +13,7 @@ export async function findByText(
         WHERE
             entry_map.text = ?
         LIMIT 1`,
-    [text]
+    [text],
   );
 
   return result ?? null;

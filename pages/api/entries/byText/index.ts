@@ -12,7 +12,7 @@ export type EntriesByTextResponse = Record<string, EntryWrapperModel[]>;
 
 export default async function handleEntryByText(
   { method, body }: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ): Promise<void> {
   if (method !== "POST") {
     res.status(405).end();
@@ -41,10 +41,10 @@ export default async function handleEntryByText(
       await findMultipleByText(text, {
         limit: parsedLimit,
       }),
-    ])
+    ]),
   );
   const byTextMap = Object.fromEntries(
-    entries as [string, EntryWrapperModel[]][]
+    entries as [string, EntryWrapperModel[]][],
   );
 
   res.setHeader("Content-Type", "application/json");

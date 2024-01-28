@@ -8,7 +8,7 @@ export type EntriesBody = {
 
 export default async function handleEntry(
   { body, method }: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ): Promise<void> {
   if (method !== "GET") {
     res.status(405).end();

@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handleEntry(
   { method, query }: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ): Promise<void> {
   if (method !== "GET") {
     res.status(405).end();

@@ -17,12 +17,12 @@ export async function findBy({
   return execute<EntryWrapperModel>(
     query,
     // parameters seem to be strings, even for limit @see https://github.com/sidorares/node-mysql2/issues/1239
-    [...binds, offset.toString(), Math.min(limit, MAX_LIMIT).toString()]
+    [...binds, offset.toString(), Math.min(limit, MAX_LIMIT).toString()],
   );
 }
 
 export async function findByCount(
-  options: VocabularyFindOptions
+  options: VocabularyFindOptions,
 ): Promise<number> {
   const { where, binds } = transformOptionsToQuery(options);
   const query = `

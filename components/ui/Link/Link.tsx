@@ -19,7 +19,7 @@ export type LinkProps = Omit<
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
   { className, color = "primary", ...rest },
-  ref
+  ref,
 ): JSX.Element {
   return (
     <RouterLink

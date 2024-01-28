@@ -1,6 +1,6 @@
 export function parseError(
   error: unknown,
-  defaultMessage = "An error occurred."
+  defaultMessage = "An error occurred.",
 ): string {
   if (error instanceof Error) {
     return error.message || defaultMessage;

@@ -11,8 +11,8 @@ export class FuriganaService {
 
   public constructor(
     private readonly kuroshiro: Kuroshiro = new Kuroshiro(
-      new KuromojiAnalyzer()
-    )
+      new KuromojiAnalyzer(),
+    ),
   ) {}
 
   /**

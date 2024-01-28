@@ -34,6 +34,6 @@ export function Refs({
     {
       className,
     },
-    children
+    children,
   );
 }

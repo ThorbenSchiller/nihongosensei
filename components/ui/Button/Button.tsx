@@ -16,7 +16,7 @@ const COLOR_MAP: Record<ButtonVariant, string> = {
 
 export const Button: BoxComponent<ButtonProps> = forwardRef(function Button(
   { as, className = "", variant = "default", ...rest },
-  ref
+  ref,
 ) {
   return (
     <Box

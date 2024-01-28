@@ -30,12 +30,12 @@ const COUNT_ENTRIES_QUERY = `
 
 export async function findByQuery(
   query: string,
-  { limit = DEFAULT_LIMIT, offset = 0 }
+  { limit = DEFAULT_LIMIT, offset = 0 },
 ): Promise<EntryWrapperModel[]> {
   return execute<EntryWrapperModel>(
     FIND_ENTRIES_QUERY,
     // parameters seem to be strings, even for limit @see https://github.com/sidorares/node-mysql2/issues/1239
-    [query, query, offset.toString(), Math.min(limit, MAX_LIMIT).toString()]
+    [query, query, offset.toString(), Math.min(limit, MAX_LIMIT).toString()],
   );
 }
 

@@ -122,7 +122,7 @@ describe("createElements", () => {
     const text = screen.baseElement.textContent;
 
     expect(text).toEqual(
-      "(Beiname f.) Ugui m (siehe japan. ugui); Tribolodon hakonensis"
+      "(Beiname f.) Ugui m (siehe japan. ugui); Tribolodon hakonensis",
     );
   });
 
@@ -185,7 +185,7 @@ describe("createElements", () => {
     const text = screen.baseElement.textContent;
 
     expect(text).toEqual(
-      "(spielerische Form der Teezeremonie der Ura Senke zurückgehend auf Gengensai; Bestimmung der jeweiligen Rolle durch Kartenziehen; Schnee erlaubt das Süßigkeitenessen, Mond erlaubt das Teetrinken und die Blüte erfordert die Teebereitung)"
+      "(spielerische Form der Teezeremonie der Ura Senke zurückgehend auf Gengensai; Bestimmung der jeweiligen Rolle durch Kartenziehen; Schnee erlaubt das Süßigkeitenessen, Mond erlaubt das Teetrinken und die Blüte erfordert die Teebereitung)",
     );
   });
 });
