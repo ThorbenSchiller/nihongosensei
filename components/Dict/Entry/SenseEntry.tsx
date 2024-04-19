@@ -23,14 +23,13 @@ export function SenseEntry({ senseEntry }: SenseEntryProps): JSX.Element {
 
   return (
     <li className={clsx(styles.senseEntry, !sense && styles.senseEntryWithDot)}>
-      {etym &&
-        etym.map((etymEntry, index) => (
-          <Etym key={index} className="mr-1" {...etymEntry} />
-        ))}
+      {etym?.map((etymEntry, index) => (
+        <Etym key={`etym-${index}`} className="mr-1" {...etymEntry} />
+      ))}
       {descr && <Descr {...descr} />}
       {sense && <SenseEntries className="ml-4" sense={sense} />}
       {usg && <UsgEntries usg={usg} />}
-      {transAndBracketAndDef && createElements(transAndBracketAndDef)}
+      {createElements(transAndBracketAndDef)}
       <Refs className="ml-1" component="span" refs={ref ?? []} />
       {seasonword?.map((season) => (
         <SeasonWord key={season.type} {...season} />

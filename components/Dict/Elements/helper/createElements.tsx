@@ -12,8 +12,12 @@ function isExplOrDef(input: unknown) {
 }
 
 export function createElements<T>(
-  elements: ReadonlyArray<ElementType<T>>,
+  elements?: ReadonlyArray<ElementType<T>>,
 ): JSX.Element[] | null {
+  if (!elements || !elements.length) {
+    return null;
+  }
+
   const created: JSX.Element[] = [];
 
   let carry: JSX.Element[] | undefined = undefined;
@@ -40,7 +44,7 @@ export function createElements<T>(
     if (currentElementIsExplOrDef && !carry) {
       carry = [];
     } else if (!currentElementIsExplOrDef && carry) {
-      created.push(<MinorText>({carry})</MinorText>);
+      created.push(<MinorText>({carry.map(setKeyProperty())})</MinorText>);
       carry = undefined;
     }
 
