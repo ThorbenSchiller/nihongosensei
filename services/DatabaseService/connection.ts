@@ -28,7 +28,6 @@ function getConnectionPool(): Pool {
     waitForConnections: true,
     connectionLimit: 15,
     queueLimit: 0,
-    typeCast: false,
   });
 
   return global.database;
