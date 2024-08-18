@@ -12,21 +12,27 @@ import {
   findById,
   findByIds,
   findMainRefsByTargetId,
+  KanjiModel,
   ResolvedEntryRefModel,
 } from "@services/VocabularyService";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import { EntryKanjis } from "@components/Dict/EntryKanjis/EntryKanjis";
+import { getKanjisFromOrth } from "@services/VocabularyService/helper/getKanjisFromOrth";
+import { findKanjis } from "@services/VocabularyService/findKanjis";
 
 type EntryDetailPageProps = {
   entry: EntryWrapperModel;
   synonyms: EntryWrapperModel[];
   relatedEntries: ResolvedEntryRefModel[];
+  kanjis: KanjiModel[];
 };
 
 export default function EntryDetailPage({
   entry: { entry_json, jlpt },
   synonyms,
   relatedEntries,
+  kanjis,
 }: EntryDetailPageProps): JSX.Element {
   const title = `${entry_json.form.orth[0]?.value} - ${SITE_NAME}`;
 
@@ -45,6 +51,10 @@ export default function EntryDetailPage({
         <Synonyms
           className="pt-4 mt-4 border-t border-gray-300 dark:border-gray-700"
           entries={synonyms.map((entry) => entry.entry_json)}
+        />
+        <EntryKanjis
+          className="mt-4 pt-4 border-t border-gray-300 dark:border-gray-700"
+          kanjis={kanjis}
         />
         <RelatedEntries
           className="pt-4 mt-4 border-t border-gray-300 dark:border-gray-700"
@@ -75,9 +85,14 @@ export const getServerSideProps: GetServerSideProps<
     .map((related) => related.id)
     .filter((id) => id !== entry.id);
 
-  const [synonyms = [], relatedEntries = []] = await Promise.all([
+  // resolve kanjis
+
+  const kanjiSet = getKanjisFromOrth(entry.entry_json.form.orth);
+
+  const [synonyms = [], relatedEntries = [], kanjis = []] = await Promise.all([
     relationIds?.length ? await findByIds(relationIds) : undefined,
     await findMainRefsByTargetId(entry.id),
+    kanjiSet.size ? findKanjis(Array.from(kanjiSet)) : undefined,
   ]);
 
   addCachingHeader(res);
@@ -87,6 +102,7 @@ export const getServerSideProps: GetServerSideProps<
       entry,
       synonyms,
       relatedEntries,
+      kanjis,
     },
   };
 };

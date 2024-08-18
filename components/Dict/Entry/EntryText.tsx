@@ -13,7 +13,7 @@ export function EntryText({ orth, className }: EntryTextProps): JSX.Element {
   const preferredReadings = orth.filter((orth) => orth.midashigo);
   if (!preferredReadings.length) {
     return (
-      <span className={clsx(styles.reading, className)}>
+      <span className={clsx(styles.reading, className)} lang="ja">
         <PreferredText text={orth[0].value} />
       </span>
     );
@@ -22,7 +22,11 @@ export function EntryText({ orth, className }: EntryTextProps): JSX.Element {
   return (
     <>
       {preferredReadings.map((reading) => (
-        <span key={reading.value} className={clsx(styles.reading, className)}>
+        <span
+          key={reading.value}
+          className={clsx(styles.reading, className)}
+          lang="ja"
+        >
           <PreferredText text={reading.value} />
         </span>
       ))}
