@@ -5,8 +5,8 @@ WORKDIR /usr/app
 COPY public ./public
 COPY package.json ./package.json
 
-COPY .next/standalone ./
-COPY .next/static ./.next/static
+COPY build/standalone ./
+COPY build/static ./build/static
 
 ARG NODE_ENV="production"
 ENV NODE_ENV=${NODE_ENV}
