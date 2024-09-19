@@ -1,5 +1,5 @@
 import { EntryFull } from "@components/Dict";
-import { Alert, Button, LoadingProgress } from "@components/ui";
+import { Alert, ButtonLink, LoadingProgress } from "@components/ui";
 import ExternalIcon from "@heroicons/react/24/solid/ArrowTopRightOnSquareIcon";
 import type {
   EntryModel,
@@ -48,8 +48,7 @@ export function VocabularyProvider({
             entry={entry}
             className="mb-4 p-4 border border-gray-300 dark:border-gray-700 rounded"
           />
-          <Button
-            as="a"
+          <ButtonLink
             href={`/entry/${entry.id}`}
             variant="default"
             target="_blank"
@@ -57,7 +56,7 @@ export function VocabularyProvider({
           >
             Im Wörterbuch anzeigen
             <ExternalIcon className="ml-1 w-4 h-4" />
-          </Button>
+          </ButtonLink>
         </>
       )}
       {error && <Alert type="error">{error}</Alert>}
